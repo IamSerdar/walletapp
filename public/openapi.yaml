@@ -1,0 +1,813 @@
+openapi: 3.0.0
+info:
+  version: '1.0.0'
+  title: 'eBakja API'
+  license:
+    name: MIT
+
+servers:
+  - url: 'http://localhost:8000/api'
+  - url: 'https://garden.mekdep.org/api'
+
+tags:
+  - name: Auth
+    description: "Authorization and Reset"
+  - name: Gardens
+    description: "Gardens and children entities"
+  - name: Payment
+    description: "Schools and their shifts"
+  - name: Info
+    description: "Informations"
+
+paths:
+  /user/profile:
+    delete:
+      tags:
+        - Auth
+      response:
+        200:
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/SuccessResponse'
+                  - properties:
+                      user:
+                        $ref: '#/components/schemas/User'
+
+
+  /users/login:
+    post:
+      tags:
+        - Auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                login:
+                  type: string
+                  example: "62712204"
+                otp:
+                  type: string
+                  example: '09125'
+                  nullable: true
+                garden_id:
+                  type: string
+                  example: '1'
+                  nullable: true
+                device_token:
+                  type: string
+                  example: 'abc'
+      responses:
+        200:
+          description: login and otp are correct, getting token
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/SuccessResponse'
+                  - properties:
+                      token:
+                        type: string
+                        example: 'ABClongString'
+                      expires_at:
+                        $ref: '#/components/schemas/DateTime'
+                      user:
+                        $ref: '#/components/schemas/User'
+        202:
+          description: login is exists, creating and sending otp
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/SuccessResponse'
+        422:
+          description: invalid login or otp
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/ErrorResponse'
+  /users/logout:
+    post:
+      tags:
+        - Auth
+      responses:
+        200:
+          description: OK
+
+  /garden/children:
+    get:
+      tags:
+        - Gardens
+      parameters:
+        - name: date
+          in: query
+          schema:
+            allOf:
+              - $ref: "#/components/schemas/Date"
+              - nullable: true
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/SuccessResponse'
+                  - properties:
+                      children:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Child'
+  /garden/children/notifications:
+    get:
+      tags:
+        - Gardens
+      parameters:
+        - name: offset
+          in: query
+          example: 0
+          required: false
+        - name: limit
+          in: query
+          example: 10
+          required: false
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/SuccessResponse'
+                  - properties:
+                      children:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Notification'
+  /garden/children/notifications/read:
+    post:
+      tags:
+        - Gardens
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                id:
+                  type: int
+                  example: "2"
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/SuccessResponse'
+  /garden/children/gallery:
+    get:
+      tags:
+        - Gardens
+      parameters:
+          - name: offset
+            in: query
+            example: 0
+            required: false
+          - name: limit
+            in: query
+            example: 10
+            required: false
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/SuccessResponse'
+                  - properties:
+                      children:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/GalleryItem'
+  /garden/list:
+    get:
+      tags:
+        - Gardens
+      parameters:
+        - name: offset
+          in: query
+          example: 0
+          required: false
+        - name: limit
+          in: query
+          example: 10
+          required: false
+        - name: parent_id
+          in: query
+          example: 101
+          required: false
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/SuccessResponse'
+                  - properties:
+                      gardens:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Garden'
+
+  /garden/names:
+    get:
+      tags:
+        - Gardens
+      parameters:
+        - name: offset
+          in: query
+          example: 0
+          required: false
+        - name: limit
+          in: query
+          example: 10
+          required: false
+        - name: parent_id
+          in: query
+          example: 101
+          required: false
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/SuccessResponse'
+                  - properties:
+                      gardens:
+                        type: array
+                        items:
+                          properties:
+                            name:
+                              type: string
+                              example: "Aşgabat şäheriniň 1-nji cagalar bagy"
+                            id:
+                              type: string
+                              example: "12"
+  /garden/payment/checkout:
+    post:
+      tags:
+        - Payment
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentCheckout'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/SuccessResponse'
+                properties:
+                  transaction:
+                    $ref: '#/components/schemas/PaymentTransaction'
+  /garden/payment/check:
+    post:
+      tags:
+        - Payment
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentConfirm'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/SuccessResponse'
+  /garden/payment/confirm:
+    post:
+      tags:
+        - Payment
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentConfirm'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/SuccessResponse'
+  /garden/payment/history:
+    get:
+      tags:
+        - Payment
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/SuccessResponse'
+                  - properties:
+                      transactions:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/PaymentTransaction'
+
+  /garden/payment/settings:
+    get:
+      tags:
+        - Payment
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/SuccessResponse'
+                  - $ref: '#/components/schemas/Settings'
+
+  /pages:
+    get:
+      tags:
+        - Info
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/SuccessResponse'
+                  - properties:
+                      pages:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Pages'
+
+  /contact/send:
+    post:
+      tags:
+        - Info
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactSendRequest'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/SuccessResponse'
+
+components:
+  schemas:
+    User:
+      properties:
+        id:
+          type: string
+          example: "3"
+        first_name:
+          type: string
+          example: "Aman"
+        last_name:
+          type: string
+          example: "Amanow"
+        middle_name:
+          type: string
+          example: "Amanowic"
+        phone:
+          type: string
+          example: "62712204"
+        username:
+          type: string
+          example: "62712204"
+        role:
+          type: string
+          example: "62712204"
+        birthday:
+          type: string
+          example: "02-02-1999"
+        gender:
+          type: string
+          example: "f"
+        address:
+          type: string
+          example: "Street"
+        work_year:
+          type: integer
+          example: 1
+        phone_verified:
+          type: boolean
+          example: true
+        avatar_image:
+          type: string
+          example: "site.com/img.jpg"
+    Child:
+      properties:
+        user:
+          $ref: '#/components/schemas/User'
+        timetable:
+          $ref: '#/components/schemas/Timetable'
+        activities:
+          type: array
+          items:
+            $ref: '#/components/schemas/Activities'
+        meals:
+          $ref: '#/components/schemas/Meals'
+        info:
+          properties:
+            group:
+              $ref: '#/components/schemas/Group'
+            garden:
+              $ref: '#/components/schemas/Garden'
+        payment:
+          $ref: '#/components/schemas/ChildPayment'
+
+    Notification:
+      properties:
+        title:
+          type: string
+          example: "Çaga üçin sabyn alyp gelmeli"
+        description:
+          type: string
+          example: "Giňişleýin"
+        author:
+          $ref: '#/components/schemas/User'
+        created_at:
+          $ref: '#/components/schemas/Date'
+        read_at:
+          $ref: '#/components/schemas/DateTime'
+        child_ids:
+          type: array
+          items:
+            type: integer
+            example: 123
+    GalleryItem:
+      properties:
+        id:
+          type: integer
+          example: 123
+        images:
+          type: array
+          items:
+            type: string
+            example: "site.com/img.jpg"
+        description:
+          type: string
+          example: ""
+        child_ids:
+          type: array
+          items:
+            type: integer
+            example: 123
+        author:
+          $ref: '#/components/schemas/User'
+        created_at:
+          $ref: '#/components/schemas/DateTime'
+
+    Timetable:
+      properties:
+        1:
+          type: array
+          items:
+            $ref: '#/components/schemas/TimetableItem'
+        3:
+          type: array
+          items:
+            $ref: '#/components/schemas/TimetableItem'
+    TimetableItem:
+      properties:
+        index:
+          type: integer
+          example: 1
+        title:
+          type: string
+          example: "Sözleýiş ösdürmek"
+        start_time:
+          type: string
+          example: "09:00"
+        end_time:
+          type: string
+          example: "09:00"
+    ChildPayment:
+      properties:
+        payment_date:
+          $ref: "#/components/schemas/Date"
+    Meals:
+      properties:
+        1:
+          type: array
+          items:
+            $ref: '#/components/schemas/MealsItem'
+        3:
+          type: array
+          items:
+            $ref: '#/components/schemas/MealsItem'
+    MealsItem:
+      properties:
+        index:
+          type: integer
+          example: 1
+        title:
+          type: string
+          example: "Ertirlik"
+        meals:
+          type: array
+          items:
+            type: string
+            example: "Bally çaý"
+        start_time:
+          type: string
+          example: "09:00"
+        end_time:
+          type: string
+          example: "09:00"
+    Activities:
+      properties:
+        index:
+          type: integer
+          example: 1
+        title:
+          type: string
+          example: "Uky wagty"
+        start_time:
+          type: string
+          example: "09:00"
+        end_time:
+          type: string
+          example: "09:00"
+
+    PaymentTransaction:
+      properties:
+        id:
+          type: string
+          example: "12"
+        bank_type:
+          type: string
+          enum:
+            - "halkbank"
+            - "senagatbank"
+            - "rysgalbank"
+          example: "halkbank"
+        redirect_url:
+          type: string
+          example: "https://epg.rysgalbank.tm/payments/merchants/173801TSP0044/payment.html?mdOrder=7ee92f8c-535d-404b-bf86-111111111&language=tm"
+        amount:
+          type: string
+          example: "24300"
+        months:
+          type: integer
+          example: 3
+        card_type_title:
+          type: string
+          example: "Altyn Asyr"
+        card_title:
+          type: string
+          example: "****1234"
+        status:
+          type: string
+          enum:
+            - "wait"
+            - "success"
+            - "cancelled"
+          example: "wait"
+        created_at:
+          $ref: '#/components/schemas/DateTime'
+        updated_at:
+          $ref: '#/components/schemas/DateTime'
+        children:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+        payer:
+          $ref: '#/components/schemas/User'
+
+
+    Group:
+      properties:
+        name:
+          type: string
+          example: "Towsanjyklar topary"
+        type_name:
+          type: string
+          example: "Uly topar"
+        teacher:
+          $ref: '#/components/schemas/User'
+        child_count:
+          type: integer
+          example: 14
+
+
+    Garden:
+      properties:
+        name:
+          type: string
+          example: "1-nji cagalar bagy"
+        code:
+          type: string
+          example: "ag1"
+        admin:
+          $ref: '#/components/schemas/User'
+        child_count:
+          type: integer
+          example: 14
+        description:
+          type: string
+          example: "Bizin bakja bagymyz cagalar ucin"
+        phone:
+          type: string
+          example: "454545"
+        location:
+          type: string
+          example: "Street"
+
+    Settings:
+      properties:
+        payment:
+          properties:
+            warning_days:
+              type: integer
+              example: 12
+            danger_days:
+              type: integer
+              example: 30
+            service_price:
+              type: string
+              example: "300"
+            month_price:
+              type: string
+              example: "8000"
+            month_options:
+              type: array
+              example: [1,2,3]
+              items:
+                type: integer
+            bank_types:
+              type: array
+              example: [ 'halkbank','senagatbank','rysgalbank','vneshbank' ]
+              items:
+                type: string
+            app:
+              type: object
+              example: {version_required: 'v1.0'}
+
+    Pages:
+      properties:
+        key:
+          type: string
+          example: "about"
+        title:
+          type: string
+          example: "Biz barada"
+        content:
+          type: string
+          example: "bla bla bla bla"
+
+    Id:
+      type: integer
+      example: 127
+    DateTime:
+      description: "DateTime ISO format"
+      example: "2023-01-09T11:07:08.000000Z"
+    Date:
+      description: "Date format"
+      example: "2023-01-09"
+    RoleCode:
+      type: string
+      enum:
+        - "child"
+        - "parent"
+        - "educator"
+        - "accountant"
+        - "admin"
+        - "director"
+      example: "parent"
+    AccountStatus:
+      type: string
+      enum:
+        - "wait"
+        - "active"
+        - "blocked"
+      example: "active"
+    ProfileStatus:
+      type: string
+      enum:
+        - "guest"
+        - "verified"
+      example: "verified"
+    Phone:
+      type: string
+      example: "62919293"
+    AuthType:
+      type: string
+      enum:
+        - "password"
+        - "2fa-sms"
+      example: "password"
+    Gender:
+      description: "1 = male, 2 = female"
+      type: integer
+      enum:
+        - 1
+        - 2
+      example: 1
+
+    ### REQUESTS ###
+
+
+    UserUpdate:
+      properties: {}
+
+
+    PaymentCheckout:
+      properties:
+        child_ids:
+          type: array
+          items:
+            $ref: '#/components/schemas/Id'
+        months:
+          type: integer
+          example: 3
+    PaymentConfirm:
+      properties:
+        code:
+          type: integer
+          example: 1010
+          nullable: true
+        transaction_id:
+          type: string
+          example: "1234"
+    ContactSendRequest:
+      properties:
+        full_name:
+          type: string
+          example: "Merjen Amanowa"
+        phone:
+          type: string
+          example: "+993 62121212"
+        subject:
+          type: string
+          example: "bla bla bla bla"
+        message:
+          type: string
+          example: "bla bla bla bla"
+
+    SuccessResponse:
+      properties:
+        success:
+          type: boolean
+          default: true
+          readOnly: true
+
+    ErrorResponse:
+      properties:
+        success:
+          type: boolean
+          default: false
+          readOnly: true
+        error:
+          properties:
+            code:
+              type: string
+              example: "required"
+            message:
+              type: string
+              example: "first_name hokmany girizmeli"
+            key:
+              type: string
+              nullable: true
+              example: "first_name"
+
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT  # optional, for documentation purposes only
+
+security:
+  - bearerAuth: []
+
+
