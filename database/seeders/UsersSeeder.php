@@ -15,28 +15,17 @@ class UsersSeeder extends Seeder
         $roles = User::defaultRoles();
         $data = [
             [
-                'phone' => '61616161',
                 'username' => 'admin',
-                'password' => '12341234',
-                'first_name' => 'Admin',
+                'password' => 'secretpass',
                 'role' => $roles[0],
             ],
-            // [
-            //     'phone' => '62626262',
-            //     'username' => 'director',
-            //     'password' => '12341234',
-            //     'first_name' => 'Director',
-            //     'role' => "$roles[1]",
-            // ],
         ];
         foreach ($data as $item) {
             $user = User::query()->firstOrNew([
-                'phone' => $item['phone'],
+                'username' => $item['username'],
             ]);
-            $user->username = $item['username'];
             $user->role_code = $item['role'];
             $user->password = Hash::make($item['password']);
-            $user->first_name = $item['first_name'];
             $user->save();
         }
     }

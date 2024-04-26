@@ -60,25 +60,6 @@
 .toggle-expand{
     &-content{
         display: none;
-        &.expanded{
-            display: block;
-        } 
-    }
-}
-.inactive-text{
-    .toggle-expand &, .toggle-opt & {
-        display: block;
-    }
-    .toggle-expand.active > &, .toggle-opt.active > &{
-        display: none;
-    }
-}
-.active-text{
-    .toggle-expand &, .toggle-opt & {
-        display: none;
-    }
-    .toggle-expand.active > &, .toggle-opt.active > &{
-        display: block;
     }
 }
 
@@ -99,7 +80,7 @@ body.toggle-shown{
         }
     }
 }
-@include media-breakpoint-down(sm){
+@include media-breakpoint-down(xs){
     .nk-block-tools-toggle{
         .toggle-expand-content{
             position: absolute;
@@ -107,11 +88,12 @@ body.toggle-shown{
             right: 0;
             top: 100%;
             z-index: 99;
+            width: 100vw;
             padding: 0 $card-stretch-gap-x !important;
             background: $white;
             margin-left: - $card-stretch-gap-x;
             margin-right: - $card-stretch-gap-x;
-            box-shadow: 0 20px 35px rgba($black,.2);
+            box-shadow: 0 20px 35px rgba(#000,.2);
         }
         .nk-block-tools{
             padding-top: 20px;
@@ -125,7 +107,7 @@ body.toggle-shown{
 
 // Toggle For Page card
 
-@include media-breakpoint-down(sm){
+@include media-breakpoint-down(xs){
     .card-tools-toggle{
         .card-title-group{
             position: static;

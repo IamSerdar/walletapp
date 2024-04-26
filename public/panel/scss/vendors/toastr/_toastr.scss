@@ -42,7 +42,6 @@
     border-left: 4px solid transparent;
     padding: 1.25rem 4.5rem 1.25rem 1.25rem;
     width: 430px;
-    max-width: 100%;
     font-size: 0.875rem;
     line-height: 1.3rem;
     .is-dark & {
@@ -84,7 +83,7 @@
         font-size: 24px;
         line-height: 1;
         + .toastr-text{
-            padding-left: 2.35rem;
+        padding-left: 2.35rem;
         }
     }
     h4, h5, h6{

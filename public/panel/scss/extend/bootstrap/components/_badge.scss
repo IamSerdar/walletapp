@@ -3,61 +3,42 @@
     border: 1px solid currentColor;
     line-height: $badge-line-height;
     font-family: $base-font-family;
-    font-size: $badge-font-size;
     letter-spacing: 0.01em;
     vertical-align: middle;
-    display: inline-flex;
+    //@i-v1.1
     .icon + span,span + .icon{
-        padding-left: 4px;
-    }
-    &.rounded-pill{
-        border-radius: $badge-pill-border-radius;
-        padding-right: .5rem;
-        padding-left: .5rem;
+        padding-left: 8px;
     }
     &-sm{
         padding: $badge-padding-y-sm $badge-padding-x-sm;
         font-size:$badge-font-size-sm;
-        &.rounded-pill{
+
+        &.badge-pill{
             padding: $badge-padding-y-sm $badge-pill-padding-x-sm;
         }
     }
     &-md{
         padding: $badge-padding-y-md $badge-padding-x-md;
         font-size:$badge-font-size-md !important;
-        &.rounded-pill{
-            padding: $badge-padding-y-md $badge-padding-x-md;
-        }
     }
     &-lg{
         padding: $badge-padding-y-lg $badge-padding-x-lg;
         font-size:$badge-font-size-lg !important;
-        &.rounded-pill{
-            padding: $badge-padding-y-lg $badge-padding-x-lg;
-        }
     }
     &-xl{
         padding: $badge-padding-y-xl $badge-padding-x-xl;
         font-size:$badge-font-size-xl !important;
-        &.rounded-pill{
-            padding: $badge-padding-y-xl $badge-padding-x-xl;
-        }
-
     }
-    &.bg-light {
+    &-light {
         color: $secondary;
     }
     &-lighter {
         color: $secondary-light;
     }
-    .icon{
-        font-size: 1rem;
-    }
 }
 @each $name, $value in $theme-colors {
-    .bg-#{$name} {
+    .badge-#{$name} {
         border-color: $value;
-        background: $value;
     }
 }
 
@@ -70,7 +51,7 @@ $outline-badges: map-merge(
 );
 
 @each $name, $value in $outline-badges {
-    .bg-outline-#{$name} {
+    .badge-outline-#{$name} {
         color: $value;
         border-color: mix($value, $white, 60%);
     }
@@ -85,12 +66,12 @@ $dim-badge: map-merge(
 );
 
 @each $name, $color in $dim-badge {
-    .badge-dim.bg-#{$name} {
+    .badge-dim.badge-#{$name} {
         color: $color;
-        background-color: mix($color, $dim-mix, 11%) !important;
+        background-color: mix($color, $dim-mix, 11%);
         border-color: mix($color, $dim-mix, 11%);
     }
-    .badge-dim.bg-outline-#{$name} {
+    .badge-dim.badge-outline-#{$name} {
         color: $color;
         background-color: mix($color, $dim-mix, 11%);
         border-color: mix($color, $dim-mix, 40%);
@@ -100,7 +81,7 @@ $dim-badge: map-merge(
 .badge-dot{
     display: inline-flex;
     align-items: center;
-    background-color: transparent !important;
+    background-color: transparent;
     border:none;
     padding-left: $badge-dot-width + $badge-dot-gap;
     padding-right: 0;
@@ -134,6 +115,7 @@ $dim-badge: map-merge(
             margin-top: 0;
         }
     }
+    &-mb {}
 }
 
 $dot-badge: map-merge(
@@ -144,12 +126,12 @@ $dot-badge: map-merge(
     )
 );
 @each $name, $color in $dot-badge {
-    .badge-dot.bg-#{$name} {
+    .badge-dot.badge-#{$name} {
         color: $color;
     }
 }
 
-@include media-breakpoint-down(md){
+@include media-breakpoint-down(sm){
     .badge-dot-sm {
         width: 0;
         overflow: hidden;

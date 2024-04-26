@@ -85,11 +85,15 @@ $ibx-aside-width :      260px;
     position: relative;
     display: flex;
     overflow: hidden;
+    min-height: calc(100vh - #{$header-height});
+    max-height: calc(100vh - #{$header-height});
     background: $white;
-    border:1px solid $border-color;
-    border-radius: $border-radius;
-    min-height: calc(100vh - (#{$header-height} + 64px + 96px));
-    max-height: calc(100vh - (#{$header-height} + 64px + 96px));
+    &-boxed{
+        border:1px solid $border-color;
+        border-radius: $border-radius;
+        min-height: calc(100vh - (#{$header-height} + 64px + 64px));
+        max-height: calc(100vh - (#{$header-height} + 64px + 64px));
+    }
     &-aside{
         position: absolute;
         background: $white;
@@ -107,19 +111,19 @@ $ibx-aside-width :      260px;
         transition: transform .4s linear;
         + .toggle-overlay{
             z-index: 90;
-            position: absolute;
         }
         &.content-active{
             transform: none;
         }
-        .simplebar-content{
-            height: 100%;
-            display: flex;
-            flex-direction: column;
+        .nk-msg-boxed &{
+            background: rgba($lighter,.7);
+            border-top-left-radius: ($border-radius - 1);
+            border-bottom-left-radius: ($border-radius - 1);
         }
     }
     &-nav{
         overflow: auto;
+        // padding: .75rem;
         flex-grow: 1;
         height: 100%;
         max-width: 100%;
@@ -127,7 +131,7 @@ $ibx-aside-width :      260px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 2rem 1.5rem .75rem;
+            padding: 2rem .75rem .75rem;
             .title{
                 font-size: 1rem;
                 margin-bottom: 0;
@@ -143,7 +147,7 @@ $ibx-aside-width :      260px;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: .75rem .75rem;
+        padding: .75rem 1.25rem;
         border-bottom: 1px solid $border-light;
         min-height: 61px;
         .title{
@@ -232,7 +236,6 @@ $ibx-aside-width :      260px;
             .badge{
                 margin-left: auto;
                 min-width: 2.25rem;
-                justify-content: center;
             }
             .active &{
                 .icon{
@@ -257,7 +260,7 @@ $ibx-aside-width :      260px;
             align-items: center;
             border-radius: $border-radius;
             margin: 2px 0;
-            transition: background-color .3s;
+            transition: background .3s;
             > a{
                 display: flex;
                 padding: .5rem .75rem;
@@ -303,7 +306,6 @@ $ibx-aside-width :      260px;
     &-status{
         background: $lighter;
         padding: 1.5rem 1.5rem;
-        margin-top: auto;
         &-info{
             margin-bottom: 0.5rem;
             .icon{
@@ -404,12 +406,9 @@ $ibx-aside-width :      260px;
             margin-left: auto;
             text-align: right;
         }
-        &-check,&-star,&-attach{
+        &-check,&-star,&-attach,&-tools{
             position: relative;
             z-index: 2;
-        }
-        &-tools{
-            position: relative;
         }
     }
     &-link{
@@ -525,32 +524,41 @@ $ibx-aside-width :      260px;
             position: static;
             transform: none;
             transition: none;
-            height: calc(100vh - 228px);
+            height: calc(100vh - 150px);
+            .nk-ibx-boxed &{
+                height: calc(100vh - (196px + 85px));
+            }
         }
         &-menu,&-label,&-contact{
             padding-left: 1rem;
             padding-right: 1rem;
-        } 
+        }
         &-menu{
             padding-top: 1rem;
         }
         &-contact{
             padding-bottom: 1rem;
         }
-
+        &-status{
+            position: fixed;
+            bottom: 0;
+            left: $sidebar-width-apps;
+            width: $ibx-aside-width;
+            border-right: 1px solid $border-light;
+            .nk-ibx-boxed &{
+                left: 37px;
+                bottom: 97px;
+            }
+        }
         &-nav{
             &-head{
                 padding-left: 1.75rem;
                 padding-right: 1.75rem;
             }
         }
-        &-item{
+        &-item,&-head{
             padding-left: 1.75rem;
             padding-right: 1.75rem;
-        }
-        &-head{
-            padding-left: 1rem;
-            padding-right: 1rem;
         }
         &-head{
             .search-wrap{
@@ -574,21 +582,39 @@ $ibx-aside-width :      260px;
 
 @include media-breakpoint-up(xl){
     .nk-ibx{
-        &-aside{
+        &-aside,&-status{
             width: 300px;
+        }
+        &-status{
+            .nk-ibx-boxed &{
+                left: $sidebar-width-normal + 37px;
+                bottom: 97px;
+            }
         }
         &-item{
             &-user{
                 width: 200px;
             }
             &-time{
-                margin-right: 2rem;
+                margin-right: 5rem;
+            }
+        }
+    }
+}
+@include media-breakpoint-up(xxl){
+    .nk-ibx{
+        &-item{
+            &-user{
+                width: 260px;
+            }
+            &-tools{
+                margin-left: 5rem;
             }
         }
     }
 }
 
-@include media-breakpoint-down(xl){
+@include media-breakpoint-down(lg){
     .nk-ibx{
         &-item{
             &-attach{
@@ -598,7 +624,7 @@ $ibx-aside-width :      260px;
     }
 }
 
-@include media-breakpoint-down(md){
+@include media-breakpoint-down(sm){
     .nk-ibx{
         &-item{
             flex-wrap: wrap;
@@ -619,6 +645,7 @@ $ibx-aside-width :      260px;
             }
             &-user{
                 flex-grow: 1;
+                // width: calc(100% - 40px);
                 .user-avatar{
                     height: 28px;
                     width: 28px;
@@ -631,8 +658,8 @@ $ibx-aside-width :      260px;
                 top: 19px;
             }
             &-tools{
-                position: absolute;
                 text-align: right;
+                position: absolute;
                 right: 28px;
                 bottom: 18px;
             }
@@ -651,7 +678,7 @@ $ibx-aside-width :      260px;
     }
 }
 
-@include media-breakpoint-down(sm){
+@include media-breakpoint-down(xs){
     .nk-ibx{
         &-item{
             &-star{
@@ -690,22 +717,6 @@ $ibx-aside-width :      260px;
                     width: 1.875rem;
                 }
             }
-        }
-    }
-}
-
-@include media-breakpoint-between(sm,md){
-    .nk-ibx{
-        &-aside {
-            width: 320px;
-        }
-        &-menu, &-label, &-contact {
-           padding-left: 1.5rem; 
-           padding-right: 1.5rem; 
-        }
-        &-nav-head, &-status {
-            padding-left: 2.25rem;
-            padding-right: 2.25rem;
         }
     }
 }

@@ -11,6 +11,7 @@
   .text-light & {
     color: $base-light;
   }
+  //@i-v120
   @if($dark_option==true) {
     .is-dark &{
       color: $light-400;
@@ -29,6 +30,7 @@
     font-size: $fx-sz-11;
     color: $base-light;
     text-transform: uppercase;
+    //@i-v120
     @if($dark_option==true) {
       .is-dark &{
         color: $base-light;
@@ -92,6 +94,7 @@
     font-weight: 500;
     color: $base-color;
     display: block;
+    //@i-v120
     @if($dark_theme_option==true) {
       .is-theme &{
         color: $white;
@@ -101,6 +104,7 @@
       }
     }
   }
+  //@i-v120
   @if($dark_option==true) {
     .is-dark & {
       color: $light-400;
@@ -207,6 +211,7 @@ h6{
 .fs-16px{
   font-size: $fx-sz-16;
 }
+//@io-v120
 .fs-17px{
   font-size: 17px;
 }
@@ -225,6 +230,8 @@ h6{
 .fs-22px{
   font-size: 22px;
 }
+
+//@i-v140
 .note-text{
   font-size: $fx-sz-12;
   font-style: italic;

@@ -1,9 +1,31 @@
 ///// Shadow Variable //////////
-$softy_shadow: 0 2px 6px -1px rgba($dark, 0.08);
+$softy_shadow: 0 1px 4px rgba($dark, 0.15);
+$shady_shadow: 0 0 25px -12px rgba($dark, .15);
 
-// SOFTY STYLE
-.ui-softy {
-    .table .table-light th {
+//// BODY STYLE OVERRIDE 
+////////////////////////////////
+.nk-body{
+    &.ui-clean{
+        background:$white !important;
+    }
+    &.ui-softy, &.ui-shady{
+        background: $lighter !important;
+    }
+}
+
+// SOFTY & SHADY STYLE
+.ui-softy, .ui-shady{
+    .card,
+    .code-block,
+    .nk-iv-scheme-item,
+    .sp-pdl-item,
+    .invoice-wrap,
+    .nk-msg-boxed,
+    .nk-iv-wg1,
+    .accordion:not(.accordion-s2):not(.accordion-s3){
+        border: none;
+    }
+    .table .thead-light th {
         background: rgba($lighter, .5);
         box-shadow: 0 -1px 5px -5px rgba($dark, 0.7);
     }
@@ -16,20 +38,18 @@ $softy_shadow: 0 2px 6px -1px rgba($dark, 0.08);
     .card .card-inner + .table .tb-tnx-head {
         border-top: 1px solid $border-color;
     }
-    .nk-header {
-        box-shadow: 0 1px 3px rgba($darker, .06);
-    }
 }
 
 .ui-softy {
     .card,
     .code-block,
+    .nk-iv-scheme-item,
     .sp-pdl-item,
     .invoice-wrap,
+    .nk-iv-wg1,
     .accordion:not(.accordion-s2):not(.accordion-s3),
-    .nk-reply-form,
-    .nk-files-view-grid .nk-file, .nk-files-view-group .nk-file, .nk-files-view-list .nk-files-list, 
-    .chat-msg, .kanban-board-header, .kanban-item, .kanban-add-task
+    &.npc-apps-messages .nk-reply-form,
+    &.npc-apps-inbox .nk-reply-form  //io-v130
     {
         box-shadow: $softy_shadow;
     }
@@ -37,16 +57,40 @@ $softy_shadow: 0 2px 6px -1px rgba($dark, 0.08);
         box-shadow: none;
         border: 1px solid $border-color;
     }
-} 
+}
 
-// Apps
+.ui-shady{
+    .card,
+    .code-block,
+    .nk-iv-scheme-item,
+    .sp-pdl-item,
+    .invoice-wrap,
+    .nk-iv-wg1,
+    .accordion:not(.accordion-s2):not(.accordion-s3),
+    &.npc-apps-messages .nk-reply-form,
+    &.npc-apps-inbox .nk-reply-form  //io-v130
+    {
+        box-shadow: $shady_shadow;
+    }
+    .card .accordion:not(.accordion-s2):not(.accordion-s3) {
+        box-shadow: none;
+        border: 1px solid $border-color;
+    } 
+}
+
+// Message Apps
 .ui-softy {
-    .nk-msg, .nk-ibx, .nk-fmg, .nk-chat{
+    .nk-msg-boxed, .nk-ibx-boxed{
         box-shadow: $softy_shadow;
     }
-} 
+}
+.ui-shady {
+    .nk-msg-boxed, .nk-ibx-boxed{
+        box-shadow: $shady_shadow;
+    }
+}
 
-.ui-softy{
+.ui-shady, .ui-softy{
     .nk-msg-aside, .nk-msg-nav{
         background: $white;
     }
@@ -63,26 +107,44 @@ $softy_shadow: 0 2px 6px -1px rgba($dark, 0.08);
             background: $accent-color;
         }
     }
-    .nk-msg-item.active, .nk-msg-item.current {
-        background: $lighter;
-        &:after {
-            width: 3px;
+    &.npc-apps-messages {
+        .nk-msg-item.active, .nk-msg-item.current {
+            background: $lighter;
+            &:after {
+                width: 3px;
+            }
+        }
+        .nk-msg-reply {
+            box-shadow: inset 0 0 8px -5px rgba($darker, .3);
+        } 
+        .nk-header {
+            box-shadow: 0 0 4px -1px rgba($darker, .2);
         }
     }
-    .nk-msg-reply {
-        box-shadow: inset 0 0 8px -5px rgba($darker, .3);
-    } 
-
-    .nk-ibx-reply, .nk-chat-panel {
-        box-shadow: inset 0 0 8px -5px rgba($darker, .3);
+    //io-v130
+    &.npc-apps-inbox {
+        .nk-ibx-reply, .nk-ibx-nav {
+            box-shadow: inset 0 0 8px -5px rgba($darker, .3);
+        }
+        .nk-header {
+            box-shadow: 0 0 4px -1px rgba($darker, .2);
+        }
+        .nk-ibx-item {
+            box-shadow: 0 0 7px -1px rgba($darker, .1);
+        }
     }
-    .nk-ibx-item {
-        box-shadow: 0 0 7px -1px rgba($darker, .1);
+}
+.ui-clean.npc-apps-messages {
+    .nk-msg-aside, .nk-msg-nav{
+        background: $white;
+    }
+    .nk-msg-item.active, .nk-msg-item.current {
+        background: $lighter;
     }
 }
 
 .ui-rounder{
-    .card,.ratio{
+    .card,.embed-responsive{
         border-radius: $border-radius-xxl;
     }
 }

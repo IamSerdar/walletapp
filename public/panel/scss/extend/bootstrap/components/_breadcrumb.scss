@@ -25,32 +25,3 @@
         }
     }
 }
-.breadcrumb-alt{
-    .breadcrumb{
-        &-item{
-            text-transform: unset;
-            letter-spacing: 0;
-            color: $base-light;
-        }
-    }
-}
-.breadcrumb-xs{
-    .breadcrumb{
-        &-item{
-            + .breadcrumb-item {
-                padding-left: 0.25rem;
-                &:before{
-                    padding-right: 0.25rem;
-                    font-size: 0.8em;
-                }
-            }
-        }
-    }
-}
-.breadcrumb-sm{
-    .breadcrumb{
-        &-item{
-            font-size: $fx-sz-13;
-        }
-    }
-}

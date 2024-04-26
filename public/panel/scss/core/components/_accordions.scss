@@ -27,32 +27,22 @@ $accordion-s3-head-gap-md-r: 0;
 $accordion-s3-head-gap-md-l: $accordion-s3-head-gap-md-r + 2.25rem;
 $accordion-s3-inner-gap-md-x: $accordion-s3-head-gap-md-l;
 
-//icons
-$accordion-icon: $ni-chevron-up !default;
-$accordion-icon-collapsed: $ni-chevron-down !default;
-$accordion-s2-icon: $ni-minus !default;
-$accordion-s2-icon-collapsed: $ni-plus !default;
-$accordion-s3-icon: $ni-minus !default;
-$accordion-s3-icon-collapsed: $ni-plus !default;
-
 .accordion {
     border-radius: $border-radius;
     border: 1px solid $border-color;
-    background: $accordion-bg;
+    background: $white; // @i-v120
     &-heading {
         padding-bottom: 1.5rem;
     }
     &-body {
         border-radius: $border-radius;
-        padding: 0;
     }
     &-item {
-        border: none;
         &:not(:last-child){
             .accordion-head {
                 border-bottom: 1px solid $border-color;
             }
-            .accordion-inner{
+            .accordion-inner {
                 border-bottom: 1px solid $border-color;
             }
         }
@@ -94,11 +84,11 @@ $accordion-s3-icon-collapsed: $ni-plus !default;
         text-align: center;
         line-height: 20px;
         &:before {
-            content: $accordion-icon;
+            content: $ni-chevron-up;
             font-family: $nk-dashlite-font;
             transition: 0.4s;
             .accordion-head.collapsed &{
-                content: $accordion-icon-collapsed;
+                content: $ni-chevron-down;
             }
         }
     }
@@ -123,7 +113,7 @@ $accordion-s3-icon-collapsed: $ni-plus !default;
     .accordion-icon {
         right: 0;
         &:before{
-            content: $accordion-s2-icon;
+            content: $ni-minus;
         }
     }
     .accordion-head{
@@ -139,7 +129,7 @@ $accordion-s3-icon-collapsed: $ni-plus !default;
             }
             .accordion-icon {
                 &:before{
-                    content: $accordion-s2-icon-collapsed;
+                    content: $ni-plus;
                 }
             }
         }
@@ -170,7 +160,7 @@ $accordion-s3-icon-collapsed: $ni-plus !default;
         left: 0;
         right: auto;
         &:before{
-            content: $accordion-s3-icon;
+            content: $ni-minus;
         }
     }
     .accordion-head{
@@ -186,7 +176,7 @@ $accordion-s3-icon-collapsed: $ni-plus !default;
             }
             .accordion-icon {
                 &:before{
-                    content: $accordion-s3-icon-collapsed;
+                    content: $ni-plus;
                 }
             }
         }

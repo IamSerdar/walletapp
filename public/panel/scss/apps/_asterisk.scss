@@ -2,7 +2,6 @@
     a{
         position: relative;
         color: $base-light;
-        display: inline-flex;
         &:hover,&.active{
             color: $orange;
             .asterisk{

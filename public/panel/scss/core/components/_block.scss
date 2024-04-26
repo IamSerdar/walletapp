@@ -48,6 +48,17 @@
                 color: $base-light;
                 font-weight: $fw-normal;
                 position: relative;
+                .back-to{
+                    color:inherit;
+                    display: inline-flex;
+                    align-items: center;
+                    .icon{
+                        font-size: 1.5rem;
+                        width: 2rem;
+                        margin-top: -3px;
+                        display: inline-block;
+                    }
+                }
                 .dropdown {
                     position: absolute;
                     right: -8px;
@@ -126,9 +137,6 @@
     .nk{
         &-block{
             &-head{
-                &-md{
-                    padding-bottom: 1.75rem;
-                }
                 &-lg{
                     padding-bottom: 2.5rem;
                 }
@@ -163,9 +171,6 @@
             &-sm{
                 padding-top: 2rem;
             }
-            &-xs{
-                padding-top: 1.25rem;
-            }
         }
         &-text {
             h5, h6 {
@@ -175,7 +180,7 @@
     }
 }
 
-@include media-breakpoint-down(md){
+@include media-breakpoint-down(sm){
     .nk-block-tools{
         .opt-menu-md{
             order: 100;
@@ -195,20 +200,4 @@ $breaks: md;
             }
         }
     }
-}
-
-.back-to{
-    color:inherit;
-    display: inline-flex;
-    align-items: center;
-    .icon{
-        font-size: 1.5rem;
-        width: 2rem;
-        margin-top: -3px;
-        display: inline-block;
-    }
-}
-.nk-block-subhead{
-    padding-bottom: .5rem;
-    border-bottom: 1px solid $border-color;
 }

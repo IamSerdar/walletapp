@@ -86,7 +86,7 @@
 		}
 	}
 }
-@include media-breakpoint-down(sm){
+@include media-breakpoint-down(xs){
 	.table-tickets {
 		font-size: $fx-sz-12;
 	}
@@ -142,8 +142,8 @@
 		}
 		&-status {
 			position: absolute;
-			width: 90px;
 			right: 1.25rem;
+			width: 90px;
 			text-align: right;
 			top: .75rem;
 		}
@@ -334,7 +334,7 @@
 	}
 }
 
-@include media-breakpoint-down(md){
+@include media-breakpoint-down(sm){
 	.ticket {
 		&-msg {
 			&-from {

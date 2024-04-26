@@ -11,27 +11,6 @@
     height: 200px;
     justify-content: center;
 }
-//
-.dropdown-preview{
-    .dropdown-menu{
-        position: static;
-        display: block;
-    }
-    &:after{
-        display: block;
-        clear: both;
-        content: "";
-    }
-}
-
-@media (max-width:420px){
-    .dropdown-preview{
-        .dropdown-menu-xl,.dropdown-menu-lg,.dropdown-menu-md{
-            min-width: 100%;
-            max-width: 100%;
-        }
-    }
-}
 // code highlight edit
 .prettyprint{
     padding: 1.25rem;
@@ -39,11 +18,6 @@
     box-shadow: none !important;
     margin-bottom: 0;
     border-radius: $border-radius;
-    overflow: auto;
-}
-
-.card-preview{
-    border: 1px solid $border-color;
 }
 
 .code-block{
@@ -108,7 +82,7 @@
             margin: -15px;
         }
         &-item{
-            flex: 1 0 150px;
+            flex: 1 0 160px;
             padding: 15px;
             max-width: 50%;
         }
@@ -116,7 +90,6 @@
             position: relative;
             padding: 25px 20px;
             text-align: center;
-            border: 1px solid $border-color;
             .btn-clipboard{
                 position: absolute;
                 top: 0;
@@ -290,7 +263,7 @@
         }
     }
 }
-@include media-breakpoint-down(md){
+@include media-breakpoint-down(sm){
     .preview {
         &-reference {
             tr, th, td {

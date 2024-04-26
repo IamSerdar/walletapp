@@ -1,6 +1,3 @@
-$change-up-icon: $ni-arrow-long-up !default;
-$change-down-icon: $ni-arrow-long-down !default;
-
 /// Misc
 ///////////////////////////
 .filter-wg {
@@ -21,13 +18,13 @@ $change-down-icon: $ni-arrow-long-down !default;
     &.up {
         color: $success !important;
         .sign:before {
-            content: $change-up-icon;
+            content: $ni-arrow-long-up;
         }
     }
     &.down {
         color: $danger !important;
         .sign:before {
-            content: $change-down-icon;
+            content: $ni-arrow-long-down;
         }
     }
 }
@@ -53,11 +50,11 @@ $change-down-icon: $ni-arrow-long-down !default;
     text-align: center;
     pointer-events: none;
     width: 100% !important;
+    margin-left: 0 !important;
     font-weight: $fw-normal !important;
     font-family: $base-font-family !important;
     color: $base-color !important;
     left: 0;
-    margin-left: 0 !important;
     border: none;
     &:focus{
         outline: none;
@@ -126,6 +123,7 @@ $change-down-icon: $ni-arrow-long-down !default;
         .icon{
             font-size: 24px;
             color: $accent-color;
+            //@io-v120
             @if($dark_theme_option==true) {
                 .is-theme &{
                     color: lighten($accent-color, 5%);
@@ -153,6 +151,7 @@ $change-down-icon: $ni-arrow-long-down !default;
                 color:$base-light;
                 font-weight: $fw-normal;
             }
+            //@i-v120
             @if($dark_option==true) {
                 .is-dark & {
                     color: lighten($base-light, 5%);
@@ -173,6 +172,7 @@ $change-down-icon: $ni-arrow-long-down !default;
         .icon{
             color: $base-light;
             margin-left: .25rem;
+            //@i-v120
             @if($dark_option==true) {
                 .is-dark &{
                     color: $base-light;
@@ -223,7 +223,7 @@ $change-down-icon: $ni-arrow-long-down !default;
 }
 
 .entry {
-    img,.video,.image-group{
+    img{
         border-radius: $border-radius;
         + p, + h2, + h3, + h4, + h5, + h6, + ul, + ol{
             margin-top: ($para-margin * 2);
@@ -235,7 +235,7 @@ $change-down-icon: $ni-arrow-long-down !default;
         }
     }
     p {
-        + h2, + h3, + h4,+ h5, + h6, + .video, + .image-group{
+        + h2, + h3, + h4,+ h5, + h6{
             padding-top: ($para-margin * .75);
         }
     }
@@ -247,23 +247,21 @@ p > span > .icon.ni {
 
 // DD fix with Button Trigger
 /////////////////////////////////
-.btn-trigger + .dropdown-menu-end, .btn-trigger + .dropdown-menu-start {
-    margin: -.75rem 0 !important;
+.btn-trigger + .dropdown-menu-right, .btn-trigger + .dropdown-menu-left {
+    margin: -.75rem 0;
 }
 
-.btn-trigger + .dropdown-menu-end {
-    margin-right: 16px !important;
+.btn-trigger + .dropdown-menu-right {
+    margin-right: 16px;
 }
-.btn-trigger + .dropdown-menu-start {
+.btn-trigger + .dropdown-menu-left {
     margin-left: 16px;
 }
 
-// DD fix with Button Trigger
-
 @media (max-width:420px){
     .btn-trigger + .dropdown-menu-xl, .btn-trigger + .dropdown-menu-lg, .btn-trigger + .dropdown-menu-md {
-        margin-right: -16px !important;
-        margin-top: 0 !important;
+        margin-left: 16px;
+        margin-top: .25rem;
     }
 }
 
@@ -325,36 +323,7 @@ p > span > .icon.ni {
     }
 }
 
-.ratio{
+//@i-v140
+.embed-responsive{
     border-radius: $border-radius;
-}
-
-.video{
-    position: relative;
-    overflow: hidden;
-    border-radius: $border-radius;
-    &:before{
-        position: absolute;
-        content: '';
-        bottom: 0;
-        right: 0;
-        left: 0;
-        height: 120px;
-        background: linear-gradient(to top, rgba($black,.4), rgba($black,0));
-    }
-    &-play{
-        display: flex;
-        align-items: center;
-        position: absolute;
-        left: 2rem;
-        bottom: 2rem;
-        color: $white;
-        font-size: 1.25rem;
-        &:hover{
-            color: $white;
-        }
-        .icon{
-            font-size: 2rem;
-        }
-    }
 }

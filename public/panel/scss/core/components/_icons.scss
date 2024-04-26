@@ -41,7 +41,7 @@
             height: 28px;
             width: 28px;
             font-size: 14px;
-        }
+        }//@i-v120
         &-lg,&.lg{
             height: 44px;
             width: 44px;
@@ -71,42 +71,12 @@
                 background: $info;
             }
         }
-        &-danger{
-            &:after{
-                background: $danger;
-            }
-        }
-        &-success{
-            &:after{
-                background: $success;
-            }
-        }
-        &-warning{
-            &:after{
-                background: $warning;
-            }
-        }
-        &-on{
-            &:after{
-                background: $success;
-            }
-        }
-        &-off{
-            &:after{
-                background: $base-light;
-            }
-        }
-        &-na {
-            &:after {
-                display: none;
-            }
-        }
     }
     &-overlap{
         display: inline-flex;
         align-items: center;
         flex-direction: row-reverse;
-        flex-shrink: 0;
+        flex-shrink: 0;//@i-v120
         li{
             border-radius: 50%;
             border: 2px solid #fff;
@@ -114,6 +84,7 @@
                 margin-right: -14px;
             }
         }
+        //@i-v120
         &-alt{
             display: inline-flex;
             align-items: flex-end;
@@ -135,6 +106,7 @@ $icon-adj-bg: (
     "google"        $brand-color-google,
     "btc-dim"       mix($brand-color-bitcoin, #fff, 13%),
     "eth-dim"       mix($brand-color-ethereum, #fff, 13%),
+    //@i-v120
     "white"         $white
 );
 
@@ -166,6 +138,7 @@ $icon-adj-colors: (
     "google-dim":      $brand-color-google,
     "btc-dim":         $brand-color-bitcoin,
     "eth-dim":         $brand-color-ethereum,
+    //@i-v120
     'white':           $base-text,
 );
 

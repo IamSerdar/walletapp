@@ -1,5 +1,3 @@
-@use "sass:math";
-
 .dropup, .dropright, .dropdown, .dropleft{
     display: inline-flex;
 }
@@ -66,6 +64,7 @@
         color: $base-color;
     }
 }
+  
 //Indicators
 [class*="dropdown-indicator"]{
     &:after{
@@ -90,30 +89,6 @@
                 content: $ni-caret-down-fill;
                 .dropup &{
                     content: $ni-caret-down-fill;
-                }
-            }
-        }
-        &-caret-up{
-            &:after{
-                content: $ni-caret-up-fill;
-                .dropup &{
-                    content: $ni-caret-up-fill;
-                }
-            }
-        }
-        &-up{
-            &:after{
-                content: $ni-arrow-long-up;
-                .dropup &{
-                    content: $ni-arrow-long-up;
-                }
-            }
-        }
-        &-down{
-            &:after{
-                content: $ni-arrow-long-down;
-                .dropup &{
-                    content: $ni-arrow-long-down;
                 }
             }
         }
@@ -148,42 +123,42 @@
         min-width: $dropdown-width-xxs;
         max-width: $dropdown-width-xxs;
         &.dropdown-menu-center{
-            margin-left: - math.div($dropdown-width-xxs,2);
+            margin-left: - ($dropdown-width-xxs/2);
         }
     }
     &-xs{
         min-width: $dropdown-width-xs;
         max-width: $dropdown-width-xs;
         &.dropdown-menu-center{
-            margin-left: - math.div($dropdown-width-xs,2);
+            margin-left: - ($dropdown-width-xs/2);
         }
     }
     &-md{
         min-width: $dropdown-width-md;
         max-width: $dropdown-width-md;
         &.dropdown-menu-center{
-            margin-left: - math.div($dropdown-width-md,2);
+            margin-left: - ($dropdown-width-md/2);
         }
     }
     &-sm{
         min-width: $dropdown-width-sm;
         max-width: $dropdown-width-sm;
         &.dropdown-menu-center{
-            margin-left: - math.div($dropdown-width-sm,2);
+            margin-left: - ($dropdown-width-sm/2);
         }
     }
     &-lg{
         min-width: $dropdown-width-lg;
         max-width: $dropdown-width-lg;
         &.dropdown-menu-center{
-            margin-left: - math.div($dropdown-width-lg,2);
+            margin-left: - ($dropdown-width-lg/2);
         }
     }
     &-xl{
         min-width: $dropdown-width-xl;
         max-width: $dropdown-width-xl;
         &.dropdown-menu-center{
-            margin-left: - math.div($dropdown-width-xl,2);
+            margin-left: - ($dropdown-width-xl/2);
         }
     }
     &-auto{
@@ -227,11 +202,4 @@
 // Style s1
 .dropdown-menu-s1 {
     border-top:3px solid $primary;
-}
-
-.dropdown-toggle-split {
-    > .icon {
-        margin-left: -0.25rem;
-        margin-right: -0.25rem;
-    }
 }

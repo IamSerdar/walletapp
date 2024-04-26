@@ -37,7 +37,7 @@ h5, .h5, h6, .h6 {letter-spacing: -0.01em;}
 }
 .ff {
     &-mono {
-        @extend .font-monospace
+        @extend .text-monospace
     }
     &-base {
         font-family: $base-font-family !important;
@@ -46,26 +46,26 @@ h5, .h5, h6, .h6 {letter-spacing: -0.01em;}
         font-family: $alt-font-family !important;
     }
     &-italic {
-        @extend .fst-italic;
+        @extend .font-italic;
     }
 }
 .fw{
     &-light{
-        @extend .fw-light;
+        @extend .font-weight-light;
         &er{
-            @extend .fw-lighter;
+            @extend .font-weight-lighter;
         }
     }
     &-normal{
-        @extend .fw-normal;
+        @extend .font-weight-normal;
     }
     &-medium{
         font-weight: $fw-medium !important;
     }
     &-bold{
-        @extend .fw-bold;
+        @extend .font-weight-bold;
         &er{
-            @extend .fw-bolder;
+            @extend .font-weight-bolder;
         }
     }
 }
@@ -81,9 +81,4 @@ h1, h2, h3, h4, h5, h6,
             font-size: $lead-fs-dsk;
         }
     }
-}
-// bs5
-small,
-.small {
-  font-weight: $font-weight-normal !important;
 }

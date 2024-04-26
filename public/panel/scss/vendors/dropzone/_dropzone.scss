@@ -223,9 +223,6 @@
     border-radius: $border-radius;
     background: white;
     padding: 20px 20px;
-    &.small{
-        min-height: 86px;
-    }
 }
 
 .dropzone.dz-clickable {
@@ -262,10 +259,6 @@
     }
     &-text{
         font-size: 13px;
-        span{
-            display: inline-block;
-            color: $accent-color;
-        }
     }
     &-or{
         font-size: 16px;

@@ -1,7 +1,6 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
-use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,23 +12,13 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::middleware([
-    'localeSessionRedirect',
-    'localizationRedirect',
-    'localeViewPath',
-    ])
-->prefix(LaravelLocalization::setLocale())
-->group(function () {
-        Route::get('login', 'LoginController@showLoginForm');
-        Route::post('login','LoginController@login')->name('login');
-});
+
+
+Route::get('login', 'LoginController@showLoginForm');
+Route::post('login','LoginController@login')->name('login');
 
 Route::middleware([
-    'localeSessionRedirect',
-    'localizationRedirect',
-    'localeViewPath',
     'auth:web'])
-->prefix(LaravelLocalization::setLocale())
 ->group(function () {
     Route::get('/', 'HomeController@index')->name('manager');
     Route::get('profile', 'HomeController@profile')->name('profile');

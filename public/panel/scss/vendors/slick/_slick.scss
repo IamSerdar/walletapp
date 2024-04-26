@@ -1,5 +1,3 @@
-@use "sass:math";
-
 $slick-bg-lighter: $light-400 !default;
 $slick-bg-light: $base-300 !default;
 $slick-tc-color: $light-600 !default;
@@ -76,6 +74,9 @@ $slick-dots-bg-active:      $base-light;
     float: left;
     height: 100%;
     min-height: 1px;
+    [dir="rtl"] & {
+        float: right;
+    }
     img {
         display: block;
     }
@@ -106,10 +107,6 @@ $slick-dots-bg-active:      $base-light;
         outline: none;
         border: none;
     }
-    &.col{
-        padding-left: math.div($gutter-width,2);
-        padding-right: math.div($gutter-width,2);
-    }
 }
 .slick-arrow.slick-hidden {
     display: none;
@@ -118,9 +115,7 @@ $slick-dots-bg-active:      $base-light;
 .slick-dots{
     display: flex;
     justify-content: center;
-    padding-top: 1.5rem;
     li{
-        display: inline-flex;
         padding: 0 6px;
         button{
             background-color: $slick-dots-bg;
@@ -177,17 +172,8 @@ $slick-dots-bg-active:      $base-light;
     }
 }
 .slick-next{
-    right: 5px;
+    right: -10px;
 }
 .slick-prev{
-    left: 5px;
-}
-
-@include media-breakpoint-up(sm){
-    .slick-next{
-        right: -10px;
-    }
-    .slick-prev{
-        left: -10px;
-    }
+    left: -10px;
 }

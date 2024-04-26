@@ -8,14 +8,14 @@
 	@extend .border-bottom-0;
 }
 .no-bdr-l {
-	@extend .border-start-0;
+	@extend .border-left-0;
 }
 .no-bdr-r {
-	@extend .border-end-0;
+	@extend .border-right-0;
 }
 .no-bdr-x {
-	@extend .border-end-0;
-	@extend .border-start-0;
+	@extend .border-right-0;
+	@extend .border-left-0;
 }
 .no-bdr-y {
 	@extend .border-top-0;

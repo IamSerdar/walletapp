@@ -9,11 +9,11 @@
 
 .page{
     &-link{
+        // @include border-radius($border-radius);
         font-size: $pagination-font-size;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        line-height: $pagination-line-height;
         min-width: calc(#{$pagination-line-height} + #{$pagination-padding-y*2} + #{$pagination-border-width*2});
         .pagination-sm &{
             line-height: $pagination-line-height-sm;
@@ -36,6 +36,7 @@
         &:not([href]){
             background-color: transparent;
             color: inherit;
+            // height: 100%;
             .icon{
                 &:before{
                     position: relative;

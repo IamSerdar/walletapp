@@ -6,12 +6,10 @@
     display: inline-flex;
     align-items: center;
     &-xl {
-        @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg, $btn-border-radius-lg);
-        line-height:$btn-line-height-lg;
+        @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg, $btn-line-height-lg, $btn-border-radius-lg);
     }
     &-xs{
-        @include button-size($btn-padding-y-xs, $btn-padding-x-xs, $btn-font-size-xs, $btn-border-radius-xs);
-        line-height:$btn-line-height-xs;
+        @include button-size($btn-padding-y-xs, $btn-padding-x-xs, $btn-font-size-xs, $btn-line-height-xs, $btn-border-radius-xs);
     }
     // With Icon
     .icon{
@@ -21,7 +19,7 @@
     > span{
         display: inline-block;
         white-space: nowrap;
-        &:only-child{
+        &:only-child(){
             width: 100%;
         }
     }
@@ -34,9 +32,6 @@
     span + .dd-indc{
         transform: translateX(8px);
     }
-    &:active,&.active{
-        border-color: transparent !important;
-    }
     &-lg{
         .icon + span,span + .icon{
             padding-left: 12px;
@@ -47,7 +42,6 @@
     }
     &-block{
         justify-content: center;
-        width: 100%;
     }
     &-ucap,&.ucap{
         text-transform: uppercase;
@@ -85,15 +79,15 @@
             }
         }
         .dot{
-            position: absolute;
             top: .35rem;
             right: .35rem;
+            position: absolute;
             transform: translate(50%, -50%);
         }
         .badge{
-            position: absolute;
             top: .25rem;
             right: .25rem;
+            position: absolute;
             transform: translate(50%, -50%);
             &-circle{
                 border-radius: 50%;
@@ -102,8 +96,6 @@
                 padding:0;
                 font-weight: $fw-bold;
                 font-size: $fx-sz-11;
-                text-align: center;
-                justify-content: center;
             }
         }
     }
@@ -142,6 +134,7 @@
             margin-left: 0.25rem;
         }
     }
+    //@i-v140
     &-indc{
         width: 100%;
         .icon{
@@ -161,8 +154,7 @@
 
 @include media-breakpoint-up(md){
     .btn-xl {
-        @include button-size($btn-padding-y-xl, $btn-padding-x-xl, $btn-font-size-xl,  $btn-border-radius-lg);
-        line-height: $btn-line-height-xl;
+        @include button-size($btn-padding-y-xl, $btn-padding-x-xl, $btn-font-size-xl, $btn-line-height-xl, $btn-border-radius-lg);
         &.btn-round{
             border-radius: add($btn-line-height-xl, + $btn-padding-y-xl*2, + $btn-border-width*2);
         }
@@ -185,9 +177,6 @@
     position: relative;
     z-index: 1;
     color: $base-text;
-    &:active,&.show{
-        border-color: transparent !important;
-    }
     &:focus{
         box-shadow: none;
     }
@@ -246,7 +235,7 @@ $dim-outline-btns:
         background-color: $background;
         border-color: $border;
         &:not(:disabled):not(.disabled):hover {
-            color: color-contrast($color);
+            color: color-yiq($color);
             background-color: $color;
             border-color: $color;
         }
@@ -278,7 +267,7 @@ $dim-btns:
         background-color: $background;
         border-color: transparent;
         &:not(:disabled):not(.disabled):hover {
-            color: color-contrast($color);
+            color: color-yiq($color);
             background-color: $color;
             border-color: $color;
         }
@@ -303,15 +292,12 @@ $dim-btns:
     &-white, &-white.btn-dim {
         background: $white;
     }
+    //@io-v120
     &-white.btn-outline-light {
         &:not(.btn-dim):not(:disabled):not(.disabled):hover {
             color: $white;
             background: $base-text;
             border-color: $base-text;
         }
-    }
-    &-light:focus{
-        color: $darker;
-        background: $light-400;
     }
 }

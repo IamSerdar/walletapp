@@ -1,6 +1,3 @@
-$link-active-icon: $ni-check-thick !default;
-$link-list-menu-icon-ltr: $ni-chevron-right !default;
-$link-list-menu-icon-rtl: $ni-chevron-left !default;
 // Used for Extend.
 .link-bdr-t {
     border-top: 1px solid $border-light;
@@ -13,7 +10,7 @@ $link-list-menu-icon-rtl: $ni-chevron-left !default;
 }
 .link-act-check {
     &:after {
-        content: $link-active-icon;
+        content: $ni-check-thick;
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
@@ -22,7 +19,6 @@ $link-list-menu-icon-rtl: $ni-chevron-left !default;
     }
 }
 
-
 /// Link Check
 /////////////////////////////////////
 .link-check{
@@ -30,17 +26,14 @@ $link-list-menu-icon-rtl: $ni-chevron-left !default;
     + .link-check{
         @extend .link-bdr-t;
     }
-    .divider {
-        margin: .5rem 0;
-    }
     li{
         display: block;
-        > span, a{
+        span, a{
             display: block;
             line-height: 1.25rem;
             padding: .35rem 1rem;
         }
-        > span{
+        span{
             text-transform: uppercase;
             color: $base-color;
             font-weight: 700;
@@ -48,8 +41,6 @@ $link-list-menu-icon-rtl: $ni-chevron-left !default;
             letter-spacing: 1px;
         }
         a{
-            display: flex;
-            align-items: center;
             color: $base-text;
             font-size: $fx-sz-13;
             position: relative;
@@ -57,10 +48,6 @@ $link-list-menu-icon-rtl: $ni-chevron-left !default;
                 color: $accent-color; 
                 background: $lighter; 
             }
-        }
-        .icon{
-            width: 1.75rem;
-            font-size: 1.125rem;
         }
         &.active > a, a.active {
             @extend .link-act-check;
@@ -103,9 +90,6 @@ $link-list-menu-icon-rtl: $ni-chevron-left !default;
     padding: .75rem 0;
     + .link-list{
         @extend .link-bdr-t;
-    }
-    .divider {
-        margin: .5rem 0;
     }
     a{
         display: flex;
@@ -165,11 +149,7 @@ $link-list-menu-icon-rtl: $ni-chevron-left !default;
     li.active > a, a.active {
         @extend .link-act-check;
     }
-    li.disabled > a, a.disabled {
-        pointer-events: none;
-        color: $base-light;
-        opacity: 0.7;
-    }
+    // @v1.0.1
     .opt-head {
         padding: .25rem 1.25rem;
         color: $base-light;
@@ -179,14 +159,10 @@ $link-list-menu-icon-rtl: $ni-chevron-left !default;
             font-weight: $fw-normal;
         }
     }
+    // @io-v130
     &.no-bdr + .link-check {
         margin-top: -0.75rem;
 
-    }
-    &.ui-colored {
-        li.active > a, a.active {
-            color: $accent-color;
-        }
     }
 }
 
@@ -209,9 +185,9 @@ $link-list-menu-icon-rtl: $ni-chevron-left !default;
         &:after{
             position: absolute;
             font-size: 1rem;
-            font-family: $nk-dashlite-font;
             right: 1.25rem;
-            content: $link-list-menu-icon-ltr;
+            font-family: $nk-dashlite-font;
+            content: $ni-chevron-right;
             color: $base-light;
             transition: .3s ease;
         }
@@ -225,9 +201,6 @@ $link-list-menu-icon-rtl: $ni-chevron-left !default;
     }
     li.active > a, a.active, a:hover, li.active > a .icon, a.active .icon, a:hover .icon, li.active > a:after, a.active:after, a:hover:after {
          color: $accent-color;
-    }
-    &.nav {
-        display: block;
     }
 }
 
@@ -252,9 +225,6 @@ $link-list-menu-icon-rtl: $ni-chevron-left !default;
             border-top-width: 0;
         }
     }
-    .divider {
-        margin: .5rem 0;
-    }
     a{
         display: flex;
         align-items: center;
@@ -267,27 +237,10 @@ $link-list-menu-icon-rtl: $ni-chevron-left !default;
             color: $accent-color; 
             background: $lighter; 
         }
-        .icon{
-            font-size: 1.125rem;
-            width: 1.75rem;
-            opacity: .8;
-            color: $accent-color;
-        }
-    }
-    li.active > a, a.active {
-        color: $accent-color; 
-        background: $lighter; 
     }
     &.sm{
         a{
             @extend .link-pd-sm;
-        }
-    }
-    &.text-center {
-        a {
-            justify-content: center;
-            padding-left: 0.25rem;
-            padding-right: 0.25rem;
         }
     }
 }

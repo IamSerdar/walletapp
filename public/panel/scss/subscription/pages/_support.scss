@@ -160,7 +160,7 @@
 
 	}
 }
-@include media-breakpoint-down(lg) {
+@include media-breakpoint-down(md) {
 	.support-queue {
 		&-body {
 			flex-direction: column;

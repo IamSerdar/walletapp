@@ -1,11 +1,3 @@
-$list-default-icon: $ni-bullet-fill !default;
-$list-checked-icon: $ni-check-fill-c !default;
-$list-checked-circle-icon: $ni-check-circle-fill !default;
-$list-cross-icon: $ni-cross-fill-c !default;
-$list-step-icon: $ni-circle !default;
-$list-step-current-icon: $ni-disk !default;
-$list-step-done-icon: $ni-check-circle-cut !default;
-
 .list{
     &:not(:last-child) {
         margin-bottom: $para-margin;
@@ -23,7 +15,7 @@ $list-step-done-icon: $ni-check-circle-cut !default;
             font-size: $fx-sz-14;
             line-height: 1.5rem;
             font-family: $nk-dashlite-font;
-            content: $list-default-icon;
+            content: $ni-bullet-fill;
         }
         span{
             color: $base-light;
@@ -35,19 +27,20 @@ $list-step-done-icon: $ni-check-circle-cut !default;
     &-checked{
         li:before{
             color: $accent-color;
-            content: $list-checked-icon;
+            content: $ni-check-fill-c;
         }
+        //@i-v140
         &-circle{
             li:before{
                 color: $accent-color;
-                content: $list-checked-circle-icon;
+                content: $ni-check-circle-fill;
             }
         }
     }
     &-cross {
         li:before{
             color: rgba($danger, .8);
-            content: $list-cross-icon;
+            content: $ni-cross-fill-c;
         }
     }
     &-status {
@@ -91,20 +84,20 @@ $list-step-done-icon: $ni-check-circle-cut !default;
             color: $base-light;
             font-weight: 500;
             &:before{
-                content: $list-step-icon;
+                content: $ni-circle;
             }
             &.list-step{
                 &-current{
                     color: $base-color;
                     &:before{
-                        content: $list-step-current-icon;
+                        content: $ni-disk;
                         color: $accent-color;
                     }
                 }
                 &-done{
                     color: $base-text;
                     &:before{
-                        content: $list-step-done-icon;
+                        content: $ni-check-circle-cut;
                         color: $success;
                     }
                 }

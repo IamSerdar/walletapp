@@ -125,7 +125,7 @@
         }
     }
 }
-@include media-breakpoint-down(sm){
+@include media-breakpoint-down(xs){
     .nav-tabs.is-stretch{
         margin-left: -$stretch-gap-x;
         margin-right: -$stretch-gap-x;
@@ -155,7 +155,7 @@
 }
 
 // ICON
-@include media-breakpoint-down(md){
+@include media-breakpoint-down(sm){
     .nav-tabs-mb-icon{
         .nav-item{
             padding-right: .75rem;

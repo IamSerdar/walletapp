@@ -261,10 +261,10 @@
           display: inline-block;
           width: 15px;
           height: 15px;
+          margin-left: 5px;
           animation: swal2-rotate-loading 1.5s linear 0s infinite normal;
           border: 3px solid lighten($swal2-black, 60);
           border-radius: 50%;
-          margin-left: 5px;
           border-right-color: transparent;
           box-shadow: 1px 1px 1px $swal2-white;
         }
@@ -274,9 +274,9 @@
 }
 
 .swal2-styled {
-  margin: 0.5rem;
+  margin: 0 .75rem;
   box-shadow: none;
-  padding: 0.5rem 1rem;
+  padding: 0.6875rem 1.25rem;
   font-size: 0.9375rem;
   line-height: 1.25rem;
   border-radius: 5px;
@@ -636,7 +636,7 @@
       position: absolute;
       z-index: 2;
       top: -.25em;
-        left: -.25em;
+      left: -.25em;
       box-sizing: content-box;
       width: 100%;
       height: 100%;
@@ -649,7 +649,7 @@
       position: absolute;
       z-index: 1;
       top: .5em;
-        left: 1.625em;
+      left: 1.625em;
       width: .4375em;
       height: 5.625em;
       transform: rotate(-45deg);
@@ -665,14 +665,14 @@
 
       &[class$='tip'] {
         top: 2.875em;
-          left: .875em;
+        left: .875em;
         width: 1.5625em;
         transform: rotate(45deg);
       }
 
       &[class$='long'] {
         top: 2.375em;
-          right: .5em;
+        right: .5em;
         width: 2.9375em;
         transform: rotate(-45deg);
       }

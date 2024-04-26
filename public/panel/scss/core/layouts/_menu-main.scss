@@ -1,3 +1,4 @@
+/// @io-v120
 $menu_dark_option: $dark_option;
 $menu_dark_theme_option: $dark_theme_option;
 
@@ -53,7 +54,7 @@ $menu-main-link-gap-y: .5rem !default;
 $menu-main-link-gap-x: 1.25rem !default;
 $menu-main-link-gap-x: 1.25rem !default;
 
-$menu-main-top-link-gap-y: 1.25rem !default;
+$menu-main-top-link-gap-y: 1.5rem !default;
 $menu-main-top-link-gap-x: 1rem !default;
 
 $menu-main-link-fs: $fx-sz-13 !default;         // @desktop only
@@ -76,13 +77,6 @@ $menu-footer-icon-width:  1.375rem;
 $menu-footer-link-fs:    $fx-sz-12;
 $menu-footer-link-lh:    1.125rem;
 $menu-footer-icon-color: $accent-color;
-
-// Icon
-$menu-toggle-icon-ltr: $ni-chevron-right !default;
-$menu-toggle-icon-rtl: $ni-chevron-left !default;
-$menu-main-toggle-icon: $ni-chevron-down !default;
-$menu-main-sub-toggle-icon-ltr: $ni-chevron-right !default;
-$menu-main-sub-toggle-icon-rtl: $ni-chevron-left !default;
 
 /////////////////////////
 /// Menu Navigation
@@ -149,6 +143,7 @@ $menu-main-sub-toggle-icon-rtl: $ni-chevron-left !default;
             color: $base-text;
 
         }
+        //@i-v120
         @if($menu_dark_theme_option==true) {
             .is-theme & {
                 color: darken($accent-light, 8%);
@@ -159,6 +154,7 @@ $menu-main-sub-toggle-icon-rtl: $ni-chevron-left !default;
             .is-light & {
                 color: $menu-link-color-hover;
             }
+            //@i-v120
             @if($menu_dark_theme_option==true) {
                 .is-theme & {
                     color: $white;
@@ -177,6 +173,7 @@ $menu-main-sub-toggle-icon-rtl: $ni-chevron-left !default;
         line-height: 1;
         flex-grow: 0; 
         color: $menu-icon-color-base;
+        //@i-v120
         @if($menu_dark_theme_option==true) {
             .is-theme &{
                 color: darken($accent-light, 8%);
@@ -194,6 +191,7 @@ $menu-main-sub-toggle-icon-rtl: $ni-chevron-left !default;
         }
         .nk-menu-link:hover &, .nk-menu-item.active > .nk-menu-link & , .nk-menu-item.current-menu > .nk-menu-link & {
             color: $menu-link-color-hover;
+            //@i-v120
             @if($menu_dark_theme_option==true) {
                 .is-theme &{
                     color: $white;
@@ -202,6 +200,7 @@ $menu-main-sub-toggle-icon-rtl: $ni-chevron-left !default;
         }
         .nk-menu-link.is-disable:hover &{
             color: $menu-icon-color-base;
+            //@i-v120
             @if($menu_dark_theme_option==true) {
                 .is-theme &{
                     color: $accent-light;
@@ -221,11 +220,9 @@ $menu-main-sub-toggle-icon-rtl: $ni-chevron-left !default;
         background: $accent-100;
         position: absolute;
         top: 50%;
-        right: $sidebar-gap-x !important;
-        .nk-menu-toggle > &{
-            right: $sidebar-gap-x + 24px !important;
-        }
+        right: $sidebar-gap-x;
         transform: translateY(-50%);
+        //@i-v120
         @if($menu_dark_option==true) {
             .is-dark & {
                 color: $accent-400;
@@ -246,6 +243,7 @@ $menu-main-sub-toggle-icon-rtl: $ni-chevron-left !default;
     &-heading{
         padding: .25rem $sidebar-gap-x 0.5rem;
         color: $base-light;
+        //@i-v120
         @if($menu_dark_theme_option==true) {
             .is-theme &{
                 color: darken($accent-light, 15%);
@@ -265,6 +263,7 @@ $menu-main-sub-toggle-icon-rtl: $ni-chevron-left !default;
     &-hr{
         margin: 1.25rem 0;
         border-bottom: 1px solid $menu-border-color;
+        //@i-v120
         @if($menu_dark_option==true) {
             .is-dark &{
                 border-color: $menu-border-dark-color;
@@ -281,6 +280,7 @@ $menu-main-sub-toggle-icon-rtl: $ni-chevron-left !default;
     }
     &-sub{
         padding-bottom: .25rem;
+        // margin-top: -.25rem;
         .nk-menu-toggle + &{
             display: none;
         }
@@ -290,6 +290,7 @@ $menu-main-sub-toggle-icon-rtl: $ni-chevron-left !default;
         .nk-menu-link {
             &:hover{
                 color: $accent-color;
+                //@i-v120
                 @if($menu_dark_theme_option==true) {
                     .is-theme &{
                         color: $white;
@@ -299,6 +300,7 @@ $menu-main-sub-toggle-icon-rtl: $ni-chevron-left !default;
         }
         .active > .nk-menu-link {
             color: $accent-color;
+            //@i-v120
             @if($menu_dark_theme_option==true) {
                 .is-theme &{
                     color: $white;
@@ -320,9 +322,9 @@ $menu-main-sub-toggle-icon-rtl: $ni-chevron-left !default;
         &:after{
             position: absolute;
             font-family: $nk-dashlite-font;
+            content: $ni-chevron-right;
             top: 50%;
             right: 1.25rem;
-            content: $menu-toggle-icon-ltr;
             transform: translateY(-50%);
             font-size: 1rem;
             color: $base-light;
@@ -351,6 +353,7 @@ $menu-main-sub-toggle-icon-rtl: $ni-chevron-left !default;
             color: $menu-icon-color-hover;
         }
     }
+    //@i-v140
     &-tooltip{
         position: absolute;
         top: 0;
@@ -361,7 +364,7 @@ $menu-main-sub-toggle-icon-rtl: $ni-chevron-left !default;
 }
 
 @include media-breakpoint-up(lg){
-    .nk-aside{
+    .has-aside{
         .nk-menu{
             > li > .nk-menu-link, &-heading{
                 padding-left: 0;
@@ -372,7 +375,7 @@ $menu-main-sub-toggle-icon-rtl: $ni-chevron-left !default;
 }
 
 @include media-breakpoint-down(lg){
-    .nk-aside{
+    .has-aside{
         .nk-menu-sub{
             padding-left: 1.5rem;
         }
@@ -526,35 +529,25 @@ $menu-main-sub-toggle-icon-rtl: $ni-chevron-left !default;
         &-link:hover, &-link:focus, &-item.active > .nk-menu-link, &-item.current-menu > .nk-menu-link, &-item:hover > .nk-menu-link{
             color: $menu-link-color-hover;
         }
-        &-heading{
-            padding: .75rem $menu-main-link-gap-x 0.5rem;
-            
-        }
-        &-item{
-            + .nk-menu-heading{
-                padding-top: 1.25rem;
-            }
-        }
     }
     > li {
         > .nk-menu-link {
-            font-family: $base-font-family;
-            font-weight: $fw-medium;
-            letter-spacing: - 0.01rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05rem;
         }
     }
     &.ui-s2{
         > li {
             > .nk-menu-link {
-                font-family: $alt-font-family;
-                text-transform: uppercase;
-                letter-spacing: 0.05rem;
-                font-weight: $fw-bold;
+                font-family: $base-font-family;
+                font-weight: $fw-medium;
+                text-transform:initial;
+                letter-spacing: - 0.01rem;
             }
         }
     }
 }
-@include media-breakpoint-down(lg){
+@include media-breakpoint-down(md){
     .nk-menu-main{
         &.nk-menu{
             max-height: calc(100vh - #{$header-height});
@@ -604,6 +597,7 @@ $menu-main-sub-toggle-icon-rtl: $ni-chevron-left !default;
                 border-top-right-radius: 0;
             }
         }
+
         .nk-menu{
             &-link {
                 padding: $menu-main-link-gap-y $menu-main-link-gap-x;
@@ -621,10 +615,10 @@ $menu-main-sub-toggle-icon-rtl: $ni-chevron-left !default;
                         line-height: 1;
                         position: static;
                         transform: translateY(0);
-                        content: $menu-main-toggle-icon;
+                        content: $ni-chevron-down;
                         vertical-align: middle;
-                        color: rgba($base-light,.7);
                         margin-left: 0.5rem;
+                        color: rgba($base-light,.7);
                         margin-right: -2px;
                         margin-top: -1px;
                         transition: color .1s;
@@ -658,12 +652,12 @@ $menu-main-sub-toggle-icon-rtl: $ni-chevron-left !default;
                     padding-bottom: .5rem;
                 }
                 .nk-menu-sub{
+                    left: 100%;
                     top: - 9px;
                     padding: .5rem 0;
                     border:1px solid $border-light;
                     margin: 0;
                     margin-top: 6px;
-                    left: 100%;
                     margin-left: -0.75rem;
                     .nk-menu-link{
                         padding-left: 1.5rem;
@@ -676,16 +670,13 @@ $menu-main-sub-toggle-icon-rtl: $ni-chevron-left !default;
                 }
                 .nk-menu-toggle{
                     &:after {
-                        content: $menu-main-sub-toggle-icon-ltr;
+                        content: $ni-chevron-right;
                     }
                 }
             }
         }
-        .nk-aside &{
-            display: none;
-        }
     }
-    // DARK Version
+    // DARK Version //@i-v120
     @if($menu_dark_option==true or $menu_dark_theme_option==true) {
         .is-dark, .is-theme {
             .nk-menu-main {
@@ -732,6 +723,313 @@ $menu-main-sub-toggle-icon-rtl: $ni-chevron-left !default;
                         color: $white;
                     }
                 }
+            }
+        }
+    }
+}
+
+////////////////////////////
+// Sidebar
+////////////////////////////
+.nk-sidebar{
+    .nk-menu{
+        > li {
+            .nk-menu-sub {
+                .nk-menu-link {
+                    padding-left: $sidebar-gap-x + $menu-icon-width-base;
+                }
+                .nk-menu-sub{
+                    margin-left: $sidebar-gap-x + $menu-icon-width-base;
+                    margin-top: .5rem;
+                    margin-bottom: .5rem;
+                    padding-bottom: 0;
+                    border-left: 1px solid $border-color;
+                    .nk-menu-link {
+                        padding-left: 1rem;
+                    }
+                }
+            }
+        }
+    }
+    //@i-v120
+    @if($menu_dark_option==true or $menu_dark_theme_option==true) {
+        &.is-dark, &.is-theme{
+            .nk-menu{
+                > li {
+                    .nk-menu-sub {
+                        .nk-menu-sub{
+                            border-color: rgba($white, .12);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+////////////////////////////
+// Sidebar Fat
+////////////////////////////
+.nk-sidebar-fat{
+    .nk-menu-toggle:after {
+        right: $sidebar-gap-x - 2;
+    }
+    .nk-menu{
+        > li {
+            .nk-menu-sub {
+                .nk-menu-link {
+                    padding-left: $sidebar-gap-x + $menu-icon-width-base;
+                }
+            }
+        }
+    }
+}
+@include media-breakpoint-up(xl){
+    .nk-sidebar-fat{
+        .nk-menu{
+            padding-left: $sidebar-gap-x-fat-tablet;
+            padding-right: $sidebar-gap-x-fat-tablet;
+            > li {
+                .nk-menu-sub {
+                    padding-top: .25rem;
+                    .nk-menu-link {
+                        padding-left: $sidebar-gap-x + $menu-icon-width-base;
+                    }
+                }
+            }
+
+            > li{
+                > a{
+                    border-radius: 40px;
+                    &:hover{
+                        background: $white;
+                    }
+                }
+                &:hover,&.active,&.current-menu{
+                    > a{
+                        background: $white;
+                    }
+                }
+            }
+            &-sm, &-footer {
+                & > li:hover a, & > li.active a, & > li.current-menu a, & > li > a:hover{
+                    background: transparent !important;
+                }
+            }
+
+        }
+        //@i-v120
+        @if($menu_dark_option==true) {
+            &.is-dark{
+                .nk-menu{
+                    > li {
+                        &:hover > a,  &.active > a,  &.current-menu > a, > a:hover {
+                            background: lighten($darker, 6%);
+                        }
+                    }
+                }
+            }
+        }
+        @if($menu_dark_theme_option==true) {
+            &.is-theme{
+                .nk-menu{
+                    > li {
+                        &:hover > a,  &.active > a,  &.current-menu > a, > a:hover {
+                            background: lighten($accent-dark, 6%);
+                        }
+                    }
+                }
+            }
+        }
+        &.is-light{
+            .nk-menu{
+                > li {
+                    &:hover > a,  &.active > a,  &.current-menu > a, > a:hover {
+                        background: darken($lighter, 2%);
+                    }
+                }
+            }
+        }
+        
+    }
+}
+
+@media (min-width:1560px){
+    .nk-sidebar-fat{
+        .nk-menu{
+            padding-left: $sidebar-gap-x-fat;
+            padding-right: $sidebar-gap-x-fat;
+            &-heading{
+                padding-left: $sidebar-gap-x;
+                padding-right: $sidebar-gap-x;
+            }
+        }
+    }
+}
+
+
+////////////////////////////
+// Apps Sidebar
+////////////////////////////
+
+
+// App Menu
+.apps-menu{
+    .nk-menu{
+        &-link{
+            padding: .75rem .5rem;
+            text-align: center;
+            &:before{
+                position: absolute;
+                content: '';
+                top: 0;
+                bottom: 0;
+                left: 0;
+                width: 3px;
+                background: $menu-link-color-hover;
+                border-radius: 0 2px 2px 0;
+                opacity: 0;
+            }
+        }
+        &-icon{
+            width: 100%;
+        }
+    }
+}
+.nk-apps-sidebar{
+    .nk-sidebar-content .nk-sidebar-menu{
+        padding-top: 1rem;
+    }
+    .nk-menu{
+        padding-left: 0;
+        padding-right: 0;
+        &-link{
+            padding: .75rem .5rem;
+            text-align: center;
+        }
+        &-icon{
+            width: 100%;
+        }
+        &-text{
+            display: none;
+        }
+    }
+}
+@include media-breakpoint-up(lg){
+    .apps-menu{
+        > li.nk-menu-item.active > .nk-menu-link{
+            &:before{
+                opacity: 1;
+            }
+        }
+    }
+}
+
+
+
+////////////////////////////
+// Short Sidebar
+////////////////////////////
+.short-menu{
+    .nk-sidebar-mobile .nk-sidebar-footer &{
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 0 1rem;
+    }
+    .nk-menu{
+        &-item{
+            padding: .125rem .875rem;
+            .nk-sidebar-mobile .nk-sidebar-footer &{
+                width: 50%;
+            }
+            .nk-sidebar-footer &{
+                padding: .125rem 0;
+            }
+            &.active .nk-menu-link{
+                background-color: $white;
+                .is-light &{
+                    background-color: $accent-100;
+                }
+                @if($dark_option==true) {
+                    .is-dark &{
+                        background-color: darken($darker,3%);
+                    }
+                }
+                @if($dark_theme_option==true) {
+                    .is-theme &{
+                        background-color: darken($accent-dark,10%);
+                    }
+                }
+            }
+        }
+        &-link{
+            border-radius: $border-radius;
+            padding: .625rem;
+            &:hover,&.active{
+                background-color: $white;
+                .is-light &{
+                    background-color: $accent-100;
+                }
+                @if($dark_option==true) {
+                    .is-dark &{
+                        background-color: darken($darker,3%);
+                    }
+                }
+                @if($dark_theme_option==true) {
+                    .is-theme &{
+                        background-color: darken($accent-dark,10%);
+                    }
+                }
+            }
+            .nk-sidebar-footer &{
+                color: $accent-color;
+                font-size: $fx-sz-13;
+            }
+        }
+        &-icon{
+            .nk-sidebar-footer &{
+                width: 28px;
+                color: $accent-color;
+                .icon{
+                    font-size: 1.125rem;
+                }
+            }
+        }
+        &-text{
+            opacity: 0;
+            .nk-sidebar-mobile &{
+                opacity: 1;
+            }
+        }
+        &-tooltip{
+            display: none;
+        }
+    }
+}
+@include media-breakpoint-up(md){
+    .short-menu{
+        .nk-sidebar-footer &{
+            padding: 0;
+        }
+        .nk-menu{
+            &-item{
+                padding: .125rem 1.125rem;
+                .nk-sidebar-footer &{
+                    padding: .125rem 1.3125rem;
+                }
+            }
+            &-link{
+                padding: .625rem;
+            }
+            &-icon{
+                text-align: center;
+                width: auto !important;
+            }
+            &-text{
+                display: none;
+            }
+            &-tooltip{
+                display: block;
             }
         }
     }

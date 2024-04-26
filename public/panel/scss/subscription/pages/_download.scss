@@ -1,5 +1,3 @@
-@use "sass:math";
-
 $pdl-margin:   1rem !default;
 
 $pdl-item-gap-x: 1.25rem !default;
@@ -24,7 +22,7 @@ $pdl-icon-width-desk: 2.5rem !default;
         padding: $pdl-item-gap-y $pdl-item-gap-x;
         border: 1px solid $border-color;
         border-radius: $border-radius;
-        background: $white;
+        background: $white; // @i-v120
         &:not(:last-child){
             margin-bottom: $pdl-margin;
         }
@@ -94,7 +92,7 @@ $pdl-icon-width-desk: 2.5rem !default;
             margin-left: -($pdl-icon-width + $pdl-margin);
         }
         &-btn{
-            margin: $pdl-margin 0 math.div($pdl-margin , 2);
+            margin: $pdl-margin 0 ($pdl-margin / 2);
         }
     }
     

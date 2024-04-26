@@ -5,21 +5,6 @@
 // Include NioIcon 
 @import "nioicon/nioicon";
 
-//FontAwesome Icons
-// $fa-font-path: "../fonts";
-// @import "fontawesome/fontawesome.scss";
-// @import "fontawesome/brands.scss";
-// @import "fontawesome/regular.scss";
-// @import "fontawesome/solid.scss";
-
-//Themify Icons
-// $ti-font-path : "../fonts";
-// @import "themify-icons/themify-icons";
-
-//Bootstrap Icons
-// $bi-font-path : "../fonts";
-// @import "bootstrap-icons/bootstrap-icons";
-
 // Include Prettify 
 @import "prettify";
 
@@ -56,26 +41,13 @@
 // Include DataTable
 @import "datatable/datatable";
 
-// Include JQVmap
+// Include JQVmap //@i-v120
 @import "jqvmap";
 
-// Include tagify
+// Include tagify //@i-v130
 @import "tagify";
 
-// Include fullcalendar
-@import "fullcalendar";
-
-// Include jkanban
-@import "jkanban";
-
-// Include Dual ListBox
-@import "dual-listbox/dual-listbox";
-
-// Include Magnific Popup
-@import "magnific-popup/main";
-
-// Include dragula
-@import "dragula";
-
-// Include map
-@import "map";
+// Include Calendar //@i-v140
+@import "fullcalendar/core";
+@import "fullcalendar/bootstrap";
+@import "fullcalendar/daygrid";

@@ -87,7 +87,6 @@
                 options: {
                     legend: {
                         display: (_get_data.legend) ? _get_data.legend : false,
-                        rtl: NioApp.State.isRTL,
                         labels: {
                             boxWidth:12,
                             padding:20,
@@ -99,7 +98,6 @@
                     maintainAspectRatio: false,
                     tooltips: {
                         enabled: true,
-                        rtl: NioApp.State.isRTL,
                         callbacks: {
                             title: function(tooltipItem, data) {
                                 return data['labels'][tooltipItem[0]['index']];
@@ -260,7 +258,6 @@
                 options: {
                     legend: {
                         display: (_get_data.legend) ? _get_data.legend : false,
-                        rtl: NioApp.State.isRTL,
                         labels: {
                             boxWidth:12,
                             padding:20,
@@ -270,7 +267,6 @@
                     maintainAspectRatio: false,
                     tooltips: {
                         enabled: true,
-                        rtl: NioApp.State.isRTL,
                         callbacks: {
                             title: function(tooltipItem, data) {
                                 return false; //data['labels'][tooltipItem[0]['index']];
@@ -301,9 +297,9 @@
                                 padding: 0
                             },
                             gridLines: { 
-                                color: NioApp.hexRGB("#526484",.2),
+                                color: "#e5ecf8",
                                 tickMarkLength:0,
-                                zeroLineColor: NioApp.hexRGB("#526484",.2)
+                                zeroLineColor: '#e5ecf8'
                             },
                         }],
                         xAxes: [{
@@ -312,13 +308,12 @@
                                 fontSize:12,
                                 fontColor:'#9eaecf',
                                 source: 'auto',
-                                padding: 0,
-                                reverse: NioApp.State.isRTL
+                                padding: 0
                             },
                             gridLines: {
                                 color: "transparent",
                                 tickMarkLength:0,
-                                zeroLineColor: NioApp.hexRGB("#526484",.2),
+                                zeroLineColor: '#e5ecf8',
                                 offsetGridLines: true,
                             }
                         }]
@@ -372,7 +367,6 @@
                 options: {
                     legend: {
                         display: (_get_data.legend) ? _get_data.legend : false,
-                        rtl: NioApp.State.isRTL,
                         labels: {
                             boxWidth:12,
                             padding:20,
@@ -382,7 +376,6 @@
                     maintainAspectRatio: false,
                     tooltips: {
                         enabled: true,
-                        rtl: NioApp.State.isRTL,
                         callbacks: {
                             title: function(tooltipItem, data) {
                                 return false; //data['labels'][tooltipItem[0]['index']];
@@ -406,7 +399,6 @@
                     scales: {
                         yAxes: [{
                             display: true,
-                            position : NioApp.State.isRTL ? "right" : "left",
                             ticks: {
                                 beginAtZero: false,
                                 fontSize:12,
@@ -416,9 +408,9 @@
                                 stepSize:300
                             },
                             gridLines: { 
-                                color: NioApp.hexRGB("#526484",.2),
+                                color: "#e5ecf8",
                                 tickMarkLength:0,
-                                zeroLineColor: NioApp.hexRGB("#526484",.2),
+                                zeroLineColor: '#e5ecf8',
                             },
                         }],
                         xAxes: [{
@@ -428,7 +420,6 @@
                                 fontColor:'#9eaecf',
                                 source: 'auto',
                                 padding: 0,
-                                reverse: NioApp.State.isRTL
                             },
                             gridLines: {
                                 color: "transparent",
@@ -501,7 +492,6 @@
                 options: {
                     legend: {
                         display: (_get_data.legend) ? _get_data.legend : false,
-                        rtl: NioApp.State.isRTL,
                         labels: {
                             boxWidth:12,
                             padding:20,
@@ -511,7 +501,6 @@
                     maintainAspectRatio: false,
                     tooltips: {
                         enabled: true,
-                        rtl: NioApp.State.isRTL,
                         callbacks: {
                             title: function(tooltipItem, data) {
                                 return data['labels'][tooltipItem[0]['index']];
@@ -537,7 +526,6 @@
                     scales: {
                         yAxes: [{
                             display: true,
-                            position : NioApp.State.isRTL ? "right" : "left",
                             ticks: {
                                 beginAtZero: true,
                                 fontSize:12,
@@ -546,9 +534,9 @@
                                 stepSize:2400
                             },
                             gridLines: { 
-                                color: NioApp.hexRGB("#526484",.2),
+                                color: "#e5ecf8",
                                 tickMarkLength:0,
-                                zeroLineColor: NioApp.hexRGB("#526484",.2),
+                                zeroLineColor: '#e5ecf8',
                             },
                         }],
                         xAxes: [{
@@ -558,7 +546,6 @@
                                 fontColor:'#9eaecf',
                                 source: 'auto',
                                 padding: 0,
-                                reverse: NioApp.State.isRTL
                             },
                             gridLines: {
                                 color: "transparent",

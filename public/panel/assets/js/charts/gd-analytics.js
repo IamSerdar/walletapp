@@ -1,9 +1,8 @@
 "use strict";
 
 !function (NioApp, $) {
-  "use strict";
+  "use strict"; // Vector Map
 
-  // Vector Map
   var worldMap = {
     map: 'world_en',
     data: {
@@ -192,13 +191,16 @@
       "zw": "5.57"
     }
   };
+
   function jqvmap_init() {
     var elm = '.vector-map';
+
     if ($(elm).exists() && typeof $.fn.vectorMap === 'function') {
       $(elm).each(function () {
         var $self = $(this),
-          _self_id = $self.attr('id'),
-          map_data = eval(_self_id);
+            _self_id = $self.attr('id'),
+            map_data = eval(_self_id);
+
         $self.vectorMap({
           map: map_data.map,
           backgroundColor: 'transparent',
@@ -216,18 +218,18 @@
           values: map_data.data,
           onLabelShow: function onLabelShow(event, label, code) {
             var mapData = JQVMap.maps,
-              what = Object.keys(mapData)[0],
-              name = mapData[what].paths[code]['name'];
+                what = Object.keys(mapData)[0],
+                name = mapData[what].paths[code]['name'];
             label.html(name + ' - ' + (map_data.data[code] || 0));
           }
         });
       });
     }
   }
-  ;
-  NioApp.coms.docReady.push(jqvmap_init);
 
-  // Charts 
+  ;
+  NioApp.coms.docReady.push(jqvmap_init); // Charts 
+
   var deviceStatusData = {
     labels: ["Desktop", "Mobile", "Tablet"],
     dataUnit: 'People',
@@ -248,14 +250,17 @@
       data: [4305, 859, 482, 138]
     }]
   };
+
   function analyticsDoughnut(selector, set_data) {
     var $selector = selector ? $(selector) : $('.analytics-doughnut');
     $selector.each(function () {
       var $self = $(this),
-        _self_id = $self.attr('id'),
-        _get_data = typeof set_data === 'undefined' ? eval(_self_id) : set_data;
+          _self_id = $self.attr('id'),
+          _get_data = typeof set_data === 'undefined' ? eval(_self_id) : set_data;
+
       var selectCanvas = document.getElementById(_self_id).getContext("2d");
       var chart_data = [];
+
       for (var i = 0; i < _get_data.datasets.length; i++) {
         chart_data.push({
           backgroundColor: _get_data.datasets[i].background,
@@ -265,6 +270,7 @@
           data: _get_data.datasets[i].data
         });
       }
+
       var chart = new Chart(selectCanvas, {
         type: 'doughnut',
         data: {
@@ -274,7 +280,6 @@
         options: {
           legend: {
             display: _get_data.legend ? _get_data.legend : false,
-            rtl: NioApp.State.isRTL,
             labels: {
               boxWidth: 12,
               padding: 20,
@@ -286,7 +291,6 @@
           maintainAspectRatio: false,
           tooltips: {
             enabled: true,
-            rtl: NioApp.State.isRTL,
             callbacks: {
               title: function title(tooltipItem, data) {
                 return data['labels'][tooltipItem[0]['index']];
@@ -312,8 +316,9 @@
         }
       });
     });
-  }
-  // init chart
+  } // init chart
+
+
   NioApp.coms.docReady.push(function () {
     analyticsDoughnut();
   });
@@ -405,14 +410,17 @@
       data: [110, 80, 125, 65, 95, 75, 90, 110, 80, 125, 70, 95]
     }]
   };
+
   function analyticsLineSmall(selector, set_data) {
     var $selector = selector ? $(selector) : $('.analytics-line-small');
     $selector.each(function () {
       var $self = $(this),
-        _self_id = $self.attr('id'),
-        _get_data = typeof set_data === 'undefined' ? eval(_self_id) : set_data;
+          _self_id = $self.attr('id'),
+          _get_data = typeof set_data === 'undefined' ? eval(_self_id) : set_data;
+
       var selectCanvas = document.getElementById(_self_id).getContext("2d");
       var chart_data = [];
+
       for (var i = 0; i < _get_data.datasets.length; i++) {
         chart_data.push({
           label: _get_data.datasets[i].label,
@@ -432,6 +440,7 @@
           data: _get_data.datasets[i].data
         });
       }
+
       var chart = new Chart(selectCanvas, {
         type: 'line',
         data: {
@@ -441,7 +450,6 @@
         options: {
           legend: {
             display: _get_data.legend ? _get_data.legend : false,
-            rtl: NioApp.State.isRTL,
             labels: {
               boxWidth: 12,
               padding: 20,
@@ -451,12 +459,10 @@
           maintainAspectRatio: false,
           tooltips: {
             enabled: true,
-            rtl: NioApp.State.isRTL,
             callbacks: {
               title: function title(tooltipItem, data) {
                 return false; //data['labels'][tooltipItem[0]['index']];
               },
-
               label: function label(tooltipItem, data) {
                 return data.datasets[tooltipItem.datasetIndex]['data'][tooltipItem['index']];
               }
@@ -483,9 +489,9 @@
                 padding: 0
               },
               gridLines: {
-                color: NioApp.hexRGB("#526484", .2),
+                color: "#e5ecf8",
                 tickMarkLength: 0,
-                zeroLineColor: NioApp.hexRGB("#526484", .2)
+                zeroLineColor: '#e5ecf8'
               }
             }],
             xAxes: [{
@@ -494,13 +500,12 @@
                 fontSize: 12,
                 fontColor: '#9eaecf',
                 source: 'auto',
-                padding: 0,
-                reverse: NioApp.State.isRTL
+                padding: 0
               },
               gridLines: {
                 color: "transparent",
                 tickMarkLength: 0,
-                zeroLineColor: NioApp.hexRGB("#526484", .2),
+                zeroLineColor: '#e5ecf8',
                 offsetGridLines: true
               }
             }]
@@ -508,8 +513,9 @@
         }
       });
     });
-  }
-  // init chart
+  } // init chart
+
+
   NioApp.coms.docReady.push(function () {
     analyticsLineSmall();
   });
@@ -524,14 +530,17 @@
       data: [1110, 1220, 1310, 980, 900, 770, 1060, 830, 690, 730, 790, 950, 1100, 800, 1250, 850, 950, 450, 900, 1000, 1200, 1250, 900, 950, 1300, 1200, 1250, 650, 950, 750]
     }]
   };
+
   function analyticsAu(selector, set_data) {
     var $selector = selector ? $(selector) : $('.analytics-au-chart');
     $selector.each(function () {
       var $self = $(this),
-        _self_id = $self.attr('id'),
-        _get_data = typeof set_data === 'undefined' ? eval(_self_id) : set_data;
+          _self_id = $self.attr('id'),
+          _get_data = typeof set_data === 'undefined' ? eval(_self_id) : set_data;
+
       var selectCanvas = document.getElementById(_self_id).getContext("2d");
       var chart_data = [];
+
       for (var i = 0; i < _get_data.datasets.length; i++) {
         chart_data.push({
           label: _get_data.datasets[i].label,
@@ -544,6 +553,7 @@
           categoryPercentage: .7
         });
       }
+
       var chart = new Chart(selectCanvas, {
         type: 'bar',
         data: {
@@ -553,7 +563,6 @@
         options: {
           legend: {
             display: _get_data.legend ? _get_data.legend : false,
-            rtl: NioApp.State.isRTL,
             labels: {
               boxWidth: 12,
               padding: 20,
@@ -563,12 +572,10 @@
           maintainAspectRatio: false,
           tooltips: {
             enabled: true,
-            rtl: NioApp.State.isRTL,
             callbacks: {
               title: function title(tooltipItem, data) {
                 return false; //data['labels'][tooltipItem[0]['index']];
               },
-
               label: function label(tooltipItem, data) {
                 return data.datasets[tooltipItem.datasetIndex]['data'][tooltipItem['index']];
               }
@@ -588,7 +595,6 @@
           scales: {
             yAxes: [{
               display: true,
-              position: NioApp.State.isRTL ? "right" : "left",
               ticks: {
                 beginAtZero: false,
                 fontSize: 12,
@@ -598,9 +604,9 @@
                 stepSize: 300
               },
               gridLines: {
-                color: NioApp.hexRGB("#526484", .2),
+                color: "#e5ecf8",
                 tickMarkLength: 0,
-                zeroLineColor: NioApp.hexRGB("#526484", .2)
+                zeroLineColor: '#e5ecf8'
               }
             }],
             xAxes: [{
@@ -609,8 +615,7 @@
                 fontSize: 12,
                 fontColor: '#9eaecf',
                 source: 'auto',
-                padding: 0,
-                reverse: NioApp.State.isRTL
+                padding: 0
               },
               gridLines: {
                 color: "transparent",
@@ -623,8 +628,9 @@
         }
       });
     });
-  }
-  // init chart
+  } // init chart
+
+
   NioApp.coms.docReady.push(function () {
     analyticsAu();
   });
@@ -646,14 +652,17 @@
       data: [4110, 4220, 4810, 5480, 4600, 5670, 6660, 4830, 5590, 5730, 4790, 4950, 5100, 5800, 5950, 5850, 5950, 4450, 4900, 8000, 7200, 7250, 7900, 8950, 6300, 7200, 7250, 7650, 6950, 4750]
     }]
   };
+
   function analyticsLineLarge(selector, set_data) {
     var $selector = selector ? $(selector) : $('.analytics-line-large');
     $selector.each(function () {
       var $self = $(this),
-        _self_id = $self.attr('id'),
-        _get_data = typeof set_data === 'undefined' ? eval(_self_id) : set_data;
+          _self_id = $self.attr('id'),
+          _get_data = typeof set_data === 'undefined' ? eval(_self_id) : set_data;
+
       var selectCanvas = document.getElementById(_self_id).getContext("2d");
       var chart_data = [];
+
       for (var i = 0; i < _get_data.datasets.length; i++) {
         chart_data.push({
           label: _get_data.datasets[i].label,
@@ -674,6 +683,7 @@
           data: _get_data.datasets[i].data
         });
       }
+
       var chart = new Chart(selectCanvas, {
         type: 'line',
         data: {
@@ -683,7 +693,6 @@
         options: {
           legend: {
             display: _get_data.legend ? _get_data.legend : false,
-            rtl: NioApp.State.isRTL,
             labels: {
               boxWidth: 12,
               padding: 20,
@@ -693,7 +702,6 @@
           maintainAspectRatio: false,
           tooltips: {
             enabled: true,
-            rtl: NioApp.State.isRTL,
             callbacks: {
               title: function title(tooltipItem, data) {
                 return data['labels'][tooltipItem[0]['index']];
@@ -719,7 +727,6 @@
           scales: {
             yAxes: [{
               display: true,
-              position: NioApp.State.isRTL ? "right" : "left",
               ticks: {
                 beginAtZero: true,
                 fontSize: 12,
@@ -728,9 +735,9 @@
                 stepSize: 2400
               },
               gridLines: {
-                color: NioApp.hexRGB("#526484", .2),
+                color: "#e5ecf8",
                 tickMarkLength: 0,
-                zeroLineColor: NioApp.hexRGB("#526484", .2)
+                zeroLineColor: '#e5ecf8'
               }
             }],
             xAxes: [{
@@ -739,8 +746,7 @@
                 fontSize: 12,
                 fontColor: '#9eaecf',
                 source: 'auto',
-                padding: 0,
-                reverse: NioApp.State.isRTL
+                padding: 0
               },
               gridLines: {
                 color: "transparent",
@@ -753,8 +759,9 @@
         }
       });
     });
-  }
-  // init chart
+  } // init chart
+
+
   NioApp.coms.docReady.push(function () {
     analyticsLineLarge();
   });

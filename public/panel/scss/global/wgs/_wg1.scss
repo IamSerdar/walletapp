@@ -10,12 +10,12 @@
     &-block {
         display: flex;
         padding: 1.25rem;
-        align-items: flex-start;
+        align-items: flex-start; //@i-v130
         flex-direction: column;
     }
     &-img {
         width: 84px;
-        margin-right: 0;  
+        margin-right: 0;   
         margin-bottom: 1.5rem; 
         flex-shrink: 0;
         text-align: center;

@@ -14,8 +14,6 @@
             text-align: center;
             height: 32px;
             vertical-align: middle;
-            line-height: 32px;
-            display: inline-block;
         }
         &:not(:last-child){
             border-bottom: 1px solid $border-light;
@@ -51,7 +49,7 @@
     }
     &-col{
         flex-grow: 1;
-        span:not(.data-more){
+        span{
             display: inline-block;
             transition: color .3s;
         }
@@ -76,8 +74,7 @@
         line-height: 28px;
         height: 28px;
         width: 28px;
-        display: inline-grid;
-        align-content: center;
+        display: inline-block;
         &:before{
             position: absolute;
             z-index: -1;
@@ -105,42 +102,11 @@
         }
     }
 }
-
-.data-list-s2{
-    &:not(:first-child){
-        margin-top: 1rem;
-    }
-    .data{
-        &-item,&-head{
-            padding-left: 0;
-            padding-right: 0;
-            background: transparent;
-        }
-        &-head{
-            border-bottom: 1px solid $border-color;
-        }
-        &-item:not(:last-child){
-            border-bottom-color: $border-color;
-        }
-        &-label{
-            color: $base-text;
-        }
-        &-placeholder{
-            color: $base-light;
-        }
-    }
-}
-
 @include media-breakpoint-up(md){
     .data{
         &-list{
             &:not(:first-child){
                 margin-top: 2rem;
-            }
-            &-s2{
-                &:not(:first-child){
-                    margin-top: 1.25rem;
-                }
             }
         }
         &-item{
@@ -174,14 +140,9 @@
             }
         }
     }
-} 
+}
 
 .is-compact .data-item{
     padding-top: .75rem;
     padding-bottom: .75rem;
-}
-
-.is-medium .data-item{
-    padding-top: 1.125rem;
-    padding-bottom: 1.125rem;
 }

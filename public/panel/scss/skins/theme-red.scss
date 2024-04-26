@@ -1,7 +1,7 @@
 /*!
  * Theme: Red
- * Package: DashLite v3.1.3
- * Updated: 03.24.2023
+ * Package: DashLite v1.4.0
+ * Updated: 04.08.2020
  * Author: Softnio
  * Author URI: http://themeforest.net/user/softnio
 **/
@@ -45,6 +45,31 @@ $skin_menu_active_color:        $skin_accent;
 /// SKIN OVERRIDER
 ////////////////////////
 
+///// Sidebar Style
+.nk-sidebar {
+    &.is-dark{
+        background: $skin_sidebar_bg_dark;
+        border-right-color: $skin_sidebar_bdr_dark;
+    }
+    &.is-theme{
+        background: $skin_sidebar_bg_theme;
+        border-right-color: $skin_sidebar_bdr_theme;
+    }
+    &-head {
+        .is-dark & {
+            border-color: $skin_sidebar_bdr_dark;
+        }
+        .is-theme & {
+            border-color: $skin_sidebar_bdr_theme;
+        }
+    }
+    &.is-dark, &.is-theme {
+         .user-balance-alt {
+            color: rgba($white, .8);
+         }
+    }
+}
+
 ///// Header Style
 .nk-header {
     background: $skin_header_bg;
@@ -74,7 +99,17 @@ $skin_menu_active_color:        $skin_accent;
     .nk-menu-link:hover .nk-menu-icon, .nk-menu-item.active > .nk-menu-link .nk-menu-icon, .nk-menu-item.current-menu > .nk-menu-link .nk-menu-icon {
         color: lighten($skin_accent, 10%);
     }
-    .user-name {
+
+    .nk-news-icon .icon {
+        color: $skin_accent;
+    }
+    .nk-news-text .icon {
+        color: $skin_base_light;
+    }
+    .nk-news-text p span {
+        color: rgba($skin_base_light, .9);
+    }
+    .user-name, .nk-news-text p {
         color: lighten($skin_base_light, 5%);
     }
     .nk-quick-nav-icon {
@@ -94,13 +129,21 @@ $skin_menu_active_color:        $skin_accent;
         color: lighten($skin_accent, 30%);
         background: lighten($skin_sidebar_bg_theme, 10%);
     }
-    .nk-quick-nav-icon, .overline-title {
+    .short-menu .nk-menu-item.active .nk-menu-link,
+    .short-menu .nk-menu-link:hover,
+    .short-menu .nk-menu-link.active{
+        background-color: darken($skin_accent_dark, 10%);
+    }//@i-v140
+    .nk-news-icon .icon {
+        color: lighten($skin_accent, 15%)
+    }
+    .nk-news-text .icon, .nk-quick-nav-icon, .overline-title {
         color: $skin_accent_light;
     }
-    .nk-menu-heading .overline-title {
+    .nk-news-text p span, .nk-menu-heading .overline-title {
         color: rgba($skin_accent_light, .8);
     }
-    .user-name{
+    .user-name, .nk-news-text p {
         color: lighten($skin_accent_light, 5%);
     }
 }
@@ -111,13 +154,16 @@ $skin_menu_active_color:        $skin_accent;
 .nav-tabs .nav-link:after,
 .progress-bar, .dot-primary,
 .alert-fill.alert-primary,
-.bg-primary,
+.badge-primary,
 .icon-circle,
 .noUi-connect,
 .nk-kycfm-label::after,
+.plan-item-card:after,
+.buysell-pm-label:after,
 .sp-package-choose ~ label:after,
 .ticket-msg-attach-list a .icon,
 .nk-msg-menu-item a:after,
+.ui-shady .nk-msg-item.active:after, .ui-shady .nk-msg-item.current:after, 
 .ui-softy .nk-msg-item.active:after, .ui-softy .nk-msg-item.current:after {
     background: $skin_accent;
 }
@@ -127,9 +173,16 @@ $skin_menu_active_color:        $skin_accent;
 .card.is-dark {
     background: $skin_accent_dark;
 }
-.user-avatar, [class^="user-avatar"]:not([class*="-group"]) {
+.is-dark .nk-wg7-title, .is-dark .nk-wg7-note {
+    color: $skin_accent_light;
+}
+.user-avatar, [class^="user-avatar"] {
     background: lighten($skin_accent, 10%);
 }
+.nk-news-item:hover .nk-news-text .icon {
+    color: lighten($skin_accent, 10%);
+}
+
 
 .nk-menu-link:hover, 
 .nk-menu-link:hover .nk-menu-icon, 
@@ -155,6 +208,7 @@ $skin_menu_active_color:        $skin_accent;
 .nk-menu-footer .nk-menu-icon,
 .nk-menu-footer .nk-menu-link:hover,
 .nk-footer-copyright a:hover,
+.nk-sidebar-footer .short-menu .nk-menu-icon,//@i-v140
 
 .page-link:hover,
 .list-plain a:hover,
@@ -176,16 +230,25 @@ $skin_menu_active_color:        $skin_accent;
 
 .accordion-s2 .accordion-head .title,
 .accordion-s3 .accordion-head .title,
-.bg-outline-primary,
-.badge-dim.bg-primary,
-.badge-dot.bg-primary,
-.badge-dim.bg-outline-primary,
+.badge-outline-primary,
+.badge-dim.badge-primary,
+.badge-dot.badge-primary,
+.badge-dim.badge-outline-primary,
 .alert-primary,
 .form-clip,
 .form-text-hint,
 .search-submit:hover,
+.nk-news-icon .icon,
+.nk-refwg-name .title,
 .nk-wg1-amount .amount,
+.nk-wgw-add a .title,
+.nk-wgw-actions a:hover span, 
+.nk-wgw-actions a:hover .icon,
+.nk-iv-wg1-info, .nk-wg4-note span,
+.nk-iv-scheme-item .amount-ex,
 .nk-kycfm-control:checked ~ .nk-kycfm-label .label-icon,
+.wallet-item-add a:hover .wallet-icon, 
+.wallet-item-add a:hover .wallet-name,
 .attach-item .icon,
 .attach-download:hover span,
 .ticket-meta .ticket-id strong,
@@ -203,13 +266,9 @@ $skin_menu_active_color:        $skin_accent;
 .nk-msg-menu-item.active a,
 .user-balance,
 .user-avatar[class*="-primary-dim"],
-.dropzone .dz-message-text span, a,
-.nk-switch-icon.active, 
-.link-list-plain a .icon,
-.chat-upload-option a,
-.is-unread .chat-context .status,
-.add-opt:hover .sub-text, .add-opt:hover .icon,
-.icon[class*="bg-primary-dim"]  {
+.nk-order-ovwg-data.sell .amount, 
+.nk-order-ovwg-data.sell .title .icon,
+.nk-wg-action-content p strong, a {
     color: $skin_accent;
 }
 a:hover {
@@ -218,7 +277,7 @@ a:hover {
 .text-primary, .link-primary {
     color: $skin_accent !important;
 }
-.link-primary:hover, a.text-primary:hover, a.text-primary:focus, .chat-upload-option a:hover {
+.link-primary:hover {
     color: darken($skin_accent, 8%) !important;
 }
 .border-primary, .nk-kycfm-control:checked ~ .nk-kycfm-label {
@@ -230,21 +289,19 @@ a:hover {
 .bg-primary {
    background-color: $skin_accent !important;
 }
-a.bg-primary:hover, a.bg-primary:focus, button.bg-primary:hover, button.bg-primary:focus {
-    background-color: darken($skin_accent, 10%) !important;
-}
 .bg-primary-dim {
     background-color: mix($skin_accent, $white, 10%) !important;
 }
 .text-primary-dim {
     color: mix($skin_accent, $white, 10%) !important;
 }
-.alert-primary, .badge-dim.bg-outline-primary {
+.alert-primary, .badge-dim.badge-outline-primary {
     background-color: mix($skin_accent, $white, 10%);
     border-color: mix($skin_accent, $white, 40%);
 }
-.alert-pro.alert-primary, .bg-primary, 
+.alert-pro.alert-primary, .badge-primary, 
 .sp-package-choose:checked ~ label, 
+.plan-control:checked + .plan-item-card,
 .form-control:focus,
 .form-control.focus,
 .custom-file-input:focus ~ .custom-file-label,
@@ -254,13 +311,18 @@ a.bg-primary:hover, a.bg-primary:focus, button.bg-primary:hover, button.bg-prima
 {
     border-color: $skin_accent;
 }
-.bg-outline-primary {
+.nk-order-ovwg-data.sell, .badge-outline-primary {
     border-color: mix($skin_accent, $white, 40%);
 }
 .dropdown-menu-s1 {
     border-top-color: $skin_accent;   
 }
+.nk-iv-wg2-amount.ui-v2 {
+    border-bottom-color: $skin_accent;   
+}
+
 .page-item.active .page-link, 
+.plan-control:checked + .plan-item-card .plan-label,
 .custom-control-input:checked ~ .custom-control-label::before,
 .custom-control-input:not(:disabled):active ~ .custom-control-label::before
 {
@@ -272,12 +334,12 @@ a.bg-primary:hover, a.bg-primary:focus, button.bg-primary:hover, button.bg-prima
 .custom-switch .custom-control-input:disabled:checked ~ .custom-control-label::before {
     background-color: mix($skin_accent, $white, 60%);
 }
-.badge-dim.bg-primary {
+.badge-dim.badge-primary {
     background-color: mix($skin_accent, $white, 10%);
     border-color: mix($skin_accent, $white, 10%);
 }
-.bg-primary.badge-dot {
-    background: transparent !important;
+.badge-primary.badge-dot {
+    background: transparent;
 }
 .nk-error-head {
     background: -webkit-linear-gradient($skin_accent, lighten($skin_accent_dark, 10%));
@@ -288,15 +350,27 @@ a.bg-primary:hover, a.bg-primary:focus, button.bg-primary:hover, button.bg-prima
     background: $skin_accent;
     color: $white;
 }
-.icon-avatar{
+.icon-avatar, .nk-iv-scheme-icon.is-running {
     color: $skin_accent;
     background-color: mix($skin_accent, $white, 15%);
 }
-.is-theme .nk-quick-nav-icon:before {
+.is-dark .nk-wgw-icon {
+    background: mix($skin_accent, $white, 80%);
+}
+.is-dark .nk-wgw-balance .amount-sm, .is-dark .nk-wgw-actions a .icon, .is-dark .nk-wgw-more .btn-trigger, .is-dark .nk-iv-wg2-title .title {
+    color: $skin_accent_light;
+}
+.is-dark .nk-wgw-actions a {
+    color: $skin_accent_light;
+}
+.is-dark .nk-wgw-actions {
+    border-color: rgba($skin_accent_light, .4);
+}
+.is-dark .nk-wgw-more .btn-trigger:before, .is-theme .nk-quick-nav-icon:before {
     background-color: darken($skin_accent_dark, 10%);
 }
-
 // Buttons
+
 .btn-primary {
     background-color: $skin_accent;
     border-color: $skin_accent;
@@ -367,6 +441,7 @@ a.bg-primary:hover, a.bg-primary:focus, button.bg-primary:hover, button.bg-prima
 .btn-trigger:focus {
     box-shadow: none;
 }
+
 .form-control:focus, .form-control.focus,
 .custom-control-input:focus ~ .custom-control-label::before,
 .custom-file-input:focus ~ .custom-file-label,
@@ -383,7 +458,8 @@ a.bg-primary:hover, a.bg-primary:focus, button.bg-primary:hover, button.bg-prima
 .btn-outline-primary:not(:disabled):not(.disabled):active, 
 .btn-outline-primary:not(:disabled):not(.disabled).active, 
 .show > .btn-outline-primary.dropdown-toggle,
-.btn-primary.disabled, .btn-primary:disabled
+.btn-primary.disabled, .btn-primary:disabled,
+.invest-amount-control:checked ~ .invest-amount-label
 {
     background-color: $skin_accent;
     border-color: $skin_accent;
@@ -441,9 +517,23 @@ a.bg-primary:hover, a.bg-primary:focus, button.bg-primary:hover, button.bg-prima
     color: mix($skin_accent, $white, 70%);
     background-color: mix($skin_accent, $white, 10%);
 }
-.is-theme .sub-text,.is-theme .lead-text span {
+.is-theme .nk-sidebar-footer,.nk-apps-sidebar.is-theme,.is-theme .nk-sidebar-profile-fixed{
+    background: $skin_sidebar_bg_theme;
+    border-color: $skin_sidebar_bdr_theme;
+}
+.is-theme .wallet-name,.is-theme .wallet-icon,.is-theme .wallet-balance span,.is-theme .nk-menu-footer .nk-menu-link,.is-theme .sub-text,.is-theme .lead-text span {
     color: $skin_accent_light;
 }
+@media (min-width: 1200px){
+    .nk-sidebar-fat.is-theme .nk-menu>li:hover>a, .nk-sidebar-fat.is-theme .nk-menu>li.active>a, .nk-sidebar-fat.is-theme .nk-menu>li.current-menu>a, .nk-sidebar-fat.is-theme .nk-menu>li>a:hover,.is-theme .wallet-item a:before {
+        background: lighten($skin_accent_dark, 6%);
+    }
+}
+
+.apps-menu .nk-menu-link:before{
+    background: $skin_accent;
+}
+
 .nav-switch-s2 .nav-link:hover, .nav-switch-s2 .nav-link:focus{
     color: $skin_base_text;
 }
@@ -461,51 +551,11 @@ a.bg-primary:hover, a.bg-primary:focus, button.bg-primary:hover, button.bg-prima
 .nk-ibx-menu li.active {
     background: mix($skin_accent, $white, 8%);
 }
-//@File Manager
-.nk-fmg-menu li.active {
-    background: mix($skin_accent, $white, 8%);
-}
-.nk-file-name .asterisk .icon, .nk-file-name-text a.title:hover, 
-.nk-file-link:hover .title, .active .nk-fmg-menu-item .icon, .active .nk-fmg-menu-text {
-    color: $skin_accent;
-}
-.nk-files-view-list .nk-file.selected {
-    background-color: $skin_accent-100;
-}
 
-//@Chats
-.chat.is-me .chat-msg {
-    background-color: $skin_accent;
+//@i-v140
+.nk-cov-wg4-list-item.active{
+    background-color:$skin_accent-100;
 }
-
-//@jKanban
-.kanban-add-task {
+.nk-cov-wg4-list-item.active .title, .nk-cov-wg4-list-item.active .count{
     color: $skin_accent;
-    &:hover{
-      background: $skin_accent;
-      border-color: $skin_accent;
-    }
-}
-
-// wizard
-.actions ul li a{
-    border-color: $skin_accent;
-    background: $skin_accent;
-}
-.nk-wizard-simple .steps ul li.done h5, .nk-wizard-simple .steps ul li.done .number, .nk-wizard-simple .steps ul li.current h5, .nk-wizard-simple .steps ul li.current .number{
-    color: $skin_accent;
-}
-.nk-wizard-simple .steps ul li:after{
-    background: $skin_accent;
-}
-
-// @new 050421
-.invoice-contact ul .icon,.invoice-desc .title,.invoice-bills .table th{
-    color: $skin_accent;
-}
-.product-gallery .slider-nav .slider-item.slick-current .thumb,
-.custom-control-pro.no-control .custom-control-input:checked ~ .custom-control-label,
-.custom-control-pro.no-control .custom-control-input:not(:disabled):active ~ .custom-control-label,
-.custom-control.color-control .custom-control-label:before{
-    border-color: $skin_accent !important;
 }

@@ -72,11 +72,13 @@
                 vertical-align: middle;
             }
         }
+        //@i-v120
         &-sm{
             .title{
                 font-size: $fx-sz-14;
             }
         }
+        //@i-v40
         small{
             font-weight: $fw-medium;
             color: $base-light;
@@ -128,7 +130,7 @@
                 }
             }
         }
-        &.me-n1 {
+        &.mr-n1 {
             margin-right: -0.5rem !important;
         }
     }
@@ -137,7 +139,7 @@
         color: $border-color;
     }
 }
-@include media-breakpoint-down(sm){
+@include media-breakpoint-down(xs){
     .card-head{
         &.ui-v2{
             .card-tools{
@@ -159,9 +161,9 @@
     .card-stretch {
         margin-left: - $card-stretch-gap-x;
         margin-right: - $card-stretch-gap-x;
-        border-left: 0 !important;
-        border-right: 0 !important;
-        border-radius: 0 !important;
+        border-left: 0;
+        border-right: 0;
+        border-radius: 0;
     }
 }
 @include media-breakpoint-up(sm){

@@ -1,6 +1,3 @@
-$datatable-collapsed-unfold : $ni-plus-sm !default;
-$datatable-collapsed-fold : $ni-minus-sm !default;
-
 table.dataTable {
   clear: both;
   max-width: none !important;
@@ -24,7 +21,6 @@ div.dataTables_wrapper div.dataTables_length label {
 div.dataTables_wrapper div.dataTables_length select {
   width: auto;
   display: inline-block;
-  @extend .custom-select;
 }
 div.dataTables_wrapper div.dataTables_length label{
   display: inline-flex;
@@ -43,7 +39,6 @@ div.dataTables_wrapper div.dataTables_filter label {
 }
 div.dataTables_wrapper div.dataTables_filter input {
   display: inline-block;
-  @extend .form-control;
 }
 div.dataTables_wrapper div.dataTables_info {
   padding: .5rem 0;
@@ -63,8 +58,8 @@ div.dataTables_wrapper div.dataTables_processing {
   position: absolute;
   top: 50%;
   left: 50%;
-  margin-left: -100px;
   width: 200px;
+  margin-left: -100px;
   margin-top: -26px;
   text-align: center;
   padding: 1em 0;
@@ -220,7 +215,7 @@ table.dataTable.dtr-inline.collapsed>tbody>tr:not(.child)>td:first-child,
 table.dataTable.dtr-inline.collapsed>tbody>tr:not(.child)>th:first-child{
   cursor: pointer;
   &:before{
-    content: $datatable-collapsed-unfold;
+    content: $ni-plus-sm;
     font-family: $nk-dashlite-font;
     margin-right: 0.4rem;
   }
@@ -229,7 +224,7 @@ table.dataTable.dtr-inline.collapsed>tbody>tr:not(.child)>th:first-child{
 table.dataTable.dtr-inline.collapsed>tbody>tr.parent>td:first-child,
 table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th:first-child{
   &:before{
-    content: $datatable-collapsed-fold;
+    content: $ni-minus-sm;
   }
 }
 
@@ -253,11 +248,11 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th:first-child{
 }
 
 .dataTable{
-  // tr{
-  //   white-space: nowrap;
-  // }
+  tr{
+    white-space: nowrap;
+  }
   td{
-    // white-space: nowrap;
+    white-space: nowrap;
     &:focus{
       outline: none;
     }
@@ -293,5 +288,3 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th:first-child{
 .nk-tb-col-check{
   padding-right: .5rem !important;
 }
-
-@import "buttons.bootstrap4";

@@ -1,6 +1,6 @@
 //// User Avatar 
 /////////////////////
-.user-avatar, [class^="user-avatar"]:not([class*="-group"]){
+.user-avatar, [class^="user-avatar"]{
     border-radius: 50%;
     height: 40px;
     width: 40px;
@@ -13,7 +13,6 @@
     font-weight: $fw-medium;
     letter-spacing: 0.06em;
     flex-shrink: 0;
-    position: relative;
     + .user-info{
         margin-left: 1rem;
     }
@@ -23,72 +22,7 @@
     img{
         border-radius: 50%;
     }
-    &.md{
-        + .user-info{
-            margin-left: 1.5rem;
-        }
-        + .user-name{
-            margin-left: 1.25rem;
-        }
-    }
-    .edit{
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        border-radius: 50%;
-        background-color: rgba($dark,.5);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: $white;
-        opacity: 0;
-        transition: opacity .3s;
-    }
-    &:hover{
-        .edit{
-            opacity: 1;
-        }
-    }
-    .status{
-        border: 2px solid $white;
-        position: absolute;
-        bottom: 0;
-        right: 0;
-    }
-    &.sq{
-        border-radius: $border-radius;
-        img{
-            border-radius: $border-radius;
-        }
-        .status{
-            bottom: -6px;
-            right: -6px;
-        }
-    }
 }
-
-// Multiple Avatar
-.user-avatar-multiple{
-    background-color: transparent !important;
-    .user-avatar{
-        position: absolute;
-        height: 70%;
-        width: 70%;
-        font-size: 80%;
-        border: 2px solid $white;
-        &:nth-child(1){
-            top: 0;
-            right: 0;
-        }
-        &:nth-child(2){
-            bottom: 0;
-            left: 0;
-        }
-    }
-}
-
 .user-card .user-avatar.d-none{
     margin-right: 1rem;
     + .user-info, + .user-name{
@@ -103,48 +37,28 @@
         width: 110px;
         font-size: 40px;
         font-weight: 400;
-        .status{
-            bottom: 9px;
-            right: 9px;
-        }
     }
     &-lg, &.lg {
         height: 80px;
         width: 80px;
         font-size: 28px;
         font-weight: 400;
-        .status{
-            bottom: 5px;
-            right: 5px;
-        }
     }
     &-md, &.md {
         height: 60px;
         width: 60px;
         font-size: 18px;
-        .status{
-            bottom: 2px;
-            right: 2px;
-        }
     }
     &-sm, &.sm{
         height: 32px;
         width: 32px;
         font-size: 12px;
-        .status{
-            bottom: -2px;
-            right: -2px;
-        }
     }
     &-xs, &.xs{
-        height: 26px;
-        width: 26px;
+        height: 24px;
+        width: 24px;
         font-size: 9px;
         font-weight: $fw-bold;
-        .status{
-            bottom: -2px;
-            right: -2px;
-        }
     }
 }
 // Colors Fix
@@ -175,7 +89,6 @@ $avatar-adj-colors: (
     }
 }
 
-
 // User Card
 //////////////////////////
 .user{
@@ -189,6 +102,8 @@ $avatar-adj-colors: (
         .user-info {
             color: $base-light;
         }
+        
+        //@i-v1.1
         &-menu{
             position: absolute;
             right: 1rem;
@@ -218,6 +133,7 @@ $avatar-adj-colors: (
         font-size: 12px;
         line-height: 16px;
         font-weight: $fw-bold;
+        //@i-v120
         @if($dark_option==true) {
             .is-dark &{
                 color: lighten($base-light, 5%);
@@ -332,24 +248,10 @@ $avatar-adj-colors: (
         margin:0 auto;
     }
     .user-info{
-        margin: 1.25rem 0 0 !important;
-        .sub-text{
-            justify-content: center;
-        }
+        margin: 1.25rem 0 0;
         .badge{
             margin-bottom: 1rem;
         }
-    }
-}
-
-// user card md @i v150
-///////////////////////
-.user-card-md{
-    .lead-text{
-        font-size: 1rem;
-    }
-    .sub-text{
-        font-size: 0.875rem;
     }
 }
 
@@ -393,7 +295,7 @@ $avatar-adj-colors: (
     }
 }
 
-// User Contact
+// User Contact @v1.1
 ///////////////////////
 .user-contacts{
     li{
@@ -409,75 +311,5 @@ $avatar-adj-colors: (
             line-height: inherit;
             display: inline-block;
         }
-    }
-}
-
-// User Avatar Group
-///////////////////////
-.user-avatar-group{
-    display: flex;
-    .user-avatar{
-        border:2px solid $white;
-        &:not(:first-child){
-            margin-left: -20%;
-        }
-        &.sm:not(:first-child) {
-            margin-left: -1rem;
-        }
-        &.xs:not(:first-child) {
-            margin-left: -0.5rem;
-        }
-    }
-}
-// User info extend
-///////////////////////
-.user-info{
-    .lead-text,.sub-text{
-        display: flex;
-        align-items: center;
-    }
-    .edit{
-        font-size: 1.25rem;
-        color: $base-light;
-        margin-left: 0.5rem;
-        display: inline-flex;
-        &:hover{
-            color: $accent-color;
-        }
-    }
-}
-
-// User Plan
-///////////////////////
-.user-plan{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding: .75rem 0;
-    &-title{
-        display: flex;
-        align-items: center;
-        color: $base-color;
-        font-weight: $fw-bold;
-        font-size: 1rem;
-        .icon{
-            font-size: 1.5rem;
-            margin-right: 0.75rem;
-            color: $accent-color;
-        }
-    }
-    &-info, &-actions {
-        padding: 0.5rem 0;
-    }
-    &-status{
-        font-size: $fx-sz-13;
-        font-weight: $fw-medium;
-        color: $base-light;
-        text-transform: uppercase;
-        margin-top: 0.5rem;
-    }
-    &-progress{
-        width: 100%;
-        margin-top: 1rem;
     }
 }

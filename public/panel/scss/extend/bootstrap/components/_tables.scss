@@ -1,27 +1,10 @@
 .table {
-    &-striped tbody tr:nth-of-type(odd) {
-        background-color: $lighter;
-    }
-    > :not(caption) > * > *{
-        border-top: 1px solid $table-border-color;
-        border-bottom: 0;
-    }
-    &-hover tbody tr:hover {
-        color: $secondary-light;
-        background-color: $lighter;
-    }
-    &-head{
-        background: $lighter;
-    }
-    > :not(:first-child) {
-        border-top: none; 
-    }
     thead tr:last-child{
         th{
             border-bottom: $table-border-width solid $table-border-color;
         }
     }
-    &-dark thead tr:last-child th, thead.table-dark tr:last-child th {
+    &-dark thead tr:last-child th, thead.thead-dark tr:last-child th {
         border-color: $table-dark-border-color;
     }
     td,th{
@@ -85,19 +68,4 @@
             }
         }
     }
-}
-
-.table-borderless th, .table-borderless td, .table-borderless thead th, .table-borderless tbody + tbody {
-    border: 0;
-}
-.table > :not(caption) > * > *{
-    box-shadow: none;
-}
-.table-sm th, .table-sm td{
-    padding: 0.25rem;
-}
-.table .table-light th {
-    color: $base-color !important;
-    background-color: $lighter;
-    border: $light-300;
 }

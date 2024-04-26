@@ -26,10 +26,3 @@
         color: $base-light;
     }
 }
-
-.nk-chat-list, .chat-list {
-    .dropdown-menu &{
-        max-height: 274px;
-        overflow: auto;
-    }
-}

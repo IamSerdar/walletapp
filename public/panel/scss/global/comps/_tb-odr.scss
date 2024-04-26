@@ -55,7 +55,7 @@
     }
     &-btns {
     	.btn + .btn {
-            margin-left: .5rem;
+    		margin-left: .5rem;
     	}
     }
     &-id {
@@ -77,6 +77,7 @@
 @media (max-width: 767px){
     .tb-odr {
         &-item {
+            display: flex;
             th, td {
                 flex-grow: 1;
             }
@@ -101,7 +102,7 @@
             width: 2rem;
             min-width: auto;
             .tb-odr-item & {
-                padding-left: .5rem;
+            	padding-left: .5rem;
             }
         }
     }
@@ -125,7 +126,7 @@
         }
         &-btns {
 	    	& + .dropdown, & + .btn {
-                margin-left: .75rem;
+	    		margin-left: .75rem;
 	    	}
 	    }
     }

@@ -1,4 +1,4 @@
-$fixed-widths:40px, 80px, 90px, 100px, 110px, 120px, 125px, 130px, 140px, 150px, 175px, 200px, 220px, 225px, 250px, 300px, 350px, 400px, 550px;
+$fixed-widths: 80px, 90px, 100px, 110px, 120px, 125px, 130px, 140px, 150px, 175px, 200px, 220px, 225px, 250px, 300px, 350px, 400px, 550px;
   
 @each $size in $fixed-widths {
   .w-#{$size} {
@@ -63,20 +63,5 @@ $wide-sizes:
 @media (min-width: 1200px) and (max-width: 1660px){
   .wide-fit {
     max-width: 1140px;
-  }
-}
-
-
-$fixed-heights: 100px, 150px, 175px, 200px, 225px, 250px, 275px, 300px, 325px, 350px, 375px, 400px, 425px, 450px, 475px, 500px;
-
-@each $size in $fixed-heights {
-  .h-#{$size} {
-    height: $size !important;
-  }
-  .h-min-#{$size} {
-    min-height: $size !important;
-  }
-  .h-max-#{$size} {
-    max-height: $size !important;
   }
 }

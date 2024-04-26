@@ -1,5 +1,7 @@
 // @conditiona -s-
 @if($gd_analytic==true) {
+
+//@i-v120 -s-
 //Device Status
 .device-status{
 	display: flex;
@@ -73,7 +75,7 @@
 		.amount{
 			font-size: 1.125rem;
             color:$base-color;
-			margin-left: 1.25rem;
+            margin-left: 1.25rem;
 			small{
 				font-size: $fx-sz-12;
 				color: $base-light;
@@ -82,7 +84,7 @@
 	}
 }
 
-@include media-breakpoint-down(sm){
+@include media-breakpoint-down(xs){
     .traffic-channel{
         &-ck{
             width: 100%;
@@ -113,7 +115,7 @@
             }
             .nk-tb-trend{
                 width: 100%;
-				padding-left: 1.25rem;
+                padding-left: 1.25rem;
             }
         }
     }
@@ -281,4 +283,6 @@
 		}
 	}
 }
+
+//@i v120 -e-
 } // @condition -e-
