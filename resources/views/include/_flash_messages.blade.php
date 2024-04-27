@@ -5,7 +5,7 @@
             <div class="alert-body">
                 {!! $message !!}
             </div>
-            <button class="btn-close" type="button" data-dismiss="alert" aria-label="Close"></button>
+            {{-- <button class="btn-close" type="button" data-dismiss="alert" aria-label="Close"></button> --}}
         </div>
     @endif
 @endforeach

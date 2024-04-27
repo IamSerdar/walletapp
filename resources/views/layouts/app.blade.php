@@ -145,7 +145,7 @@
                                  srcset="{{ asset('panel/logo/logo.png')  }}" alt="logo" width="200px" >
                             <img class="logo-dark logo-img" src="{{ asset('panel/logo/logo.png')  }}"
                                  srcset="{{ asset('panel/logo/logo.png') }}" alt="logo-dark" width="200px" > --}}
-                                 <h3>Wallet App</h3>
+                                 <h3 style="color:#fff">Wallet App</h3>
                         </a>
                     </div>
                 </div><!-- .nk-sidebar-element -->
@@ -153,8 +153,8 @@
                     <div class="nk-sidebar-content">
                         <div class="nk-sidebar-menu" data-simplebar>
                             <ul class="nk-menu">
-                                <li class="nk-menu-item  {{ request()->is('manager') ? 'active' : '' }}">
-                                    <a href="{{ Route('users') }}" class="nk-menu-link">
+                                <li class="nk-menu-item  {{ request()->is('users') ? 'active' : '' }}">
+                                    <a href="{{ Route('users.') }}" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-users"></em></span>
                                         <span class="nk-menu-text">Users</span>
                                     </a>
@@ -201,7 +201,7 @@
                 </div>
                 <!-- main header @e -->
                 <div class="nk-content">
-                    {{-- @include('include._flash_messages') --}}
+                    @include('include._flash_messages')
                     @yield('content')
                 </div>
                 <!-- footer @s -->

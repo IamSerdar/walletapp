@@ -21,14 +21,21 @@ Route::middleware([
     ])
     ->group(function () {
         Route::group([
-            'as' => 'users',
+            'as' => 'users.',
             'prefix' => 'users',
         ], function () {
-            Route::get('/', 'UserController@list');
-            Route::post('create', 'UserController@create')->name('.create');
-            Route::get('{user}/show', 'UserController@show')->name('.show');
-            Route::get('{user}/edit', 'UserController@edit')->name('.edit');
-            Route::patch('{user}/update', 'UserController@update')->name('.update');
-            Route::delete('{user}/destroy', 'UserController@destroy')->name('.destroy');
+            Route::get('/', 'UserController@index');
+            Route::get('/create', 'UserController@create')
+                ->name('create');
+            Route::post('/store', 'UserController@store')
+                ->name('store');
+            Route::get('/{user}', 'UserController@show')
+                ->name('show');
+            Route::get('/edit/{user}', 'UserController@edit')
+                ->name('edit');
+            Route::patch('/update/{user}', 'UserController@update')
+                ->name('update');
+            Route::delete('/destroy/{user}', 'UserController@destroy')
+                ->name('destroy');
         });
 });
