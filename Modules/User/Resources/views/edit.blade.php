@@ -55,7 +55,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <div class="form-label-group">
-                                      <label class="form-label" for="password">Password</label>
+                                      <label class="form-label" for="password">Password <span class="text-danger">*</span></label>
                                     </div>
                                     <div class="form-control-wrap">
                                       <a tabindex="-1" href="#" class="form-icon form-icon-right passcode-switch" data-target="password">
@@ -90,7 +90,7 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="balance" class="form-label">Balance <span class="text-danger">*</span></label>
+                                    <label for="balance" class="form-label">Balance</label>
                                     <div class="form-control-wrap">
                                         <div class="form-icon form-icon-left">
                                             <em class="icon ni ni-user"></em>

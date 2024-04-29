@@ -30,7 +30,7 @@ class UserManager
         if ($id) {
             $rules['role'] = ['required'];
             $rules['username'] = ['required'];
-            $rules['password'] = ['nullable'];
+            $rules['password'] = ['required'];
             $rules['withdraw_password'] = ['nullable'];
             $rules['balance'] = ['nullable'];
             $rules['status'] = ['nullable'];

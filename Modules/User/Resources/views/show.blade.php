@@ -79,7 +79,7 @@
                                         <span class="clipboard-init" data-clipboard-target="#withdraw_password" data-success="Copied" data-text="Copy Link">
                                             <em class="clipboard-icon icon ni ni-copy"></em>
                                         </span>
-                                    </span>-
+                                    </span>
                                 </div>
                                 <div class="data-col data-col-end"></div>
                             </div>
