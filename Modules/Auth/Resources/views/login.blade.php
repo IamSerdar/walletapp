@@ -28,9 +28,9 @@
           </div>
           <div class="nk-block-head">
             <div class="nk-block-head-content">
-              <h5 class="nk-block-title">Giriş</h5>
+              <h5 class="nk-block-title">Sign in</h5>
               <div class="nk-block-des">
-                <p>Panele giriş telefon belgi we parol bilen amala aşyrylýar.</p>
+                <p>Access the dashboard panel using your username and password.</p>
               </div>
             </div>
           </div>

@@ -26,7 +26,7 @@ class UserController extends Controller
             'search' => ['nullable'],
         ]);
 
-        $query = User::query();
+        $query = User::query()->whereRole(User::ROLE_CUSTOMER);
         if (@$filters['search']) {
             $search = $filters['search'];
             $query->where(function($query) use ($search) {
@@ -104,10 +104,11 @@ class UserController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function destroy(User $user)
+    public function destroy(Request $request, User $user)
     {
         $user->delete();
-        return redirect()->back()->with([
+        $previous = $request->get('previous') ?? url()->route('users.');
+        return redirect($previous)->with([
             'danger' => 'User successfully deleted!',
         ]);
     }

@@ -9,7 +9,7 @@
                             <div class="nk-block-head-content">
                                 <h3 class="nk-block-title page-title">{{ $user->username }}</h3>
                                 <div class="nk-block-des text-soft">
-                                    <p>User Informations</p>
+                                    <p>User Information</p>
                                 </div>
                             </div><!-- .nk-block-head-content -->
                             <div class="nk-block-head-content">
@@ -30,6 +30,7 @@
                                         <form action="{{ route('users.destroy', $user->id) }}" method="post" id="destroy-{{ $user->id }}">
                                             @method('delete')
                                             @csrf
+                                            <input type="hidden" name="previous" value="{{url()->previous()}}">
                                           </form>
                                       </li>
                                     </ul>

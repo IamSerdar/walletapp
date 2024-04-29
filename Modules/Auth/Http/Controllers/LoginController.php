@@ -39,7 +39,7 @@ class LoginController extends Controller
 
         if(!$user):
             return redirect()->to('login')
-            ->with('error', 'Bagyşlaň! Siz nädogry maglumat girizdiňiz.');
+            ->with('error', 'Sorry! You have entered incorrect information.');
         endif;
 
         // $credentials = $request->getCredentials();

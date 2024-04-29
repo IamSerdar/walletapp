@@ -9,6 +9,7 @@
                             <div class="nk-block-head-content">
                                 <h3 class="nk-block-title page-title">{{ $user->username }}</h3>
                                 <div class="nk-block-des text-soft">
+                                    Edit User Information
                                 </div>
                             </div><!-- .nk-block-head-content -->
                         </div><!-- .nk-block-between -->
