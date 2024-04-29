@@ -34,6 +34,12 @@
               </div>
             </div>
           </div>
+          @if (session()->has('error'))
+            <div class="alert alert-fill alert-icon alert-danger" role="alert">
+                <em class="icon ni ni-alert-circle"></em>
+                {{ session()->get('error') }}
+            </div>
+          @endif
           <form action="{{ route('login') }}" method="POST">
                 @csrf
                 <div class="form-group">

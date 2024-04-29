@@ -16,7 +16,6 @@
 
                     <form action="{{ route('users.store') }}" class="form-contact needs-validation" method="POST" enctype="multipart/form-data" novalidate>
                         @csrf
-                        <input type="hidden" name="previous" value="{{url()->previous()}}">
                         <div class="row g-4">
                             <div class="col-md-4">
                                 <div class="form-group">
@@ -33,7 +32,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            {{-- <div class="col-md-4">
                                 <div class="form-group">
                                   <label class="form-label" for="role"><span>Role <span class="text-danger">*</span></span></label>
                                   <div class="form-control-wrap">
@@ -50,7 +49,7 @@
                                     @endif
                                   </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <div class="form-label-group">

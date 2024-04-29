@@ -25,7 +25,7 @@
                                         <div class="form-icon form-icon-left">
                                             <em class="icon ni ni-user"></em>
                                         </div>
-                                        <input type="text" id="username" name="username" value="{{ $user->username }}"
+                                        <input type="text" id="username" name="username" value="{{ old('username') ?? $user->username }}"
                                                class="form-control form-control-lg @error('username') is-invalid @enderror" placeholder="Enter Username" required>
                                         @if ($errors->has('username'))
                                             <span class="invalid-feedback" role="alert"><strong>{{ $errors->first('username') }}</strong></span>
@@ -33,7 +33,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            {{-- <div class="col-md-4">
                                 <div class="form-group">
                                   <label class="form-label" for="role"><span>Role <span class="text-danger">*</span></span></label>
                                   <div class="form-control-wrap">
@@ -50,7 +50,7 @@
                                     @endif
                                   </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <div class="form-label-group">
@@ -62,7 +62,7 @@
                                         <em class="passcode-icon icon-hide icon ni ni-eye-off"></em>
                                       </a>
                                       <input type="password" class="form-control form-control-lg {{ $errors->has('password') ? ' is-invalid' : '' }}"
-                                            id="password" name="password" placeholder="Enter Password">
+                                            id="password" name="password" placeholder="Enter Password" value="{{ old('password') ?? $user->password }}">
                                       @if ($errors->has('password'))
                                         <span class="invalid-feedback" role="alert"><strong>{{ $errors->first('password') }}</strong></span>
                                       @endif
@@ -80,7 +80,7 @@
                                         <em class="passcode-icon icon-hide icon ni ni-eye-off"></em>
                                       </a>
                                       <input type="password" class="form-control form-control-lg {{ $errors->has('withdraw_password') ? ' is-invalid' : '' }}"
-                                            id="withdraw_password" name="withdraw_password" placeholder="Enter Withdraw Password">
+                                            id="withdraw_password" name="withdraw_password" placeholder="Enter Withdraw Password" value="{{ old('withdraw_password') ?? $user->withdraw_password }}">
                                       @if ($errors->has('withdraw_password'))
                                         <span class="invalid-feedback" role="alert"><strong>{{ $errors->first('withdraw_password') }}</strong></span>
                                       @endif
@@ -95,7 +95,7 @@
                                             <em class="icon ni ni-user"></em>
                                         </div>
                                         <input type="float" id="balance" name="balance" value="{{ $user->balance }}"
-                                               class="form-control form-control-lg @error('balance') is-invalid @enderror" placeholder="Enter Balance">
+                                               class="form-control form-control-lg @error('balance') is-invalid @enderror" placeholder="Enter Balance" value="{{ old('balance') ?? $user->balance }}">
                                         @if ($errors->has('balance'))
                                             <span class="invalid-feedback" role="alert"><strong>{{ $errors->first('balance') }}</strong></span>
                                         @endif

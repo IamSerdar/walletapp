@@ -61,8 +61,11 @@
                             <div class="data-item">
                                 <div class="data-col">
                                     <span class="data-label">Password</span>
-                                    <span class="data-value">
-                                        {{ $user->password }} <br>
+                                    <span class="data-value" id="copy_password">
+                                        {{ $user->password }}
+                                        <span class="clipboard-init" data-clipboard-target="#copy_password" data-success="Copied" data-text="Copy Link">
+                                            <em class="clipboard-icon icon ni ni-copy"></em>
+                                        </span>
                                     </span>
                                 </div>
                                 <div class="data-col data-col-end"></div>
@@ -70,9 +73,12 @@
                             <div class="data-item">
                                 <div class="data-col">
                                     <span class="data-label">Withdraw Password</span>
-                                    <span class="data-value">
-                                        {{ $user->withdraw_password }} <br>
-                                    </span>
+                                    <span class="data-value" id="withdraw_password">
+                                        {{ $user->withdraw_password }}
+                                        <span class="clipboard-init" data-clipboard-target="#withdraw_password" data-success="Copied" data-text="Copy Link">
+                                            <em class="clipboard-icon icon ni ni-copy"></em>
+                                        </span>
+                                    </span>-
                                 </div>
                                 <div class="data-col data-col-end"></div>
                             </div>

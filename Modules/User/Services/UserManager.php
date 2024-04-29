@@ -46,6 +46,7 @@ class UserManager
         }else{
             $data['status'] = false;
         }
+        $data['role'] = User::ROLE_CUSTOMER;
         $this->validate($data);
         $model = User::create($data);
         return $model;
@@ -58,6 +59,7 @@ class UserManager
         }else{
             $data['status'] = false;
         }
+        $data['role'] = User::ROLE_CUSTOMER;
         $this->validate($data, $model->id);
         $model->update($data);
         return $model;

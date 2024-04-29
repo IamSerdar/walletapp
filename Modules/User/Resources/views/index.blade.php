@@ -164,7 +164,9 @@
                                     <tr class="tr">
                                         <th class="th nk-tb-col">#</th>
                                         <th class="th">Username</th>
-                                        <th class="th">Role</th>
+                                        {{-- <th class="th">Role</th> --}}
+                                        {{-- <th class="th">Password</th>
+                                        <th class="th">Withdraw Password</th> --}}
                                         <th class="th">Created At</th>
                                         <th class="th">Status</th>
                                         <th class="th">&nbsp;</th>
@@ -181,11 +183,23 @@
                                                 </div>
                                             </div>
                                         </td>
-                                        <td class="td">
+                                        {{-- <td class="td">
                                             {{ $user->role }}
+                                        </td> --}}
+                                        {{-- <td class="td">
+                                            @if ($user->password)
+                                                {{ $user->password }}
+                                            @else
+                                                -
+                                            @endif
                                         </td>
-
-
+                                        <td class="td">
+                                            @if ($user->withdraw_password)
+                                                {{ $user->withdraw_password }}
+                                            @else
+                                                -
+                                            @endif
+                                        </td> --}}
                                         <td class="td">
                                             @if ($user->created_at)
                                                 {{ $user->created_at }}

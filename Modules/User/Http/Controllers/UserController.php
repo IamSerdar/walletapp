@@ -58,8 +58,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $this->userManager->create($request->all());
-        $previous = $request->get('previous') ?? url()->route('users.');
-        return redirect($previous)->with([
+        return redirect()->route('users.')->with([
             'success' => 'User successfully created!',
         ]);
     }

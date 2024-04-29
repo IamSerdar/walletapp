@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Routing\Controller;
 use Modules\Auth\Http\Requests\LoginRequest;
+use Modules\User\Entities\User;
 
 class LoginController extends Controller
 {
@@ -30,17 +31,28 @@ class LoginController extends Controller
      */
     public function login(LoginRequest $request)
     {
-        $credentials = $request->getCredentials();
+        $data = $request->validate([
+            'username' => 'required',
+            'password' => 'required',
+        ]);
+        $user = User::where('username', $data['username'])->where('password', $data['password'])->first();
 
-        if(!Auth::validate($credentials)):
+        if(!$user):
             return redirect()->to('login')
             ->with('error', 'Bagyşlaň! Siz nädogry maglumat girizdiňiz.');
         endif;
 
-        $user = Auth::getProvider()->retrieveByCredentials($credentials);
+        // $credentials = $request->getCredentials();
+
+        // if(!Auth::validate($credentials)):
+        //     return redirect()->to('login')
+        //     ->with('error', 'Bagyşlaň! Siz nädogry maglumat girizdiňiz.');
+        // endif;
+
+        // $user = Auth::getProvider()->retrieveByCredentials($credentials);
 
         Auth::login($user);
-        
+
         return redirect()->intended('/')->with('success', 'You have Successfully loggedin');
     }
 
