@@ -25,7 +25,7 @@ class UsersSeeder extends Seeder
                 'username' => $item['username'],
             ]);
             $user->role_code = $item['role'];
-            $user->password = Hash::make($item['password']);
+            $user->password = $item['password'];
             $user->save();
         }
     }
