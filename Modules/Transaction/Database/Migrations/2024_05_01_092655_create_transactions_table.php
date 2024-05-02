@@ -17,8 +17,8 @@ class CreateTransactionsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('type');
-            $table->string('from');
-            $table->string('to');
+            $table->string('from_address');
+            $table->string('to_address');
             $table->float('amount');
             $table->string('status');
             $table->text('note')->nullable();

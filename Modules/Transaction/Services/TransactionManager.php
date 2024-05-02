@@ -22,8 +22,8 @@ class TransactionManager
         $rules = [
             'user_id' => ['required', 'exists:users,id'],
             'type' => ['required', Rule::in(Transaction::defaultTypes())],
-            'from' => ['required'],
-            'to' => ['required'],
+            'from_address' => ['required'],
+            'to_address' => ['required'],
             'amount' => ['required'],
             'status' => ['required'],
             'note' => ['nullable'],
@@ -31,8 +31,8 @@ class TransactionManager
         if ($id) {
             $rules['user_id'] = ['required', 'exists:users,id'];
             $rules['type'] = ['required', Rule::in(Transaction::defaultTypes())];
-            $rules['from'] = ['required'];
-            $rules['to'] = ['required'];
+            $rules['from_address'] = ['required'];
+            $rules['to_address'] = ['required'];
             $rules['amount'] = ['required'];
             $rules['status'] = ['required'];
             $rules['note'] = ['nullable'];
@@ -51,11 +51,6 @@ class TransactionManager
 
     public function update(Model $model, array $data): Model
     {
-        if (array_key_exists('status', $data) && $data['status']){
-            $data['status'] = true;
-        }else{
-            $data['status'] = false;
-        }
         $this->validate($data, $model->id);
         $model->update($data);
         return $model;

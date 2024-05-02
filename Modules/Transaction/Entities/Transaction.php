@@ -10,7 +10,7 @@ class Transaction extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id','type','from','to','amount','status','note'];
+    protected $fillable = ['user_id','type','from_address','to_address','amount','status','note'];
 
     const TYPE_INCOME = 'income';
     const TYPE_WITHDRAW = 'withdraw';

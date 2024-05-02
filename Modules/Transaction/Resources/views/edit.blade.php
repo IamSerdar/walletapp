@@ -41,7 +41,7 @@
                                 <div class="form-group">
                                     <label for="from" class="form-label">From <span class="text-danger">*</span></label>
                                     <div class="form-control-wrap">
-                                        <input type="text" id="from" name="from" value="{{ old('from') ?? $transaction->from }}"
+                                        <input type="text" id="from" name="from_address" value="{{ old('from') ?? $transaction->from_address }}"
                                                class="form-control form-control-lg @error('from') is-invalid @enderror" placeholder="Enter From" required>
                                         @if ($errors->has('from'))
                                             <span class="invalid-feedback" role="alert"><strong>{{ $errors->first('from') }}</strong></span>
@@ -53,7 +53,7 @@
                                 <div class="form-group">
                                     <label for="to" class="form-label">To <span class="text-danger">*</span></label>
                                     <div class="form-control-wrap">
-                                        <input type="text" id="to" name="to" value="{{ old('from') ?? $transaction->to }}"
+                                        <input type="text" id="to" name="to_address" value="{{ old('from') ?? $transaction->to_address }}"
                                                class="form-control form-control-lg @error('to') is-invalid @enderror" placeholder="Enter To" required>
                                         @if ($errors->has('to'))
                                             <span class="invalid-feedback" role="alert"><strong>{{ $errors->first('to') }}</strong></span>
@@ -89,6 +89,24 @@
                                             <span class="invalid-feedback" role="alert"><strong>{{ $errors->first('amount') }}</strong></span>
                                         @endif
                                     </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                  <label class="form-label" for="status"><span>Status <span class="text-danger">*</span></span></label>
+                                  <div class="form-control-wrap">
+                                    <select class="form-select @error('status') is-invalid @enderror" id="status" name="status" data-ui="lg" >
+                                      <option disabled hidden selected></option>
+                                      @foreach ($statuses as $status)
+                                        <option value="{{ $status }}" {{ $status == $transaction->status ? 'selected' : ''}} >{{ $status }}</option>
+                                      @endforeach
+                                    </select>
+                                    @if ($errors->has('status'))
+                                      <span class="invalid-feedback" role="alert"><strong>{{ $errors->first('status') }}</strong></span>
+                                    @else
+                                      <span class="invalid-feedback" role="alert"><strong>@lang('main.field_required')</strong></span>
+                                    @endif
+                                  </div>
                                 </div>
                             </div>
                             <div class="col-md-12 mt-4">

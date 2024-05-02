@@ -39,7 +39,7 @@
                                 <div class="form-group">
                                     <label for="from" class="form-label">From <span class="text-danger">*</span></label>
                                     <div class="form-control-wrap">
-                                        <input type="text" id="from" name="from" value="{{ old('from') }}"
+                                        <input type="text" id="from" name="from_address" value="{{ old('from') }}"
                                                class="form-control form-control-lg @error('from') is-invalid @enderror" placeholder="Enter From" required>
                                         @if ($errors->has('from'))
                                             <span class="invalid-feedback" role="alert"><strong>{{ $errors->first('from') }}</strong></span>
@@ -51,7 +51,7 @@
                                 <div class="form-group">
                                     <label for="to" class="form-label">To <span class="text-danger">*</span></label>
                                     <div class="form-control-wrap">
-                                        <input type="text" id="to" name="to" value="{{ old('to') }}"
+                                        <input type="text" id="to" name="to_address" value="{{ old('to') }}"
                                                class="form-control form-control-lg @error('to') is-invalid @enderror" placeholder="Enter To" required>
                                         @if ($errors->has('to'))
                                             <span class="invalid-feedback" role="alert"><strong>{{ $errors->first('to') }}</strong></span>

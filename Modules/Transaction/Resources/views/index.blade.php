@@ -243,7 +243,7 @@
                                         <td class="td">
                                             <div class="data-col">
                                                 <span class="data-value" style="display: unset; transition: color .3s; width: 200px;" id="from{{$transaction->id}}">
-                                                    {{ $transaction->from }}
+                                                    {{ $transaction->from_address }}
                                                     <span class="clipboard-init" data-clipboard-target="#from{{$transaction->id}}" data-success="Copied" data-text="Copy Link">
                                                         <em class="clipboard-icon icon ni ni-copy"></em>
                                                     </span>
@@ -253,7 +253,7 @@
                                         <td class="td">
                                             <div class="data-col">
                                                 <span class="data-value" style="display: unset; transition: color .3s; width: 200px;" id="to{{$transaction->id}}">
-                                                    {{ $transaction->to }}
+                                                    {{ $transaction->to_address }}
                                                     <span class="clipboard-init" data-clipboard-target="#to{{$transaction->id}}" data-success="Copied" data-text="Copy Link">
                                                         <em class="clipboard-icon icon ni ni-copy"></em>
                                                     </span>

@@ -36,7 +36,8 @@ class TransactionController extends Controller
             $search = $filters['search'];
             $query->where(function($query) use ($search) {
                 $query
-                // ->whereRaw('LOWER(to) LIKE ? ',['%'.trim(strtolower($search)).'%'])
+                ->whereRaw('LOWER(from_address) LIKE ? ',['%'.trim(strtolower($search)).'%'])
+                ->orwhereRaw('LOWER(to_address) LIKE ? ',['%'.trim(strtolower($search)).'%'])
                 ->orWhereHas('user', function ($q) use ($search){
                     $q->whereRaw('LOWER(username) LIKE ? ',['%'.trim(strtolower($search)).'%']);
                 });
@@ -98,8 +99,9 @@ class TransactionController extends Controller
     public function edit(Transaction $transaction)
     {
         $types = Transaction::defaultTypes();
+        $statuses = Transaction::defaultStatus();
         $users = User::query()->whereRole(User::ROLE_CUSTOMER)->get();
-        return view('transaction::edit', compact('transaction', 'types', 'users'));
+        return view('transaction::edit', compact('transaction', 'statuses', 'types', 'users'));
     }
 
     /**
