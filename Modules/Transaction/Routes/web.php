@@ -15,26 +15,26 @@ use Modules\User\Entities\User;
 */
 
 Route::middleware([
-    'auth:web',
-    'is_role:'.User::ROLE_ADMIN
+        'auth:web',
+        'is_role:'.User::ROLE_ADMIN
     ])
     ->group(function () {
         Route::group([
-            'as' => 'users.',
-            'prefix' => 'users',
+            'as' => 'transactions.',
+            'prefix' => 'transactions',
         ], function () {
-            Route::get('/', 'UserController@index');
-            Route::get('/create', 'UserController@create')
+            Route::get('/', 'TransactionController@index');
+            Route::get('/create', 'TransactionController@create')
                 ->name('create');
-            Route::post('/store', 'UserController@store')
+            Route::post('/store', 'TransactionController@store')
                 ->name('store');
-            Route::get('/{user}', 'UserController@show')
-                ->name('show');
-            Route::get('/edit/{user}', 'UserController@edit')
+            Route::post('/change-status', 'TransactionController@changeStatus')
+                ->name('change-status');
+            Route::get('/edit/{transaction}', 'TransactionController@edit')
                 ->name('edit');
-            Route::patch('/update/{user}', 'UserController@update')
+            Route::patch('/update/{transaction}', 'TransactionController@update')
                 ->name('update');
-            Route::delete('/destroy/{user}', 'UserController@destroy')
+            Route::delete('/destroy/{transaction}', 'TransactionController@destroy')
                 ->name('destroy');
         });
 });

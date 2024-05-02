@@ -18,121 +18,6 @@
 </head>
 
 <body class="nk-body bg-lighter npc-general has-sidebar">
-    {{-- <div class="nk-app-root">
-        <!-- main @s -->
-        <div class="nk-main ">
-            <!-- wrap @s -->
-            <div class="nk-wrap ">
-                <div class="nk-header nk-header-fixed is-light">
-                    <div class="container-lg wide-xl">
-                        <div class="nk-header-wrap">
-                            <div class="nk-header-brand">
-                                <a href="/" class="logo-link">
-                                    <h3>Wallet App</h3>
-
-                                </a>
-                            </div><!-- .nk-header-brand -->
-                            <div class="nk-header-tools">
-                                <ul class="nk-quick-nav">
-                                    <li class="dropdown user-dropdown">
-                                        <a href="#" class="dropdown-toggle me-lg-n1" data-bs-toggle="dropdown">
-                                            <div class="user-toggle">
-                                                <div class="user-avatar sm">
-                                                    <em class="icon ni ni-user-alt"></em>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-md dropdown-menu-end dropdown-menu-s1">
-                                            <div class="dropdown-inner user-card-wrap bg-lighter d-none d-md-block">
-                                                <div class="user-card">
-                                                    <div class="user-avatar">
-                                                        <span><em class="icon ni ni-user-alt"></em></span>
-                                                    </div>
-                                                    <div class="user-info">
-                                                        <span class="lead-text">{{ auth()->user()->username }}</span>
-                                                    </div>
-                                                    <div class="user-action">
-                                                        <a class="btn btn-icon me-n2" href="{{ route('profile') }}"><em class="icon ni ni-setting"></em></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="dropdown-inner">
-                                                <ul class="link-list">
-                                                    <li><a href="{{ route('profile') }}"><em class="icon ni ni-user-alt"></em><span>@lang('main.my_profile')</span></a></li>
-                                                    <li><a href="{{ route('profile') }}"><em class="icon ni ni-setting-alt"></em><span>@lang('main.profile_settings')</span></a></li>
-                                                    <li><a class="dark-switch" href="#"><em class="icon ni ni-moon"></em><span>Dark Mode</span></a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="dropdown-inner">
-                                                <ul class="link-list">
-                                                    <li>
-                                                        <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                                            <em class="icon ni ni-signout"></em><span>@lang('main.log_out')</span>
-                                                        </a>
-                                                        <form id="logout-form" class="d-none"
-                                                            action="{{ route('logout') }}" method="POST">@csrf
-                                                        </form>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li><!-- .dropdown -->
-                                    <li class="d-lg-none">
-                                        <a href="#" class="toggle nk-quick-nav-icon me-n1" data-target="sideNav"><em class="icon ni ni-menu"></em></a>
-                                    </li>
-                                </ul><!-- .nk-quick-nav -->
-                            </div><!-- .nk-header-tools -->
-                        </div><!-- .nk-header-wrap -->
-                    </div><!-- .container-fliud -->
-                </div>
-                <!-- main header @e -->
-                <!-- content @s -->
-
-                <div class="nk-content ">
-                    <div class="container wide-xl">
-                        <div class="nk-content-inner">
-                            <div class="nk-aside" data-content="sideNav" data-toggle-overlay="true" data-toggle-screen="lg" data-toggle-body="true">
-                                <div class="nk-sidebar-menu " data-simplebar>
-                                    <ul class="nk-menu">
-                                            <li class="nk-menu-heading">
-                                                <h6 class="overline-title text-primary-alt">ADMIN SECTION</h6>
-                                            </li><!-- .nk-menu-heading -->
-                                            <li class="nk-menu-item has-sub">
-                                                <a href="{{ route('users') }}" class="nk-menu-link">
-                                                    <span class="nk-menu-icon"><em class="icon ni ni-users"></em></span>
-                                                    <span class="nk-menu-text">Users</span>
-                                                </a>
-                                            </li><!-- .nk-menu-item -->
-                                    </ul><!-- .nk-menu -->
-                                </div><!-- .nk-sidebar-menu -->
-                                <div class="nk-aside-close">
-                                    <a href="#" class="toggle" data-target="sideNav"><em class="icon ni ni-cross"></em></a>
-                                </div><!-- .nk-aside-close -->
-                            </div><!-- .nk-aside -->
-
-                            <div class="nk-content-body">
-                                @include('include._flash_messages')
-                                @yield('content')
-                                <!-- footer @s -->
-                                <div class="nk-footer">
-                                    <div class="container wide-xl">
-                                        <div class="nk-footer-wrap g-2">
-                                            <div class="nk-footer-copyright"> &copy; 2023 <a href="#" target="_blank">Wallet</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- footer @e -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- content @e -->
-            </div>
-            <!-- wrap @e -->
-        </div>
-        <!-- main @e -->
-    </div> --}}
     <div class="nk-app-root">
         <!-- main  -->
         <div class="nk-main ">
@@ -159,7 +44,12 @@
                                         <span class="nk-menu-text">Users</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->
-
+                                <li class="nk-menu-item  {{ request()->is('transactions') ? 'active' : '' }}">
+                                    <a href="{{ Route('transactions.') }}" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-activity-round"></em></span>
+                                        <span class="nk-menu-text">Transactions</span>
+                                    </a>
+                                </li><!-- .nk-menu-item -->
                             </ul>
                         </div><!-- .nk-sidebar-menu -->
                     </div><!-- .nk-sidebar-content -->
