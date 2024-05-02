@@ -88,21 +88,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="balance" class="form-label">Balance</label>
-                                    <div class="form-control-wrap">
-                                        <div class="form-icon form-icon-left">
-                                            <em class="icon ni ni-user"></em>
-                                        </div>
-                                        <input type="float" id="balance" name="balance" value="{{ $user->balance }}"
-                                               class="form-control form-control-lg @error('balance') is-invalid @enderror" placeholder="Enter Balance" value="{{ old('balance') ?? $user->balance }}">
-                                        @if ($errors->has('balance'))
-                                            <span class="invalid-feedback" role="alert"><strong>{{ $errors->first('balance') }}</strong></span>
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
                             <div class="col-md-4 mt-5">
                                 <div class="sp-plan-opt clone-file ml-4">
                                     <div class="custom-control custom-switch">

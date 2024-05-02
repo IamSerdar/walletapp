@@ -86,18 +86,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="balance" class="form-label">Balance </label>
-                                    <div class="form-control-wrap">
-                                        <input type="number" id="balance" name="balance" value="{{ old('balance') }}"
-                                               class="form-control form-control-lg @error('balance') is-invalid @enderror" placeholder="Enter Balance" required>
-                                        @if ($errors->has('balance'))
-                                            <span class="invalid-feedback" role="alert"><strong>{{ $errors->first('balance') }}</strong></span>
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
                             <div class="col-md-4 mt-5">
                                 <div class="sp-plan-opt clone-file ml-4">
                                   <div class="custom-control custom-switch">

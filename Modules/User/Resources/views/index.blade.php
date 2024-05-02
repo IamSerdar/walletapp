@@ -227,7 +227,7 @@
                                                     </a>
                                                 </li>
                                                 <li class="nk-tb-action">
-                                                    <a href="#" onclick="if (confirm('Pozmak isleýanizmi?')) { document.getElementById('destroy-{{ $user->id }}').submit(); }"
+                                                    <a href="#" onclick="if (confirm('Do you want remove?')) { document.getElementById('destroy-{{ $user->id }}').submit(); }"
                                                         class="btn btn-trigger btn-icon" data-toggle="tooltip" data-placement="top" title="Delete">
                                                         <em class="icon ni ni-trash"></em>
                                                     </a>

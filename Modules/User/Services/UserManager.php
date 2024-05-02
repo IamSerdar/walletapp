@@ -24,7 +24,6 @@ class UserManager
             'username' => ['required'],
             'password' => ['required'],
             'withdraw_password' => ['nullable'],
-            'balance' => ['nullable'],
             'status' => ['nullable'],
         ];
         if ($id) {
@@ -32,7 +31,6 @@ class UserManager
             $rules['username'] = ['required'];
             $rules['password'] = ['required'];
             $rules['withdraw_password'] = ['nullable'];
-            $rules['balance'] = ['nullable'];
             $rules['status'] = ['nullable'];
         }
 

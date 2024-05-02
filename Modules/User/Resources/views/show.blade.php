@@ -85,15 +85,6 @@
                             </div>
                             <div class="data-item">
                                 <div class="data-col">
-                                    <span class="data-label">Balance</span>
-                                    <span class="data-value">
-                                        {{ $user->balance }} <br>
-                                    </span>
-                                </div>
-                                <div class="data-col data-col-end"></div>
-                            </div>
-                            <div class="data-item">
-                                <div class="data-col">
                                     <span class="data-label">Status</span>
                                     <span class="data-value">
                                         @if($user->status)
