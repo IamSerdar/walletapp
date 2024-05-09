@@ -1,0 +1,13 @@
+{
+    "name": "ServiceAccount",
+    "alias": "serviceaccount",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\ServiceAccount\\Providers\\ServiceAccountServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

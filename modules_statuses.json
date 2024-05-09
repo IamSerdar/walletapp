@@ -1,5 +1,7 @@
 {
     "User": true,
     "Auth": true,
-    "Transaction": true
+    "Transaction": true,
+    "ServiceAccount": true,
+    "ServicePayment": true
 }

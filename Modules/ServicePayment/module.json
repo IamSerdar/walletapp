@@ -1,0 +1,13 @@
+{
+    "name": "ServicePayment",
+    "alias": "servicepayment",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\ServicePayment\\Providers\\ServicePaymentServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

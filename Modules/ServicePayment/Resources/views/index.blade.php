@@ -59,42 +59,36 @@
         }
 
         .td:nth-of-type(3):before {
-            content: "Type";
-            color: black !important;
-            font-weight: 700
-        }
-
-        .td:nth-of-type(4):before {
             content: "From";
             color: black !important;
             font-weight: 700
         }
 
-        .td:nth-of-type(5):before {
+        .td:nth-of-type(4):before {
             content: "To";
             color: black !important;
             font-weight: 700
         }
 
-        .td:nth-of-type(6):before {
+        .td:nth-of-type(5):before {
             content: "Amount";
             color: black !important;
             font-weight: 700
         }
 
-        .td:nth-of-type(7):before {
+        .td:nth-of-type(6):before {
             content: "Status";
             color: black !important;
             font-weight: 700
         }
 
-        .td:nth-of-type(8):before {
+        .td:nth-of-type(7):before {
             content: "Created At";
             color: black !important;
             font-weight: 700
         }
 
-        .td:nth-of-type(9):before {
+        .td:nth-of-type(8):before {
             content: "";
             color: black !important;
             font-weight: 700
@@ -147,41 +141,29 @@
                         <div class="nk-block-between-md g-4">
                             <div class="nk-block-head-content">
                                 <div class="nk-block-head-content">
-                                    <h3 class="nk-block-title page-title">Transactions list</h3>
+                                    <h3 class="nk-block-title page-title">Service Payments list</h3>
                                     <div class="nk-block-des text-soft">
-                                        <p>There are {{ $count }} transactions</p>
+                                        <p>There are {{ $count }} service accounts</p>
                                     </div>
                                 </div><!-- .nk-block-head-content -->
                             </div>
                             <div class="nk-block-head-content">
                                 <ul class="nk-block-tools gx-3">
                                     <li>
-                                        <a href="{{ route('transactions.create') }}" class="btn btn-white btn-dim btn-outline-primary">
+                                        <a href="{{ route('servicePayments.create') }}" class="btn btn-white btn-dim btn-outline-primary">
                                             <em class="icon ni ni-plus"></em><span class="d-none d-sm-inline-block">Create New</span></a>
                                     </li>
                                 </ul>
                             </div>
                         </div>
                     </div>
-                    <form action="{{ route('transactions.') }}" method="get" class="mb-3">
+                    <form action="{{ route('servicePayments.') }}" method="get" class="mb-3">
                         <div class="row g-1">
-                          <div class="col-md-7">
+                          <div class="col-md-9">
                                 <div class="form-group">
                                   <input type="text" name="search" class="form-control  form-control-lg" value="{{ request('search') }}" placeholder="@lang('main.search')" aria-label="search">
                                 </div>
                           </div>
-                          <div class="col-md-2">
-                                <div class="form-group">
-                                    <div class="form-control-wrap">
-                                        <select class="form-select select2" id="type" name="type" data-ui="lg"
-                                                    data-placeholder="Type" aria-label="type">
-                                            <option value="all" {{ request('type') == 'all' ? 'selected' : '' }}>All</option>
-                                            <option value="income" {{ request('type') == 'income' ? 'selected' : '' }}>Income</option>
-                                            <option value="withdraw" {{ request('type') == 'withdraw' ? 'selected' : '' }}>Withdraw</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="col-md-2">
                                 <div class="form-group">
                                     <div class="form-control-wrap">
@@ -207,7 +189,6 @@
                                     <tr class="tr">
                                         <th class="th nk-tb-col">#</th>
                                         <th class="th">User</th>
-                                        <th class="th">Type</th>
                                         <th class="th">From</th>
                                         <th class="th">To</th>
                                         <th class="th">Amount</th>
@@ -217,45 +198,21 @@
                                     </tr>
                                 </thead>
                                 <tbody class="tbody">
-                                    @foreach ($transactions as $transaction)
+                                    @foreach ($servicePayments as $servicePayment)
                                     <tr class="tr">
-                                        <td class="td">
-                                            @if ($transaction->type == 'income')
-                                                <div class="nk-tnx-type-icon bg-success-dim text-success">
-                                                    <em class="icon ni ni-arrow-down-right"></em>
-                                                </div>
-                                            @elseif ($transaction->type == 'withdraw')
-                                                <div class="nk-tnx-type-icon bg-danger-dim text-danger">
-                                                    <em class="icon ni ni-arrow-up-right"></em>
-                                                </div>
-                                            @endif
-                                            {{ $transaction->id }}
-                                        </td>
+                                        <td class="td">{{ $servicePayment->id }}</td>
                                         <td class="td">
                                             <div class="user-card">
                                                 <div class="user-info">
-                                                    <span class="tb-lead">{{ $transaction->user->username }}</span>
+                                                    <span class="tb-lead">{{ $servicePayment->user->username }}</span>
                                                 </div>
                                             </div>
                                         </td>
                                         <td class="td">
-                                            <div class="tb-tnx-status">
-                                                <span
-                                                    @if ($transaction->type == 'income')
-                                                        class="badge badge-primary"
-                                                    @elseif ($transaction->type == 'withdraw')
-                                                        class="badge badge-dark"
-                                                    @endif
-                                                >
-                                                    {{ $transaction->type }}
-                                                </span>
-                                            </div>
-                                        </td>
-                                        <td class="td">
                                             <div class="data-col">
-                                                <span class="data-value" style="display: unset; transition: color .3s; width: 200px;" id="from{{$transaction->id}}">
-                                                    {{ $transaction->from_address }}
-                                                    <span class="clipboard-init" data-clipboard-target="#from{{$transaction->id}}" data-success="Copied" data-text="Copy Link">
+                                                <span class="data-value" style="display: unset; transition: color .3s; width: 200px;" id="from{{$servicePayment->id}}">
+                                                    {{ $servicePayment->from_address }}
+                                                    <span class="clipboard-init" data-clipboard-target="#from{{$servicePayment->id}}" data-success="Copied" data-text="Copy Link">
                                                         <em class="clipboard-icon icon ni ni-copy"></em>
                                                     </span>
                                                 </span>
@@ -263,78 +220,78 @@
                                         </td>
                                         <td class="td">
                                             <div class="data-col">
-                                                <span class="data-value" style="display: unset; transition: color .3s; width: 200px;" id="to{{$transaction->id}}">
-                                                    {{ $transaction->to_address }}
-                                                    <span class="clipboard-init" data-clipboard-target="#to{{$transaction->id}}" data-success="Copied" data-text="Copy Link">
+                                                <span class="data-value" style="display: unset; transition: color .3s; width: 200px;" id="to{{$servicePayment->id}}">
+                                                    {{ $servicePayment->to_address }}
+                                                    <span class="clipboard-init" data-clipboard-target="#to{{$servicePayment->id}}" data-success="Copied" data-text="Copy Link">
                                                         <em class="clipboard-icon icon ni ni-copy"></em>
                                                     </span>
                                                 </span>
                                             </div>
                                         </td>
                                         <td class="td">
-                                            {{ $transaction->amount }}
+                                            {{ $servicePayment->amount }}
                                         </td>
                                         <td class="td">
                                             <div class="tb-tnx-status">
                                                 <span
-                                                    @if ($transaction->status == 'process')
+                                                    @if ($servicePayment->status == 'process')
                                                         class="badge badge-warning"
-                                                    @elseif ($transaction->status == 'success')
+                                                    @elseif ($servicePayment->status == 'success')
                                                         class="badge badge-success"
-                                                    @elseif ($transaction->status == 'fail')
+                                                    @elseif ($servicePayment->status == 'fail')
                                                         class="badge badge-danger"
                                                     @endif
                                                 >
-                                                    {{ $transaction->status }}
+                                                    {{ $servicePayment->status }}
                                                 </span>
                                             </div>
                                         </td>
                                         <td class="td">
-                                            @if ($transaction->created_at)
-                                                {{ $transaction->created_at }}
+                                            @if ($servicePayment->created_at)
+                                                {{ $servicePayment->created_at }}
                                             @else
                                                 -
                                             @endif
                                         </td>
                                         <td class="td">
                                             <ul class="nk-tb-actions gx-1">
-                                                @if ($transaction->status == 'process')
+                                                @if ($servicePayment->status == 'process')
                                                     <li class="nk-tb-action">
-                                                        <a href="#" onclick="document.getElementById('transaction-{{ $transaction->id }}-success').submit();"
+                                                        <a href="#" onclick="document.getElementById('servicePayment-{{ $servicePayment->id }}-success').submit();"
                                                             class="btn btn-trigger btn-icon link-cross link-eye mr-sm-n1" title="success"
                                                             data-status="success" data-collapse="false" >
                                                                 <em class="icon ni ni-check-c"></em>
                                                         </a>
-                                                        <form action="{{ route('transactions.change-status', ['transaction_id' => $transaction->id, 'status' => 'success'])}}"
-                                                                method="post" id="transaction-{{ $transaction->id }}-success">
+                                                        <form action="{{ route('servicePayments.change-status', ['service_payment_id' => $servicePayment->id, 'status' => 'success'])}}"
+                                                                method="post" id="servicePayment-{{ $servicePayment->id }}-success">
                                                             @csrf
                                                             @method('post')
                                                         </form>
                                                     </li>
                                                     <li class="nk-tb-action">
-                                                        <a href="#" onclick="document.getElementById('transaction-{{ $transaction->id }}-fail').submit();"
+                                                        <a href="#" onclick="document.getElementById('servicePayment-{{ $servicePayment->id }}-fail').submit();"
                                                             class="btn btn-trigger btn-icon link-cross link-eye mr-sm-n1" title="fail"
                                                             data-status="fail" data-collapse="false">
                                                                 <em class="icon ni ni-cross-c"></em>
                                                         </a>
-                                                        <form action="{{ route('transactions.change-status', ['transaction_id' => $transaction->id, 'status' => 'fail'])}}"
-                                                                method="post" id="transaction-{{ $transaction->id }}-fail">
+                                                        <form action="{{ route('servicePayments.change-status', ['service_payment_id' => $servicePayment->id, 'status' => 'fail'])}}"
+                                                                method="post" id="servicePayment-{{ $servicePayment->id }}-fail">
                                                             @csrf
                                                             @method('post')
                                                         </form>
                                                     </li>
                                                     <li class="nk-tb-action">
-                                                        <a href="{{ route('transactions.edit', $transaction->id) }}" class="btn btn-trigger btn-icon" data-toggle="tooltip" data-placement="top" title="Edit">
+                                                        <a href="{{ route('servicePayments.edit', $servicePayment->id) }}" class="btn btn-trigger btn-icon" data-toggle="tooltip" data-placement="top" title="Edit">
                                                             <em class="icon ni ni-edit-alt"></em>
                                                         </a>
                                                     </li>
                                                 @else
                                                     <li class="nk-tb-action">
-                                                        <a href="#" onclick="if (confirm('Do you want remove?')) { document.getElementById('destroy-{{ $transaction->id }}').submit(); }"
+                                                        <a href="#" onclick="if (confirm('Do you want remove?')) { document.getElementById('destroy-{{ $servicePayment->id }}').submit(); }"
                                                             class="btn btn-trigger btn-icon" data-toggle="tooltip" data-placement="top" title="Poz">
                                                             <em class="icon ni ni-trash"></em>
                                                         </a>
-                                                        <form action="{{ route('transactions.destroy', $transaction->id) }}" method="post" id="destroy-{{ $transaction->id }}">
+                                                        <form action="{{ route('servicePayments.destroy', $servicePayment->id) }}" method="post" id="destroy-{{ $servicePayment->id }}">
                                                             @method('delete')
                                                             @csrf
                                                           </form>
@@ -347,7 +304,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        {!! $transactions->appends(request()->input())->onEachSide(1)->render() !!}
+                        {!! $servicePayments->appends(request()->input())->onEachSide(1)->render() !!}
 
                     </div> <!-- nk-block -->
                 </div><!-- .components-preview -->

@@ -44,6 +44,18 @@
                                         <span class="nk-menu-text">Users</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->
+                                <li class="nk-menu-item  {{ request()->is('serviceAccounts') ? 'active' : '' }}">
+                                    <a href="{{ Route('serviceAccounts.') }}" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-user-list"></em></span>
+                                        <span class="nk-menu-text">Service Accounts</span>
+                                    </a>
+                                </li><!-- .nk-menu-item -->
+                                <li class="nk-menu-item  {{ request()->is('servicePayments') ? 'active' : '' }}">
+                                    <a href="{{ Route('servicePayments.') }}" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-wallet-in"></em></span>
+                                        <span class="nk-menu-text">Service Payment</span>
+                                    </a>
+                                </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item  {{ request()->is('transactions') ? 'active' : '' }}">
                                     <a href="{{ Route('transactions.') }}" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-activity-round"></em></span>
@@ -113,7 +125,6 @@
     <!-- app-root @e -->
 
     <!-- JavaScript -->
-    <script src="{{ asset('panel') }}/assets/js/jquery-3.5.1.min.js?ver=3.1.3"></script>
     <script src="{{ asset('panel') }}/assets/js/bundle.js?ver=1.4.0"></script>
     <script src="{{ asset('panel') }}/assets/js/scripts.js?ver=1.4.0"></script>
     @yield('js')

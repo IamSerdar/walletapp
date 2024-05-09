@@ -46,24 +46,10 @@ return [
             'visibility' => 'public',
         ],
 
-        'users' => [
+        'service_accounts/qrcodes' => [
             'driver' => 'local',
-            'root' => storage_path('app/public/users'),
-            'url' => env('APP_URL').'/storage/users',
-            'visibility' => 'public',
-        ],
-
-        'galleries' => [
-            'driver' => 'local',
-            'root' => storage_path('app/public/galleries'),
-            'url' => env('APP_URL').'/storage/galleries',
-            'visibility' => 'public',
-        ],
-
-        'imports' => [
-            'driver' => 'local',
-            'root' => storage_path('app/public/imports'),
-            'url' => env('APP_URL').'/storage/imports',
+            'root' => storage_path('app/public/service_accounts/qrcodes'),
+            'url' => env('APP_URL').'/storage/service_accounts/qrcodes',
             'visibility' => 'public',
         ],
 
