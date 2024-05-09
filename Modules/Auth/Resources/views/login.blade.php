@@ -9,7 +9,7 @@
     <!-- Fav Icon  -->
     <link rel="shortcut icon" href="{{ asset('panel/logo/logo4.jpg') }}">
     <!-- Page Title  -->
-    <title> Login | eBazar</title>
+    <title> Login | Wallet App</title>
     <link rel="stylesheet" href="{{ asset('panel') }}/assets/css/dashlite.css?ver=1.4.0">
     <link id="skin-default" rel="stylesheet" href="{{ asset('panel') }}/assets/css/theme.css?ver=1.4.0">
   </head>
