@@ -16,7 +16,7 @@ use Modules\User\Entities\User;
 
 Route::middleware([
         'auth:web',
-        'is_role:'.User::ROLE_ADMIN
+        // 'is_role:'.User::ROLE_ADMIN
     ])
     ->group(function () {
         Route::group([

@@ -4,12 +4,23 @@ namespace Modules\Auth\Http\Controllers;
 
 use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
+use Modules\Transaction\Entities\Transaction;
 
 class HomeController extends Controller
 {
     public function index(){
 
-        return view('home');
+        if(auth()->user()->isRoleAdmin()){
+            return view('home');
+        }else{
+            return view('client.home');
+        }
+    }
+
+    public function notifications(){
+
+        $transactions = Transaction::query()->where('user_id', auth()->user()->id)->latest()->get();
+        return view('client.notifications',compact('transactions'));
     }
 
     public function profile()

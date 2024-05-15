@@ -76,9 +76,15 @@ class TransactionController extends Controller
     public function store(Request $request)
     {
         $this->transactionManager->create($request->all());
-        return redirect()->route('transactions.')->with([
-            'success' => 'Transaction successfully created!',
-        ]);
+        if(auth()->user()->isRoleAdmin()){
+            return redirect()->route('transactions.')->with([
+                'success' => 'Transaction successfully created!',
+            ]);
+        } else {
+            return redirect()->route('notifications')->with([
+                'success' => 'Transaction successfully created!',
+            ]);
+        }
     }
 
     /**

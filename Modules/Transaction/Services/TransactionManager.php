@@ -22,7 +22,7 @@ class TransactionManager
         $rules = [
             'user_id' => ['required', 'exists:users,id'],
             'type' => ['required', Rule::in(Transaction::defaultTypes())],
-            'from_address' => ['required'],
+            'from_address' => ['nullable'],
             'to_address' => ['required'],
             'amount' => ['required'],
             'status' => ['required'],
@@ -31,7 +31,7 @@ class TransactionManager
         if ($id) {
             $rules['user_id'] = ['required', 'exists:users,id'];
             $rules['type'] = ['required', Rule::in(Transaction::defaultTypes())];
-            $rules['from_address'] = ['required'];
+            $rules['from_address'] = ['nullable'];
             $rules['to_address'] = ['required'];
             $rules['amount'] = ['required'];
             $rules['status'] = ['required'];
@@ -44,6 +44,10 @@ class TransactionManager
     public function create(array $data): Model
     {
         $data['status'] = Transaction::STATUS_PROCESS;
+        $data['type'] = Transaction::TYPE_WITHDRAW;
+        if(!auth()->user()->isRoleAdmin()){
+            $data['user_id'] = auth()->user()->id;
+        }
         $this->validate($data);
         $model = Transaction::create($data);
         return $model;

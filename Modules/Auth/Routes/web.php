@@ -21,6 +21,7 @@ Route::middleware([
     'auth:web'])
 ->group(function () {
     Route::get('/', 'HomeController@index')->name('manager');
+    Route::get('/notifications', 'HomeController@notifications')->name('notifications');
     Route::get('profile', 'HomeController@profile')->name('profile');
     Route::patch('profile', 'HomeController@profileUpdate')->name('profile.update');
     Route::post('logout', 'LogoutController')->name('logout');

@@ -22,6 +22,7 @@
         <!-- main  -->
         <div class="nk-main ">
             <!-- sidebar -->
+            @if (auth()->user()->isRoleAdmin())
             <div class="nk-sidebar nk-sidebar-fixed is-dark " data-content="sidebarMenu">
                 <div class="nk-sidebar-element nk-sidebar-head">
                     <div class="nk-sidebar-brand">
@@ -34,6 +35,7 @@
                         </a>
                     </div>
                 </div><!-- .nk-sidebar-element -->
+
                 <div class="nk-sidebar-element">
                     <div class="nk-sidebar-content">
                         <div class="nk-sidebar-menu" data-simplebar>
@@ -67,6 +69,7 @@
                     </div><!-- .nk-sidebar-content -->
                 </div><!-- .nk-sidebar-element -->
             </div>
+            @endif
             <!-- sidebar @e -->
             <!-- wrap @s -->
             <div class="nk-wrap ">
@@ -74,16 +77,26 @@
                 <div class="nk-header nk-header-fixed is-light">
                     <div class="container-fluid">
                         <div class="nk-header-wrap">
-                            <div class="nk-menu-trigger d-xl-none ml-n1">
-                                <a href="#" class="nk-nav-toggle nk-quick-nav-icon" data-target="sidebarMenu"><em class="icon ni ni-menu"></em></a>
-                            </div>
-                            <div class="nk-header-brand d-xl-none">
+                            @if (auth()->user()->isRoleAdmin())
+                                <div class="nk-menu-trigger d-xl-none ml-n1">
+                                    <a href="#" class="nk-nav-toggle nk-quick-nav-icon" data-target="sidebarMenu"><em class="icon ni ni-menu"></em></a>
+                                </div>
+                                <div class="nk-header-brand d-xl-none">
+                                    <div class="nk-sidebar-brand">
+                                        <a href="{{ Route('manager') }}" class="logo-link nk-sidebar-logo">
+                                            <h3>Wallet App</h3>
+                                        </a>
+                                    </div>
+                                </div><!-- .nk-header-brand -->
+                            @else
+                            <div class="nk-header-brand">
                                 <div class="nk-sidebar-brand">
                                     <a href="{{ Route('manager') }}" class="logo-link nk-sidebar-logo">
                                         <h3>Wallet App</h3>
                                     </a>
                                 </div>
                             </div><!-- .nk-header-brand -->
+                            @endif
                             <div class="nk-header-tools">
                                 <ul class="nk-quick-nav">
                                     <li class="dropdown user-dropdown">
@@ -102,8 +115,8 @@
                     </div><!-- .container-fliud -->
                 </div>
                 <!-- main header @e -->
-                <div class="nk-content">
-                    @include('include._flash_messages')
+                <div class="nk-content pt-2">
+                    {{-- @include('include._flash_messages') --}}
                     @yield('content')
                 </div>
                 <!-- footer @s -->

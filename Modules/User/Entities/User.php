@@ -15,6 +15,9 @@ use Modules\Gallery\Entities\Gallery;
 use Modules\Garden\Entities\Absent;
 use Modules\Notification\Entities\Notification;
 use Modules\Payment\Entities\Payment;
+use Modules\ServiceAccount\Entities\ServiceAccount;
+use Modules\ServicePayment\Entities\ServicePayment;
+use Modules\Transaction\Entities\Transaction;
 
 class User extends Authenticatable
 {
@@ -79,6 +82,20 @@ class User extends Authenticatable
         ];
     }
 
+    public function serviceAccount()
+    {
+        return $this->hasOne(ServiceAccount::class);
+    }
+
+    public function servicePayments()
+    {
+        return $this->hasMany(ServicePayment::class);
+    }
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
     /*
     * Mutators
     */
@@ -158,5 +175,11 @@ class User extends Authenticatable
             Assert::inArray($role, self::defaultRoles());
         }
         return $query->role($roles);
+    }
+
+    public function balance() {
+        $income = $this->transactions()->where('type', 'income')->get()->sum('amount');
+        $withdraw = $this->transactions()->where('type', 'withdraw')->get()->sum('amount');
+        return round($income - $withdraw, 2);
     }
 }
