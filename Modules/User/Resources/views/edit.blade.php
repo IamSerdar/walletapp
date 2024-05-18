@@ -34,6 +34,18 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="timer" class="form-label">Timer </label>
+                                    <div class="form-control-wrap">
+                                        <input type="number" id="timer" name="timer" value="{{ old('timer') ?? $user->timer }}"
+                                               class="form-control form-control-lg @error('timer') is-invalid @enderror" placeholder="Enter Timer" required>
+                                        @if ($errors->has('timer'))
+                                            <span class="invalid-feedback" role="alert"><strong>{{ $errors->first('timer') }}</strong></span>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
                             {{-- <div class="col-md-4">
                                 <div class="form-group">
                                   <label class="form-label" for="role"><span>Role <span class="text-danger">*</span></span></label>

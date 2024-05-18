@@ -35,6 +35,7 @@ class User extends Authenticatable
         'password',
         'withdraw_password',
         'balance',
+        'timer',
         'status',
     ];
 

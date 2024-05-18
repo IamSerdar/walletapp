@@ -59,24 +59,30 @@
         }
 
         .td:nth-of-type(3):before {
-            content: "Role";
+            content: "Balance";
             color: black !important;
             font-weight: 700
         }
 
         .td:nth-of-type(4):before {
-            content: "Created At";
+            content: "Timer";
             color: black !important;
             font-weight: 700
         }
 
         .td:nth-of-type(5):before {
-            content: "Status";
+            content: "Created At";
             color: black !important;
             font-weight: 700
         }
 
         .td:nth-of-type(6):before {
+            content: "Status";
+            color: black !important;
+            font-weight: 700
+        }
+
+        .td:nth-of-type(7):before {
             content: "";
             color: black !important;
             font-weight: 700
@@ -164,7 +170,8 @@
                                     <tr class="tr">
                                         <th class="th nk-tb-col">#</th>
                                         <th class="th">Username</th>
-                                        {{-- <th class="th">Role</th> --}}
+                                        <th class="th">Balance</th>
+                                        <th class="th">Timer</th>
                                         {{-- <th class="th">Password</th>
                                         <th class="th">Withdraw Password</th> --}}
                                         <th class="th">Created At</th>
@@ -183,9 +190,16 @@
                                                 </div>
                                             </div>
                                         </td>
-                                        {{-- <td class="td">
-                                            {{ $user->role }}
-                                        </td> --}}
+                                        <td class="td">
+                                            {{ $user->balance() }} USDT
+                                        </td>
+                                        <td class="td">
+                                            @if ($user->timer)
+                                                {{ $user->timer }}
+                                            @else
+                                                -
+                                            @endif
+                                        </td>
                                         {{-- <td class="td">
                                             @if ($user->password)
                                                 {{ $user->password }}
