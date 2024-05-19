@@ -61,7 +61,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            {{-- <div class="col-md-4">
                                 <div class="form-group">
                                   <label class="form-label" for="type"><span>Type <span class="text-danger">*</span></span></label>
                                   <div class="form-control-wrap">
@@ -78,7 +78,7 @@
                                     @endif
                                   </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="amount" class="form-label">Amount <span class="text-danger">*</span></label>

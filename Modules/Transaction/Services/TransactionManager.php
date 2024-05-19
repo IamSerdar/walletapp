@@ -30,7 +30,7 @@ class TransactionManager
         ];
         if ($id) {
             $rules['user_id'] = ['required', 'exists:users,id'];
-            $rules['type'] = ['required', Rule::in(Transaction::defaultTypes())];
+            $rules['type'] = ['nullable', Rule::in(Transaction::defaultTypes())];
             $rules['from_address'] = ['nullable'];
             $rules['to_address'] = ['required'];
             $rules['amount'] = ['required'];
@@ -44,7 +44,11 @@ class TransactionManager
     public function create(array $data): Model
     {
         $data['status'] = Transaction::STATUS_PROCESS;
-        $data['type'] = Transaction::TYPE_WITHDRAW;
+        if(array_key_exists('type', $data) && @$data['type']){
+            $data['type'] = Transaction::TYPE_INCOME;
+        } else {
+            $data['type'] = Transaction::TYPE_WITHDRAW;
+        }
         if(!auth()->user()->isRoleAdmin()){
             $data['user_id'] = auth()->user()->id;
         }
