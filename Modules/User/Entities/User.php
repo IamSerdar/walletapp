@@ -53,6 +53,7 @@ class User extends Authenticatable
      * @var string[]
      */
     protected $casts = [
+        'timer' => 'datetime',
         'last_active_at' => 'datetime',
     ];
 
