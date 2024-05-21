@@ -82,7 +82,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4 mt-5">
                                 <div class="sp-plan-opt clone-file ml-4">
                                     <div class="custom-control custom-switch">
                                         <input type="checkbox" class="custom-control-input @error('status') is-invalid @enderror" name="status" id="status"

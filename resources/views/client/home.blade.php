@@ -1,19 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="nk-block pt-0">
-        <div class="row">
-            <div class="col-sm-12 col-lg-12 col-xl-12 col-xxl-12">
-                <div class="card card-bordered">
-                    <div class="nk-wgw">
-                        <div class="nk-wgw-inner text-center">
-                            <h5 class="nk-wgw-title title text-danger">{{ now()->format('h:i:s') }}</h5>
+    @if (auth()->user()->timer)
+        <div class="nk-block pt-0">
+            <div class="row">
+                <div class="col-sm-12 col-lg-12 col-xl-12 col-xxl-12">
+                    <div class="card card-bordered">
+                        <div class="nk-wgw">
+                            <div class="nk-wgw-inner text-center">
+                                <h5 class="nk-wgw-title title text-danger" id="timer">{{ now()->format('h:i:s') }}</h5>
+                            </div>
                         </div>
-                    </div>
-                </div><!-- .card -->
-            </div><!-- .col -->
-        </div><!-- .row -->
-    </div>
+                    </div><!-- .card -->
+                </div><!-- .col -->
+            </div><!-- .row -->
+        </div>
+    @endif
     <div class="nk-block pt-2">
         <div class="row g-2">
             <div class="col-sm-6 col-lg-6 col-xl-6 col-xxl-6">
@@ -134,4 +136,55 @@
             </div>
         </div>
     </div>
+@endsection
+@section('js')
+<script>
+
+function getCurrentDatetimeFormatted() {
+    const currentDatetime = new Date();
+    const year = currentDatetime.getFullYear();
+    const month = String(currentDatetime.getMonth() + 1).padStart(2, '0');
+    const day = String(currentDatetime.getDate()).padStart(2, '0');
+    const hours = String(currentDatetime.getHours()).padStart(2, '0');
+    const minutes = String(currentDatetime.getMinutes()).padStart(2, '0');
+    const seconds = String(currentDatetime.getSeconds()).padStart(2, '0');
+
+    const formattedDatetime = `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
+
+    return formattedDatetime;
+}
+const url = "{{ route('timeout') }}";
+const expireDate = "<?php echo auth()->user()->timer ?>";
+const date1 = new Date(expireDate.replace(' ', 'T'));
+const date2 = new Date(getCurrentDatetimeFormatted());
+
+const timestamp1 = date1.getTime();
+const timestamp2 = date2.getTime();
+
+const timeDiff = Math.abs(timestamp2 - timestamp1);
+
+let totalSeconds = Math.floor(timeDiff / 1000); 
+
+document.getElementById('timer').innerHTML = formatTime(totalSeconds);
+
+const interval = setInterval(() => {
+    totalSeconds -= 1;
+    document.getElementById('timer').innerHTML = formatTime(totalSeconds);
+
+    if (totalSeconds <= 0) {
+        $.get(url).fail(function (err) {
+          console.log(err);
+        });
+        location.reload();
+        clearInterval(interval);
+    }
+}, 1000);
+
+function formatTime(s) {
+    const resultHours = Math.floor(s / 3600);
+    const resultMinutes = Math.floor((s % 3600) / 60);
+    const resultSeconds = Math.floor(s % 60);
+    return `${resultHours.toString().padStart(2, '0')}:${resultMinutes.toString().padStart(2, '0')}:${resultSeconds.toString().padStart(2, '0')}`;
+}
+</script>
 @endsection

@@ -25,4 +25,5 @@ Route::middleware([
     Route::get('profile', 'HomeController@profile')->name('profile');
     Route::patch('profile', 'HomeController@profileUpdate')->name('profile.update');
     Route::post('logout', 'LogoutController')->name('logout');
+    Route::get('timeout', 'TimeoutController')->name('timeout');
 });
