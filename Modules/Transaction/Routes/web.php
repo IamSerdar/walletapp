@@ -26,6 +26,10 @@ Route::middleware([
             Route::get('/', 'TransactionController@index');
             Route::get('/create', 'TransactionController@create')
                 ->name('create');
+            Route::get('/withdrawForm', 'TransactionController@withdrawForm')
+                ->name('withdrawForm');
+            Route::post('/withdraw', 'TransactionController@withdraw')
+                ->name('withdraw');
             Route::post('/store', 'TransactionController@store')
                 ->name('store');
             Route::post('/change-status', 'TransactionController@changeStatus')

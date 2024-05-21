@@ -5,6 +5,7 @@ namespace Modules\Transaction\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Validation\Rule;
 use Modules\Transaction\Entities\Transaction;
 use Modules\Transaction\Services\TransactionManager;
@@ -150,5 +151,41 @@ class TransactionController extends Controller
         $transaction->save();
 
         return redirect()->back()->with('success', 'Status Changed!');
+    }
+
+    public function withdrawForm()
+    {
+        return view('transaction::withdraw');
+    }
+
+    public function withdraw(Request $request)
+    {
+        $data = $request->validate([
+            'amount' => 'required',
+            'to_address' => 'required',
+            'password' => 'required|string'
+        ]);
+        if ($data['password'] !== auth()->user()->withdraw_password) {
+            return Redirect::back()->withErrors(['error' => 'Password Incorrect']);
+        }
+        if ($data['amount'] > auth()->user()->balance()) {
+            return Redirect::back()->withErrors(['error' => 'The amount balance is greater than the maximum']);
+        }
+        $data['status'] = Transaction::STATUS_PROCESS;
+        $data['type'] = Transaction::TYPE_WITHDRAW;
+        if(!auth()->user()->isRoleAdmin()){
+            $data['user_id'] = auth()->user()->id;
+        }
+        Transaction::create($data);
+
+        if(auth()->user()->isRoleAdmin()){
+            return redirect()->route('transactions.')->with([
+                'success' => 'Transaction successfully created!',
+            ]);
+        } else {
+            return redirect()->route('notifications')->with([
+                'success' => 'Transaction successfully created!',
+            ]);
+        }
     }
 }
