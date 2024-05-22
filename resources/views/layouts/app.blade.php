@@ -89,6 +89,9 @@
                                     </div>
                                 </div><!-- .nk-header-brand -->
                             @else
+                            <div class="nk-menu-trigger d-xl-none">
+                                <a href="{{ Route('manager') }}" class="nk-quick-nav-icon"><em class="icon ni ni-home-fill"></em></a>
+                            </div>
                             <div class="nk-header-brand">
                                 <div class="nk-sidebar-brand">
                                     <a href="{{ Route('manager') }}" class="logo-link nk-sidebar-logo">
