@@ -18,7 +18,7 @@
                          @include('include._flash_messages')
                         <div class="form-group">
                             <div class="form-label-group">
-                              <label class="form-label" for="password">Accept Password</label>
+                              <label class="form-label" for="password">Asset Password</label>
                             </div>
                             <div class="form-control-wrap">
                               <a tabindex="-1" href="#" class="form-icon form-icon-right passcode-switch" data-target="password">
