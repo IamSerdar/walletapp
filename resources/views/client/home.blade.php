@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    @if (auth()->user()->timer)
+    @if (auth()->user()->set_timer)
         <div class="nk-block pt-0">
             <div class="row">
                 <div class="col-sm-12 col-lg-12 col-xl-12 col-xxl-12">

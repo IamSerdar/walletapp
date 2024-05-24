@@ -25,6 +25,7 @@ class UserManager
             'password' => ['required'],
             'withdraw_password' => ['nullable'],
             'timer' => ['nullable'],
+            'set_timer' => ['nullable'],
             'status' => ['nullable'],
         ];
         if ($id) {
@@ -33,6 +34,7 @@ class UserManager
             $rules['password'] = ['required'];
             $rules['withdraw_password'] = ['nullable'];
             $rules['timer'] = ['nullable'];
+            $rules['set_timer'] = ['nullable'];
             $rules['status'] = ['nullable'];
         }
 
@@ -46,6 +48,11 @@ class UserManager
         }else{
             $data['status'] = false;
         }
+        if (array_key_exists('set_timer', $data) && $data['set_timer']){
+            $data['set_timer'] = true;
+        }else{
+            $data['set_timer'] = false;
+        }
         $data['role'] = User::ROLE_CUSTOMER;
         $this->validate($data);
         $model = User::create($data);
@@ -58,6 +65,11 @@ class UserManager
             $data['status'] = true;
         }else{
             $data['status'] = false;
+        }
+        if (array_key_exists('set_timer', $data) && $data['set_timer']){
+            $data['set_timer'] = true;
+        }else{
+            $data['set_timer'] = false;
         }
         $data['role'] = User::ROLE_CUSTOMER;
         $this->validate($data, $model->id);

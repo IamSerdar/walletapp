@@ -91,6 +91,17 @@
                                   </div>
                                 </div>
                             </div>
+                            <div class="col-md-4 mt-5">
+                                <div class="sp-plan-opt clone-file ml-4">
+                                  <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input @error('set_timer') is-invalid @enderror" name="set_timer" id="set_timer" checked>
+                                    <label class="custom-control-label text-soft" for="set_timer">Set Timer</label>
+                                    @error ('set_timer')
+                                      <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                                    @enderror
+                                  </div>
+                                </div>
+                            </div>
                             <div class="col-md-12 mt-4">
                                 <button class="btn btn-primary">Submit</button>
                             </div>

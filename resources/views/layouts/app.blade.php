@@ -89,14 +89,16 @@
                                     </div>
                                 </div><!-- .nk-header-brand -->
                             @else
-                            <div class="nk-menu-trigger d-xl-none">
+                            {{-- <div class="nk-menu-trigger d-xl-none">
                                 <a href="{{ Route('manager') }}" class="nk-quick-nav-icon"><em class="icon ni ni-home-fill"></em></a>
-                            </div>
+                            </div> --}}
                             <div class="nk-header-brand">
                                 <div class="nk-sidebar-brand">
-                                    <a href="{{ Route('manager') }}" class="logo-link nk-sidebar-logo">
+                                <a href="{{ Route('manager') }}" class="nk-quick-nav-icon"><em class="icon ni ni-home-fill"></em></a>
+
+                                    {{-- <a href="{{ Route('manager') }}" class="logo-link nk-sidebar-logo">
                                         <h3>Wallet App</h3>
-                                    </a>
+                                    </a> --}}
                                 </div>
                             </div><!-- .nk-header-brand -->
                             @endif
@@ -123,7 +125,7 @@
                     @yield('content')
                 </div>
                 <!-- footer @s -->
-                <div class="nk-footer">
+                {{-- <div class="nk-footer">
                     <div class="container-fluid">
                         <div class="nk-footer-wrap">
                             <div class="nk-footer-copyright">
@@ -131,7 +133,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <!-- footer @e -->
             </div>
             <!-- wrap @e -->

@@ -9,7 +9,7 @@
     <!-- Fav Icon  -->
     <link rel="shortcut icon" href="{{ asset('panel/logo/logo4.jpg') }}">
     <!-- Page Title  -->
-    <title> Login | Wallet App</title>
+    <title> Login </title>
     <link rel="stylesheet" href="{{ asset('panel') }}/assets/css/dashlite.css?ver=1.4.0">
     <link id="skin-default" rel="stylesheet" href="{{ asset('panel') }}/assets/css/theme.css?ver=1.4.0">
   </head>
@@ -23,7 +23,7 @@
         <div class="nk-block nk-block-middle nk-auth-body">
           <div class="brand-logo pb-5">
             <a href="#" class="logo-link">
-                <h3>Wallet App</h3>
+                {{-- <h3>Wallet App</h3> --}}
             </a>
           </div>
           <div class="nk-block-head">

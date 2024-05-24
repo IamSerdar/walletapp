@@ -77,12 +77,18 @@
         }
 
         .td:nth-of-type(6):before {
-            content: "Status";
+            content: "Set Timer";
             color: black !important;
             font-weight: 700
         }
 
         .td:nth-of-type(7):before {
+            content: "Status";
+            color: black !important;
+            font-weight: 700
+        }
+
+        .td:nth-of-type(8):before {
             content: "";
             color: black !important;
             font-weight: 700
@@ -175,6 +181,7 @@
                                         {{-- <th class="th">Password</th>
                                         <th class="th">Withdraw Password</th> --}}
                                         <th class="th">Created At</th>
+                                        <th class="th">Set Timer</th>
                                         <th class="th">Status</th>
                                         <th class="th">&nbsp;</th>
                                     </tr>
@@ -219,6 +226,13 @@
                                                 {{ $user->created_at }}
                                             @else
                                                 -
+                                            @endif
+                                        </td>
+                                        <td class="td">
+                                            @if ($user->set_timer)
+                                                <span class="tb-status text-success">Yes</span>
+                                            @else
+                                                <span class="tb-status text-danger">No</span>
                                             @endif
                                         </td>
                                         <td class="td">
