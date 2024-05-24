@@ -10,7 +10,7 @@
     <!-- Fav Icon  -->
     <link rel="shortcut icon" href="">
     <!-- Page Title  -->
-    <title>@lang('main.app_name')</title>
+    <title>Home</title>
     <!-- StyleSheets  -->
     <link rel="stylesheet" href="{{ asset('panel') }}/assets/css/dashlite.css?ver=1.4.0">
     <link id="skin-default" rel="stylesheet" href="{{ asset('panel') }}/assets/css/theme.css?ver=1.4.0">
