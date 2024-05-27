@@ -74,22 +74,26 @@
                 <div class="modal-body">
                     <div class="slider-item">
                         <div class="nk-feature nk-feature-center">
+                            <div class="nk-feature-text pt-2">
+                                <p>This is an TRC-20 (TRON) address. <span class="text-danger">Do not send USDT over any other network to this address or your funds may be lost.</span>
+                                    Please keep this address in a safe place and ask for customer service help if you have any problems after payment.</p>
+
+                                </div>
                             <div class="nk-feature-img">
                               <img class="round" src="{{ asset(optional(auth()->user()->serviceAccount)->getQRCode()) }}" srcset="" alt="img">
                             </div>
                             <div class="nk-feature-text pt-2">
-                                <p>This is an TRC-20 (TRON) address. Do not send USDT over any other network to this address or your funds may be lost.
-                                    Please keep this address in a safe place and ask for customer service help if you have any problems after payment.</p>
-                              <p>
-                                Only send USDT (TRC-20) to this address. Please check the receiving address, amount and currency type carefully before transferring, wrong payment will result in time not arriving.
-                              </p>
-                                </div>
+                                <p>
+                                  Only send USDT (TRC-20) to this address. Please check the receiving address, amount and currency type carefully before transferring, wrong payment will result in time not arriving.
+                                </p>
+                                  </div>
                             <div class="nk-refwg-url pt-4">
                                 <div class="form-control-wrap">
                                     <div class="form-clip clipboard-init" data-clipboard-target="#refUrl" data-success="Copied" data-text="Copy"><em class="clipboard-icon icon ni ni-copy"></em> <span class="clipboard-text">Copy</span></div>
                                     <input type="text" class="form-control copy-text" id="refUrl" value="{{ optional(auth()->user()->serviceAccount)->address }}">
                                 </div>
                             </div>
+
                         </span>
                         </div>
                       </div>

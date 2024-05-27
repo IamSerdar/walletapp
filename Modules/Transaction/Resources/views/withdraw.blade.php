@@ -26,7 +26,7 @@
                                 <em class="passcode-icon icon-hide icon ni ni-eye-off"></em>
                               </a>
                               <input type="password" class="form-control form-control-lg {{ $errors->has('password') ? ' is-invalid' : '' }}"
-                                    id="password" name="password"  value="{{ old('password') }}" placeholder="" required>
+                                    id="password" name="password"  value="{{ old('password') }}" placeholder="Enter your asset password" required>
                               @if ($errors->has('password'))
                                 <span class="invalid-feedback" role="alert"><strong>{{ $errors->first('password') }}</strong></span>
                               @endif
@@ -35,7 +35,8 @@
                         <div class="form-group">
                             <label class="form-label" for="to_address">Address</label>
                             <div class="form-control-wrap">
-                                <input type="text" class="form-control" id="to_address"  name="to_address" value="{{ old('to_address') }}" required>
+                                <input type="text" class="form-control" id="to_address"  name="to_address" value="{{ old('to_address') }}"
+                                    placeholder="Please enter your TRC-20 (TRON) address" required>
                             </div>
                         </div>
                         <div class="form-group">
@@ -44,7 +45,8 @@
                                 <div class="form-text-hint  p-0">
                                     <a href="#" id="maxButton"><span class="btn btn-primary">MAX</span></a>
                                 </div>
-                                <input type="number" class="form-control" name="amount" id="amount" max="{{auth()->user()->balance()}}" value="{{ old('amount') }}" required>
+                                <input type="number" class="form-control" name="amount" id="amount" max="{{auth()->user()->balance()}}" value="{{ old('amount') }}"
+                                        placeholder="Amount" required>
                             </div>
                         </div>
                         <div class="form-group">
