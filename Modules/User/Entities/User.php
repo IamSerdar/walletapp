@@ -181,8 +181,8 @@ class User extends Authenticatable
     }
 
     public function balance() {
-        $income = $this->transactions()->where('type', 'income')->get()->sum('amount');
-        $withdraw = $this->transactions()->where('type', 'withdraw')->get()->sum('amount');
+        $income = $this->transactions()->where('type', 'income')->where('status', 'success')->get()->sum('amount');
+        $withdraw = $this->transactions()->where('type', 'withdraw')->where('status', 'success')->get()->sum('amount');
         return round($income - $withdraw, 2);
     }
 }
