@@ -28,7 +28,7 @@ class Authenticate extends Middleware
         if ($user && !$user->status){
             Session::flush();
             Auth::logout();
-            throw abort(403, 'Siziň hasabyňyz işjeň däl, administratora ýüz tutuň');
+            throw abort(403, 'Your account is not active, contact the administrator');
         }
     }
 }
